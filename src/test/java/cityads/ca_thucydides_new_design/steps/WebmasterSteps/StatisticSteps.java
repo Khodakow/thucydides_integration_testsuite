@@ -654,6 +654,8 @@ public class StatisticSteps extends SetupSteps {
 
     @Step
     public String  get_text_from_first_element_in_blue_table_main_parametr(){
+        executeScript("$('tr:contains(\"Неизвестн\")').remove();");
+        executeScript("$('tr:contains(\"Unknow\")').remove();");
         String Text = page.stat_first_element_in_blue_table__main_parametr.getText();
         return Text;
 

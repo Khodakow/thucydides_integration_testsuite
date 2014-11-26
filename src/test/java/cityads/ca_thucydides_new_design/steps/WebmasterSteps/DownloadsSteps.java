@@ -7,7 +7,6 @@ package cityads.ca_thucydides_new_design.steps.WebmasterSteps;
 import cityads.ca_thucydides_new_design.pages.WemasterPages.DownloadsPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
-import net.thucydides.core.pages.WebElementFacade;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -149,9 +148,9 @@ public class DownloadsSteps extends CouponsAndPromocodesFilterSaveSteps {
     } 
     
     
-    @Step
+    @Step("Кдик по второму чекбосу сверху в черном попапе")
     public void click_second_checkbox_in_offer_choose_popup() {
-//          page.getPopup().findElements(By.className("checkbox")).get(1).click();
+/*//          page.getPopup().findElements(By.className("checkbox")).get(1).click();
         List<WebElementFacade> checkboxList = page.getPopup().thenFindAll(By.xpath("//label[contains(@class,'checkbox dark')]"));
         int size = checkboxList.size();
         int i = 0;
@@ -163,7 +162,12 @@ public class DownloadsSteps extends CouponsAndPromocodesFilterSaveSteps {
                 waitABit(3000);
                 break;
             }
-        }
+        }*/
+        wait_for_all_spinners_dissapears();
+        executeScript("$('div[class=\"lgc-item \"]>div>label>input')[0].checked = true");
+        executeScript("$('div[class=\"lgc-item \"]>div>label>input').trigger('change');");
+        wait_for_all_spinners_dissapears();
+
 
     } 
             

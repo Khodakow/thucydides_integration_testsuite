@@ -22,6 +22,9 @@ public class PaymentInfo extends BasePage {
     @FindBy(xpath = "//button[@id='payinfoCreate']")
     private WebElementFacade create;
 
+    @FindBy(xpath = "//div[@class='absolute back-ccc pointer']")
+    private WebElementFacade sideBar;
+
     @FindBy(xpath = "//input[@name='wallet_id']")
     private WebElementFacade walletId;
 
@@ -50,10 +53,52 @@ public class PaymentInfo extends BasePage {
     private List<WebElement> deleteIcons;
 
     @FindBy(xpath = "//label[descendant::input[@type='radio' and @value='1']]")
-    private WebElementFacade  legalPerson;
+    private WebElementFacade legalPerson;
+
+    @FindBy(xpath = "//label[descendant::input[@type='radio' and @value='2']]")
+    private WebElementFacade ip;
 
     @FindBy(xpath = "//input[@name='company_name']")
-    private WebElementFacade  companyName;
+    private WebElementFacade companyName;
+
+    @FindBy(xpath = "//input[@name='contact_name']")
+    private WebElementFacade contactName;
+
+    @FindBy(xpath = "//input[@name='legal_address']")
+    private WebElementFacade legaladdress;
+
+    @FindBy(xpath = "//input[@name='ogrn']")
+    private WebElementFacade ogrn;
+
+    @FindBy(xpath = "//input[@name='inn']")
+    private WebElementFacade inn;
+
+    @FindBy(xpath = "//input[@name='phone']")
+    private WebElementFacade phone;
+
+    @FindBy(xpath = "//input[@name='bic']")
+    private WebElementFacade bic;
+
+    @FindBy(xpath = "//input[@name='bank']")
+    private WebElementFacade bank;
+
+    @FindBy(xpath = "//input[@name='bank_office']")
+    private WebElementFacade bankOffice;
+
+    @FindBy(xpath = "//input[@name='bank_adress']")
+    private WebElementFacade bankAdress;
+
+    @FindBy(xpath = "//input[@name='correspondent_account']")
+    private WebElementFacade correspondentAccount;
+
+    @FindBy(xpath = "//input[@name='cc']")
+    private WebElementFacade cc;
+
+    @FindBy(xpath = "//input[@name='email']")
+    private WebElementFacade mail;
+
+    @FindBy(xpath = "//input[@name='cc2']")
+    private WebElementFacade ccRepeat;
 
     public void fillNewCountForm(String walletName,String fullname, String walletid) {
         create.waitUntilVisible();
@@ -65,12 +110,11 @@ public class PaymentInfo extends BasePage {
         fullName.sendKeys(fullname);
         walletId.clear();
         walletId.sendKeys(walletid);
-        getCode.click();
+        //getCode.click();
         waitSpinner();
     }
 
-
-    public void fillNewCountFormJur(String walletName, String fullname, String walletid,String company) {
+    public void fillNewCountFormJur(String walletName, String fullname,String legaladdress2,String ogrn2,String inn2,String bic2,String bank2,String bank_office2,String company,String bank_adress2,String correspondent_account2,String cc2,String telephone, String email) {
         create.waitUntilVisible();
         create.click();
         popup.waitPopup();
@@ -82,13 +126,114 @@ public class PaymentInfo extends BasePage {
         name.clear();
         name.sendKeys(walletName);
 
-        fullName.clear();
-        fullName.sendKeys(fullname);
-        walletId.clear();
-        walletId.sendKeys(walletid);
-        getCode.click();
+
+        legaladdress.clear();
+        legaladdress.sendKeys(legaladdress2);
+
+        ogrn.clear();
+        ogrn.sendKeys(ogrn2);
+
+        inn.clear();
+        inn.sendKeys(inn2);
+
+        bic.clear();
+        bic.sendKeys(bic2);
+
+        bank.clear();
+        bank.sendKeys(bank2);
+
+        bankOffice.clear();
+        bankOffice.sendKeys(bank_office2);
+
+        bankAdress.clear();
+        bankAdress.sendKeys(bank_adress2);
+
+        correspondentAccount.clear();
+        correspondentAccount.sendKeys(correspondent_account2);
+
+        cc.clear();
+        cc.sendKeys(cc2);
+
+        ccRepeat.clear();
+        ccRepeat.sendKeys(cc2);
+
+        expandForm();
+
+        contactName.clear();
+        contactName.sendKeys(fullname);
+
+        phone.clear();
+        phone.sendKeys(telephone);
+
+        mail.clear();
+        mail.sendKeys(email);
+
+        //getCode.click();
         waitSpinner();
+
+        popup.checkPopupBlackIsNotDisplayed();
     }
+
+    public void fillNewCountFormIP(String walletName, String fullname,String legaladdress2,String ogrn2,String inn2,String bic2,String bank2,String bank_office2,String company,String bank_adress2,String correspondent_account2,String cc2,String telephone, String email) {
+        create.waitUntilVisible();
+        create.click();
+        popup.waitPopup();
+        ip.waitUntilVisible();
+        ip.click();
+        fullName.shouldBeCurrentlyVisible();
+        fullName.clear();
+        fullName.sendKeys(company);
+        name.clear();
+        name.sendKeys(walletName);
+
+
+        legaladdress.clear();
+        legaladdress.sendKeys(legaladdress2);
+
+        ogrn.clear();
+        ogrn.sendKeys(ogrn2);
+
+        inn.clear();
+        inn.sendKeys(inn2);
+
+        bic.clear();
+        bic.sendKeys(bic2);
+
+        bank.clear();
+        bank.sendKeys(bank2);
+
+        bankOffice.clear();
+        bankOffice.sendKeys(bank_office2);
+
+        bankAdress.clear();
+        bankAdress.sendKeys(bank_adress2);
+
+        correspondentAccount.clear();
+        correspondentAccount.sendKeys(correspondent_account2);
+
+        cc.clear();
+        cc.sendKeys(cc2);
+
+        ccRepeat.clear();
+        ccRepeat.sendKeys(cc2);
+
+        expandForm();
+
+        contactName.clear();
+        contactName.sendKeys(fullname);
+
+        phone.clear();
+        phone.sendKeys(telephone);
+
+        mail.clear();
+        mail.sendKeys(email);
+
+        //getCode.click();
+        waitSpinner();
+
+        popup.checkPopupBlackIsNotDisplayed();
+    }
+
 
     public void editForm(String walletName,String fullname, String walletid) {
         popup.waitPopup();
@@ -98,7 +243,7 @@ public class PaymentInfo extends BasePage {
         fullName.sendKeys(fullname);
         walletId.clear();
         walletId.sendKeys(walletid);
-        getCode.click();
+        //getCode.click();
         waitSpinner();
     }
 
@@ -116,10 +261,10 @@ public class PaymentInfo extends BasePage {
     }
 
     public void submitForm() {
-        submit.waitUntilVisible();
-        submit.click();
+        waitForSpinnerDissapear();
+        this.evaluateJavascript("$('a[class*=\"button dark submit\"]').click()");
         waitABit(5000);
-        waitSpinner();
+        waitForSpinnerDissapear();
     }
 
     public void setphoneNumberOnlinesim(String number){
@@ -129,9 +274,11 @@ public class PaymentInfo extends BasePage {
 
     public void deleteAdditionalCounts() {
         if(deleteIcons.size()>0) {
-            for (WebElement elem : deleteIcons) {
+            int i;
+
+            for (i=0;i<deleteIcons.size();i++) {
                 waitSpinner();
-                elem.click();
+                deleteIcons.get(0).click();
                 waitSpinner();
                 popup.clickYes();
                 waitSpinner();
@@ -141,6 +288,10 @@ public class PaymentInfo extends BasePage {
 
     public void checkAdditionalCountsNotPresent(){
         assertTrue(deleteIcons.size() == 0);
+    }
+
+    private void expandForm(){
+        this.evaluateJavascript("$('div[class*=\"_content_scrollable _has_scrollable\"]').attr('style','max-height: 1000px; padding-bottom: 0px;');");
     }
 
 }

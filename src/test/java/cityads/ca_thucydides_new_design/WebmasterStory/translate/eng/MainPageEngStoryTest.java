@@ -1,21 +1,10 @@
 package cityads.ca_thucydides_new_design.WebmasterStory.translate.eng;
 
 import cityads.ca_thucydides_new_design.Constants;
-import cityads.ca_thucydides_new_design.pages.WemasterPages.MainSitePage;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.MainSiteSteps;
-import cityads.ca_thucydides_new_design.steps.SetupSteps;
-import cityads.ca_thucydides_new_design.steps.WebmasterSteps.BugsSteps;
-import cityads.ca_thucydides_new_design.steps.WebmasterSteps.ProfileSteps;
-import java.sql.Connection;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.ManagedPages;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.Story;
-import net.thucydides.core.annotations.WithTag;
-import net.thucydides.core.annotations.WithTagValuesOf;
+import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
-import net.thucydides.junit.annotations.Concurrent;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,8 +27,9 @@ public class MainPageEngStoryTest extends Constants {
 
     @Steps
     MainSiteSteps steps;
-    
+
     @Test
+    @Title("Перевод англ корпсайт")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_mainpage_translation(){
 
@@ -53,8 +43,9 @@ public class MainPageEngStoryTest extends Constants {
         steps.check_lang_select();
 
     }
-    
+
     @Test
+    @Title("Перевод англ корпсайт емаил")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_email_platform_translation(){
 
@@ -66,8 +57,9 @@ public class MainPageEngStoryTest extends Constants {
         steps.close_browser();
 
     }
-    
+
     @Test
+    @Title("Перевод англ корпсайт аналитика")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_analytics_translation(){
 
@@ -79,7 +71,7 @@ public class MainPageEngStoryTest extends Constants {
         steps.close_browser();
 
     }
-    
-    
-   
+
+
+
 } 

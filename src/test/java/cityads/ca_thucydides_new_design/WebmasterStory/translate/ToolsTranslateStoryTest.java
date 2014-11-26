@@ -39,6 +39,7 @@ public class ToolsTranslateStoryTest extends Constants {
 
    
    @Test
+   @Title("Инструменты переводы")
    @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void checkToolsTranslation(){
         String wmName = steps.get_wm_name();  
@@ -52,6 +53,7 @@ public class ToolsTranslateStoryTest extends Constants {
    }
 
     @Test
+    @Title("Текс шифт переводы")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void checkTextShiftMainPageTranslation(){
         String wmName = steps.get_wm_name();

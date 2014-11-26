@@ -3,18 +3,15 @@ package cityads.ca_thucydides_new_design.WebmasterStory.office;
 import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.OperationHistorySteps;
-import java.sql.Connection;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.ManagedPages;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.Story;
-import net.thucydides.core.annotations.WithTag;
-import net.thucydides.core.annotations.WithTagValuesOf;
+import cityads.ca_thucydides_new_design.steps.refactor_steps.CarcasSteps;
+import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+
+import java.sql.Connection;
 
 
 @Story(TestSuite.WebMaster.OperationHistory.class)
@@ -34,6 +31,9 @@ public class OperationHistoryStoryTest extends Constants {
     
     @Steps
     public OperationHistorySteps steps;
+
+    @Steps
+    public CarcasSteps carcas;
     
  
     @Test @WithTagValuesOf({"block:Office", "role:Webmaster"})
@@ -42,9 +42,7 @@ public class OperationHistoryStoryTest extends Constants {
         
         wmName = steps.get_wm_name();
         steps.wm_login(wmName);
-        steps.click_finances_link();
-        steps.click_operation_history_link();
-        steps.waitAjax(8000);
+        carcas.go_to_operation();
         steps.wait_for_h1_title_appears("История операций", 60);
         steps.check_fatal_errors();
        

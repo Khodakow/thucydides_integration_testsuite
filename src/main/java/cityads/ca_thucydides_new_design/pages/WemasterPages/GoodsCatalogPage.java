@@ -4,6 +4,7 @@
  */
 package cityads.ca_thucydides_new_design.pages.WemasterPages;
 
+import junit.framework.Assert;
 import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,7 +27,7 @@ public class GoodsCatalogPage extends CouponsAndPromocodesFilterSavePage {
     public WebElement goodsCard;
     
     @FindBy(linkText="Получить код")
-    public WebElement getCodeLink;
+    public WebElementFacade getCodeLink;
     
     public int getGoodsItemCardsCount(){
          return getDriver().findElements(By.className("table-card")).size();
@@ -36,6 +37,7 @@ public class GoodsCatalogPage extends CouponsAndPromocodesFilterSavePage {
     public WebElement goodsCatalogGetCodePopup;
     
     public WebElement getPopupCodeLink(){
+        Assert.assertFalse("ссылка не должна быть пустой",goodsCatalogGetCodePopup.findElement(By.tagName("textarea")).getText().equals(""));
         return goodsCatalogGetCodePopup.findElement(By.tagName("textarea"));
     }
     

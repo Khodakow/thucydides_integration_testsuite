@@ -28,6 +28,7 @@ public class MainPageTranslateStoryTest extends Constants {
     MainSiteSteps steps;
     
     @Test
+    @Title("Корп сайт переводы")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_mainpage_translation(){
 
@@ -41,6 +42,7 @@ public class MainPageTranslateStoryTest extends Constants {
     }
     
     @Test
+    @Title("Корп сайт  емаил платформа переводы")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_email_platform_translation(){
 
@@ -53,6 +55,7 @@ public class MainPageTranslateStoryTest extends Constants {
     }
     
     @Test
+    @Title("Корп сайт аналитика  переводы")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_analytics_translation(){
 

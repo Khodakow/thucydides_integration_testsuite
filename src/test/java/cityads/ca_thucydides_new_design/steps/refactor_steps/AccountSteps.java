@@ -74,6 +74,21 @@ public class AccountSteps extends ScenarioSteps {
         account.secondFormIsVisible();
     }
 
+    @Step("Получаем значения поля remote_auth")
+    public String get_remote_auth() {
+        String key = account.getRemoteAuth();
+        return key;
+    }
+
+    @Step("Меняем remoteauth")
+    public void change_remote_auth(){
+        account.changeRemoteAuth();
+    }
+
+    @Step("Получаем текущий план выплат")
+    public String get_payments_plan() {
+        return account.getPaymentplan();
+    }
 }
     
 

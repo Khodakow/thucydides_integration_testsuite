@@ -49,13 +49,15 @@ public class OfficeMainParamMgrTest {
     public void officeMainParamManagerTest() throws Exception{
         carcas.go_to_mgr_stat_offices();
         steps.change_lang_to_ru();
-        table.check_all_date_in_main_parametr("Россия");
+        if(steps.get_curent_domain_name().contains("city")){
+            table.check_all_data_in_main_parametr("CityAds");
+        }
 
 
     }
-    
- 
-    
 
-    
+
+
+
+
 } 

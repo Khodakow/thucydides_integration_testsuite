@@ -16,7 +16,7 @@ public class NewDashboardSteps extends ScenarioSteps {
 public NewDashboard newdashboadr;
 
     @Step
-    public void clickkAllOffers(){
+    public void clickAllOffers(){
         newdashboadr.clickAlloffersLink();
     }
     @Step

@@ -35,6 +35,7 @@ public class ConversionPostbackTranslateStoryTest extends Constants {
    
    
    @Test
+   @Title("Постбек переводы")
    @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void checkConvPostbackTranslation(){
         String wmName = steps.get_wm_name();  

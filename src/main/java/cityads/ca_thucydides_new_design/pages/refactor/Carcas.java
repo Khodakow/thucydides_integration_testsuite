@@ -27,6 +27,9 @@ public class Carcas extends BasePage {
     @FindBy(xpath="//a[@id='_left_menu_id_403699272']")
     private WebElementFacade account;
 
+    @FindBy(xpath="//a[@id='_left_menu_id_432941052']")
+    private WebElementFacade api;
+
     @FindBy(xpath="//a[@id='_left_menu_id_434811172']")
     private WebElementFacade paymentInfo;
 
@@ -38,6 +41,18 @@ public class Carcas extends BasePage {
 
     @FindBy(xpath="//a[@id='_left_menu_id_416459372']")
     private WebElementFacade bannerRotator;
+
+    @FindBy(xpath="//a[@id='_left_menu_id_3999966']")
+    private WebElementFacade finances;
+
+    @FindBy(xpath="//a[@id='_left_menu_id_3999969']")
+    private WebElementFacade exchange;
+
+    @FindBy(xpath="//a[@id='_left_menu_id_3999968']")
+    private WebElementFacade operationHystory;
+
+    @FindBy(xpath="//a[@id='_left_menu_id_403459272']")
+    private WebElementFacade payments;
 
 
 
@@ -216,12 +231,23 @@ public class Carcas extends BasePage {
 
     public void goToAccount(){
         waitForSpinnerDissapear();
-        myAccount.waitUntilVisible();
-        myAccount.click();
-        waitForSpinnerDissapear();
-        if(account.isCurrentlyVisible()){
-            account.click();
+        if(!account.isCurrentlyVisible()){
+            myAccount.click();
+
         }
+        account.waitUntilVisible();
+        account.click();
+        waitForSpinnerDissapear();
+    }
+
+    public void goToApi(){
+        waitForSpinnerDissapear();
+        if(!api.isCurrentlyVisible()){
+            myAccount.waitUntilVisible();
+            myAccount.click();
+        }
+        api.waitUntilVisible();
+        api.click();
         waitForSpinnerDissapear();
     }
 
@@ -304,6 +330,7 @@ public class Carcas extends BasePage {
 
     @FindBy(xpath = "//_left_menu_id_428629753")
     private WebElementFacade advStatOffers;
+
 
     //DEVELOP STAT NEW CARCAS =========================================
     //=================================================================
@@ -1042,6 +1069,25 @@ public class Carcas extends BasePage {
         waitForSpinnerDissapear();
     }
 
+
+    public void goToGoodsCategory(){
+        waitForSpinnerDissapear();
+        goodsAndCoupons.waitUntilVisible();
+        goodsAndCoupons.click();
+        try {Thread.sleep(10000);} catch (InterruptedException e) {}
+        waitForSpinnerDissapear();
+        if(!goodsCatalog.isCurrentlyVisible()){
+            goods.waitUntilVisible();
+            goods.click();
+        }
+        goodsCategory.waitUntilVisible();
+        goodsCategory.click();
+        try {Thread.sleep(10000);} catch (InterruptedException e) {e.printStackTrace();}
+        waitForSpinnerDissapear();
+    }
+
+
+
     public void goToCoupons(){
         waitForSpinnerDissapear();
         goodsAndCoupons.waitUntilVisible();
@@ -1083,6 +1129,36 @@ public class Carcas extends BasePage {
         if(paymentInfo.isCurrentlyVisible()){
             paymentInfo.click();
         }
+        waitForSpinnerDissapear();
+    }
+
+    public void goToExchange() {
+        waitForSpinnerDissapear();
+        if(!exchange.isCurrentlyVisible()){
+            finances.click();
+            waitForSpinnerDissapear();
+        }
+        exchange.click();
+        waitForSpinnerDissapear();
+    }
+
+    public void goToOperation() {
+        waitForSpinnerDissapear();
+        if(!operationHystory.isCurrentlyVisible()){
+            finances.click();
+            waitForSpinnerDissapear();
+        }
+        operationHystory.click();
+        waitForSpinnerDissapear();
+    }
+
+    public void goToPayments() {
+        waitForSpinnerDissapear();
+        if(!payments.isCurrentlyVisible()){
+            finances.click();
+            waitForSpinnerDissapear();
+        }
+        payments.click();
         waitForSpinnerDissapear();
     }
 }

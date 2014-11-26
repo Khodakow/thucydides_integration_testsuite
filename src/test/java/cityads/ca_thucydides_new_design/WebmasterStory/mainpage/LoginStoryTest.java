@@ -8,8 +8,11 @@ import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import org.junit.After;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TestWatchman;
 import org.junit.runner.RunWith;
+import org.junit.runners.model.FrameworkMethod;
 import org.openqa.selenium.WebDriver;
 
 import java.sql.Connection;
@@ -34,7 +37,19 @@ public class LoginStoryTest extends Constants {
     @Steps
     public FrontSteps front;
 
+    @Rule
+    public TestWatchman testRule = new TestWatchman() {
+        @Override
+        public void failed(Throwable e, FrameworkMethod method) {
+            System.out.println("\n-----------------"+method.getName());
+        }
 
+        @Override
+        public void succeeded(FrameworkMethod method) {
+            System.out.println("\n-----------------"+method.getName());
+        }
+
+    };
     
     @After
     public void shut_down_driver_process(){

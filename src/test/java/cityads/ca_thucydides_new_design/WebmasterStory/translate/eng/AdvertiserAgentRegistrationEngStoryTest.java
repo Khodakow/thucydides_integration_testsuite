@@ -4,12 +4,7 @@ import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.BaseSteps;
 import cityads.ca_thucydides_new_design.steps.RegistrationSteps;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.ManagedPages;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.Story;
-import net.thucydides.core.annotations.WithTag;
-import net.thucydides.core.annotations.WithTagValuesOf;
+import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import org.junit.Test;
@@ -21,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 @RunWith(ThucydidesRunner.class)
 @WithTag(name="Webmaster Tests")
 public class AdvertiserAgentRegistrationEngStoryTest extends Constants {
-    
+
 
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -29,15 +24,16 @@ public class AdvertiserAgentRegistrationEngStoryTest extends Constants {
     @ManagedPages
     public Pages pages;
 
-    
+
 
     @Steps
     public RegistrationSteps steps;
 
     @Steps
     public BaseSteps bSteps;
-    
+
     @Test
+    @Title("Перевод англ регистрация рекла")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_adv_registration_translation(){
 
@@ -48,10 +44,11 @@ public class AdvertiserAgentRegistrationEngStoryTest extends Constants {
         steps.select_en_language();
         steps.submit_form();
         steps.check_lang_select();
-     
+
     }
-    
+
     @Test
+    @Title("Перевод англ регистрация агента")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_agent_registration_translation(){
 
@@ -62,10 +59,10 @@ public class AdvertiserAgentRegistrationEngStoryTest extends Constants {
         steps.select_pt_language();
         steps.submit_form();
         steps.check_lang_select();
-     
+
     }
-   
-    
-    
-    
+
+
+
+
 } 

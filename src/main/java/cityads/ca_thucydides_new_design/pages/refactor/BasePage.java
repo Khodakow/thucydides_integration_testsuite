@@ -71,7 +71,7 @@ public class BasePage extends PageObject {
 
     public void waitSpinner(){
         new FluentWait<WebDriver>(getDriver()).
-                withTimeout(300, TimeUnit.SECONDS).
+                withTimeout(160, TimeUnit.SECONDS).
                 pollingEvery(1, TimeUnit.SECONDS).
                 ignoring(NoSuchElementException.class).
                 until(new Predicate<WebDriver>(){
@@ -83,7 +83,7 @@ public class BasePage extends PageObject {
 
 
         new FluentWait<WebDriver>(getDriver()).
-                withTimeout(300, TimeUnit.SECONDS).
+                withTimeout(120, TimeUnit.SECONDS).
                 pollingEvery(1, TimeUnit.SECONDS).
                 ignoring(NoSuchElementException.class).
                 until(new Predicate<WebDriver>(){

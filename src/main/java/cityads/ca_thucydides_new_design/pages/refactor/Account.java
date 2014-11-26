@@ -3,6 +3,7 @@ package cityads.ca_thucydides_new_design.pages.refactor;
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 
 public class Account extends BasePage {
@@ -64,6 +65,12 @@ public class Account extends BasePage {
 
     @FindBy(xpath = "//form[@id='profile_form_2']")
     private WebElementFacade tab2form;
+
+    @FindBy(xpath = "//input[contains(@class,'_has_copy')]")
+    private WebElementFacade remoteAuth;
+
+    @FindBy(xpath = "//td[@id='id_el_td_446_67_plan_1']")
+    private WebElement paymentsPlan;
 
     public void selectTimeZone(String country,String region){
         this.evaluateJavascript("$('div.input-button.optional._modal_button').click()");
@@ -194,6 +201,22 @@ public class Account extends BasePage {
         this.waitABit(5000);
         tab2form.shouldBeCurrentlyVisible();
 
+    }
+
+    public String getRemoteAuth() {
+        return remoteAuth.getAttribute("value");
+    }
+
+    public void changeRemoteAuth(){
+        waitForSpinnerDissapear();
+        this.evaluateJavascript("$('button[class*=\"_change_remote_auth\"]').click();");
+        popup.clickYes();
+        waitForSpinnerDissapear();
+    }
+
+    public String getPaymentplan() {
+        waitForSpinnerDissapear();
+        return paymentsPlan.getText();
     }
 }
 

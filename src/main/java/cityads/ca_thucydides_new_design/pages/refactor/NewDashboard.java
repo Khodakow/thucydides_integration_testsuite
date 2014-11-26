@@ -29,6 +29,7 @@ public class NewDashboard extends BasePage {
 
 
     public void clickAlloffersLink(){
+        alloffersink.shouldBeCurrentlyVisible();
         alloffersink.waitUntilVisible();
         alloffersink.click();
         waitForSpinnerDissapear();

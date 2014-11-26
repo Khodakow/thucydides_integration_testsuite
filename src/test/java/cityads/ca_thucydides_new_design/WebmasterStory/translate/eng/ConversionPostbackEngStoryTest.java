@@ -18,10 +18,10 @@ import java.sql.Connection;
 @WithTag(name="Webmaster Tests")
 public class ConversionPostbackEngStoryTest extends Constants {
 
-     public Connection con;
+    public Connection con;
 
-     
-    
+
+
 
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -31,13 +31,14 @@ public class ConversionPostbackEngStoryTest extends Constants {
 
     @Steps
     public OfferListSteps steps;
-    
-   
-   
-   @Test
-   @WithTagValuesOf({"block:Traslation","role:Webmaster"})
+
+
+
+    @Test
+    @Title("Перевод англ постбек")
+    @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void checkConvPostBackTranslation(){
-        String wmName = steps.get_wm_name();  
+        String wmName = steps.get_wm_name();
         steps.wm_login(wmName);
         steps.wait_for_all_spinners_dissapears(30);
         steps.click_instruments_link();
@@ -53,6 +54,6 @@ public class ConversionPostbackEngStoryTest extends Constants {
 
 
         steps.close_browser();
-   }
-  
+    }
+
 } 

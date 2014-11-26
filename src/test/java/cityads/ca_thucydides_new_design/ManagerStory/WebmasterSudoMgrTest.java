@@ -48,6 +48,7 @@ public class WebmasterSudoMgrTest {
 
 
     @Test
+    @Title("Менеджер отчет по вебмастерам тест на заход под Судо")
     public void webmasterSudoManagerTest() throws Exception{
         carcas.go_to_mgr_stat_webmasters();
 

@@ -50,6 +50,7 @@ public class CampaignsMobileTranslateStoryTest extends Constants {
 
 
    @Test
+   @Title("Мобильные офферы переводы")
    @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void checkMobileCampaignsTranslation(){
     String wmName = ss.get_wm_name();

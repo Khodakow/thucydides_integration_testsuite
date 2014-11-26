@@ -47,6 +47,7 @@ public class OfficesShowGrafMgrTest {
 
 
     @Test
+    @Title("Менеджер отметить Офис на графике")
     public void officesShowGrafManagerTest() throws Exception{
         carcas.go_to_mgr_stat_offices();
         table.tag_first_office_and_check_legend_in_graf();
@@ -54,6 +55,7 @@ public class OfficesShowGrafMgrTest {
     }
 
     @Test
+    @Title("Менеджер отметить ВМа на графике")
     public void webmasterShowGrafManagerTest() throws Exception{
         carcas.go_to_mgr_stat_webmasters();
         table.tag_first_webmaster_and_check_legend_in_graf();

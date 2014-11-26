@@ -12,6 +12,8 @@ public class TextShift extends BasePage {
         super(driver);
     }
 
+    private Table table;
+
     @FindBy(xpath="//input[@id='id_el_text_field_name']")
     private WebElementFacade name;
 
@@ -47,7 +49,9 @@ public class TextShift extends BasePage {
         subacc.sendKeys(subaccName);
         submit.waitUntilVisible();
         submit.click();
+        table.waitTable();
         waitForSpinnerDissapear();
+
     }
 
     public String createTextShiftAndGetCode(String shiftName,String subaccName){

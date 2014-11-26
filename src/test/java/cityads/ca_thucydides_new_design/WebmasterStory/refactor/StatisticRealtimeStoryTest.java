@@ -67,6 +67,7 @@ public class StatisticRealtimeStoryTest extends Constants {
 
 
         offerSteps.click_offer_by_name("003");
+        steps.waitABit(4000);
         offerSteps.wait_for_start_offer_button_is_visible(15);
         offerSteps.check_description_is_visible();
         offerSteps.click_add_offer_link();

@@ -338,6 +338,11 @@ public class CarcasSteps extends ScenarioSteps {
       carcas.goToGoodsCatalog();
     }
 
+    @Step("Переход в категории товаров")
+    public void go_to_goods_categoty() {
+        carcas.goToGoodsCategory();
+    }
+
     @Step
     public void go_to_coupons() {
         carcas.goToCoupons();
@@ -369,6 +374,27 @@ public class CarcasSteps extends ScenarioSteps {
         getDriver().get(baseUrl+"/ru/webmaster_pro/instrumentyi/big_data/getlink_445571172.0.htm");
         page.waitForSpinnerDissapear();
 
+    }
+
+    @Step("Переход в раздел АПИ")
+    public void go_to_api() {
+        carcas.goToApi();
+
+    }
+
+    @Step
+    public void go_to_exchange() {
+        carcas.goToExchange();
+    }
+
+    @Step
+    public void go_to_operation() {
+        carcas.goToOperation();
+    }
+
+    @Step("Переход в раздел -= финансы и выплаты =-")
+    public void go_to_payments() {
+        carcas.goToPayments();
     }
 }
     

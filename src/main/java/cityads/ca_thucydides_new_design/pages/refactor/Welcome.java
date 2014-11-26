@@ -358,6 +358,57 @@ public class Welcome extends BasePage {
     public boolean welcomeIsVisible() {
         return welcome.isCurrentlyVisible();
     }
+
+    public void fillWelcomePageManuallyPayments() {
+        waitForSpinnerDissapear();
+        waitABit(15000);
+
+        if(errorPopup.isCurrentlyVisible()){
+            errorPopupClose.click();
+            errorPopupClose.shouldNotBeCurrentlyVisible();
+        }
+
+        System.out.println("WP visible: "+welcome.isCurrentlyVisible());
+        System.out.println("WP 0 STEP visible: "+welcomeBaseStep.isCurrentlyVisible());
+
+        if((!welcome.isCurrentlyVisible() && !welcomeBaseStep.isCurrentlyVisible())){
+            evaluateJavascript("welcomToCityAds();");
+            waitForSpinnerDissapear();
+        }
+
+
+
+        fillBaseStepYes();
+
+        tab1ActiveIndicator.waitUntilVisible();
+        getNextButton().waitUntilVisible();
+        getNextButton().click();
+        waitForSpinnerDissapear();
+        tab2ActiveIndicator.waitUntilVisible();
+        map.waitUntilVisible();
+
+        //fillRegion();//добавляем костыль и заполняем первой тайм зоной т к нет россии
+
+        getNext2Button().waitUntilVisible();
+        getNext2Button().click();
+
+        //3 шаг типы траффика
+        fillTrafficTypes();
+
+        map.waitUntilVisible();
+
+        //manually payments
+        this.evaluateJavascript("$('div[class*=\"_payment_select\"]>div[class*=\"select-value pointer\"]').click()");
+        this.evaluateJavascript("$('a:contains(\"Вручную\")').add($('a:contains(\"Manually\")')).click()");
+
+        getSaveButton().waitUntilVisible();
+        getSaveButton().click();
+        waitForSpinnerDissapear();
+
+        waitForSpinnerDissapear();
+        table.waitOverview();
+        waitForSpinnerDissapear();
+    }
 }
 
 

@@ -9,6 +9,7 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.steps.ScenarioSteps;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  *
@@ -49,7 +50,7 @@ public class GetLinkSteps extends ScenarioSteps {
 
     @Step
     public void check_noretarget_table_has_text(String name) {
-        assertEquals("Проверяем что оффер совпадает с оффером из фильтра", getLink.getFirstNoRetargetOffer(), name);
+        assertTrue("Проверяем что оффер совпадает с оффером из фильтра", getLink.getFirstNoRetargetOffer().contains(name));
     }
 }
     

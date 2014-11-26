@@ -86,11 +86,13 @@ public class GetLinkTest {
         getLink.fill_getlink_form(name,subacc);
         table.check_table_has_text(name);
         String code = table.get_code_in_feed_with_name(name);
+        steps.close_browser();
 
         steps.open_url(code);       //переход по ссылке
         steps.check_fatal_errors();
         String host = steps.getUrlHost(steps.getCurrentUrl().replace("www.",""));
-        steps.check_string_not_contains_text(host,"cityads");
+        steps.check_string_not_contains_text(host, "cityads");
+        steps.check_string_not_contains_text(host,"warthunder");
 
         steps.open_url(code);       //переход по ссылке еще раз ( уже с кукой )
 
@@ -113,18 +115,21 @@ public class GetLinkTest {
         steps.check_string_not_contains_text(firstNoretargetOffer,"cityadspix");
 
         String code = getLink.fill_getlink_form_and_get_code(name,subacc);
+        steps.close_browser();
 
         steps.open_url(code);       //переход по ссылке
         steps.check_fatal_errors();
         String host = steps.getUrlHost(steps.getCurrentUrl().replace("www.",""));
         steps.check_string_not_contains_text(host,"cityads");
+        steps.check_string_not_contains_text(host,"warthunder");
 
         steps.open_url(code);       //переход по ссылке еще раз ( уже с кукой )
 
 
     }
 
-    @Test@Title("GetLink Проверка поиска оффера по ключевому слову в таблице retarget")
+    @Test
+    @Title("GetLink Проверка поиска оффера по ключевому слову в таблице retarget")
     @Screenshots(onlyOnFailures=false)
     public void getLinkOfferSearchRetargetTest(){
 
@@ -142,7 +147,8 @@ public class GetLinkTest {
 
     }
 
-    @Test@Title("GetLink Проверка поиска оффера по ключевому слову в таблице no retarget")
+    @Test
+    @Title("GetLink Проверка поиска оффера по ключевому слову в таблице no retarget")
     @Screenshots(onlyOnFailures=false)
     public void getLinkOfferSearchNoRetargetTest(){
 
@@ -203,18 +209,19 @@ public class GetLinkTest {
         String host = steps.getUrlHost(steps.getCurrentUrl().replace("www.",""));
 
         steps.check_string_contains_text(site,host);
+        steps.check_string_not_contains_text(host,"warthunder");
 
 
 
     }
-
 
     @After
     public void tearDown(){
-        carcas.go_to_getlink();
-        steps.delete_all_from_blue_table();
         steps.close_browser();
     }
+
+
+
  
     
 

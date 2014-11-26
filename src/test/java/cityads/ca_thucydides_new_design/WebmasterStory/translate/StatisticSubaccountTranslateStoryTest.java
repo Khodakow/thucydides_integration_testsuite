@@ -41,6 +41,7 @@ public class StatisticSubaccountTranslateStoryTest {
     TableSteps table;
 
     @Test @Screenshots(onlyOnFailures=false)
+    @Title("Стат по субаккаунтам переводы")
     public void statisticByTrafficSoursesBySubaccountTranslateTest() throws Exception{
 
         front.login();

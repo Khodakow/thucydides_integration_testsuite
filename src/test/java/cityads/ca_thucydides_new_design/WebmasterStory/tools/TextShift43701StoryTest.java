@@ -1,14 +1,13 @@
-package cityads.ca_thucydides_new_design.WebmasterStory.features;
+package cityads.ca_thucydides_new_design.WebmasterStory.tools;
 
 import cityads.ca_thucydides_new_design.pages.refactor.DataGenerator;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
-import cityads.ca_thucydides_new_design.steps.BannerTestSteps;
-import cityads.ca_thucydides_new_design.steps.SetupSteps;
+import cityads.ca_thucydides_new_design.steps.BaseSteps;
+import cityads.ca_thucydides_new_design.steps.MainSiteSteps;
 import cityads.ca_thucydides_new_design.steps.refactor_steps.*;
 import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +17,7 @@ import org.openqa.selenium.WebDriver;
 @Story(TestSuite.WebMaster.TextShift.class)
 @RunWith(ThucydidesRunner.class)
 @WithTag(name="Webmaster Tests")
-public class TextShiftMainTest {
+public class TextShift43701StoryTest {
 
     public String wmName;
 
@@ -29,21 +28,28 @@ public class TextShiftMainTest {
     public Pages pages;
 
     @Steps
-    public SetupSteps steps;
+    public BaseSteps baseSteps;
+
+    @Steps
+    public MainSiteSteps steps;
+
     @Steps
     public TableSteps table;
+
     @Steps
     public CarcasSteps carcas;
+
     @Steps
     public FormSteps form;
+
     @Steps
     public FrontSteps front;
+
     @Steps
-    public BannerTestSteps test;
+    public AccountSteps account;
+
     @Steps
     public TextShiftSteps textShift;
-    @Steps
-    public ConsoleSteps console;
 
 
     @After
@@ -53,27 +59,33 @@ public class TextShiftMainTest {
 
 
 
-    @Test@Screenshots(onlyOnFailures = false)
-    public void textShiftMainTest() throws Exception{
+    @Test
+    @Title("Текст шифт сохранение")
+    public void textShiftSaveTest() throws Exception{
 
         String name = DataGenerator.getRandomNameWithDate();
         String subacc = DataGenerator.getRandomNameWithDate();
-        String code;
 
         front.login();
         carcas.go_to_text_shift();
         form.create_form();
-        code = textShift.create_text_shift_and_check_code(name, subacc);
-        test.check_shift(StringEscapeUtils.escapeHtml4(code));
-        steps.waitABit(5000);
-        String hostOld = steps.get_curent_domain_name();
-        steps.switch_to_last_window();
-        steps.waitABit(5000);
-        String hostNew = steps.get_curent_domain_name();
-        steps.check_string_has_changed(hostOld,hostNew);
+        textShift.create_text_shift(name, subacc);
+        table.check_table_has_text(name);
+        steps.check_fatal_errors();
 
+    }
 
+    @Test
+    @Title("Текст шифт получение кода")
+    public void textShiftGetCodeTest() throws Exception{
 
+        String name = DataGenerator.getRandomNameWithDate();
+        String subacc = DataGenerator.getRandomNameWithDate();
+
+        front.login();
+        carcas.go_to_text_shift();
+        form.create_form();
+        textShift.create_text_shift_and_check_code(name, subacc);
 
     }
 

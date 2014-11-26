@@ -15,7 +15,7 @@ public class ApiDocs extends BasePage {
     @FindBy(xpath="//span[@class='s-lang _lang-switch']")
     private WebElementFacade apiLangSwitch;
 
-    @FindBy(xpath="//a[@href='?lang=en']")
+    @FindBy(xpath="//a[contains(@href,'?lang=en')]")
     private WebElementFacade eng;
 
     @FindBy(xpath="//a[contains(@href,'/api/dev/auth')]")
@@ -59,74 +59,74 @@ public class ApiDocs extends BasePage {
     public void clickAuthorization(){
         authorization.waitUntilVisible();
         authorization.click();
-        authorization.waitUntilVisible();
+
     }
 
     public void clickSoap(){
         soap.waitUntilVisible();
         soap.click();
-        soap.waitUntilVisible();
+
     }
 
     public void clickRest(){
         rest.waitUntilVisible();
         rest.click();
-        rest.waitUntilVisible();
+
     }
 
     public void clickQuoting(){
         quoting.waitUntilVisible();
         quoting.click();
-        quoting.waitUntilVisible();
+
     }
 
     public void clickLang(){
         language.waitUntilVisible();
         language.click();
-        language.waitUntilVisible();
+
     }
 
     public void clickOffers(){
         offers.waitUntilVisible();
         offers.click();
-        offers.waitUntilVisible();
+
     }
 
     public void clickList(){
         list.waitUntilVisible();
         list.click();
-        list.waitUntilVisible();
+
     }
 
     public void clickUser(){
         user.waitUntilVisible();
         user.click();
-        user.waitUntilVisible();
+
     }
 
     public void clickGoods(){
         goods.waitUntilVisible();
         goods.click();
-        goods.waitUntilVisible();
+
     }
 
     public void clickStat(){
         stat.waitUntilVisible();
         stat.click();
-        stat.waitUntilVisible();
+
     }
 
     public void clickTools(){
         tools.waitUntilVisible();
         tools.click();
-        tools.waitUntilVisible();
+
     }
 
 
     public void clickLib(){
         lib.waitUntilVisible();
         lib.click();
-        lib.waitUntilVisible();
+
     }
 
 
@@ -138,7 +138,6 @@ public class ApiDocs extends BasePage {
         apiLangSwitch.click();
         eng.waitUntilVisible();
         eng.click();
-        apiLangSwitch.waitUntilVisible();
         this.evaluateJavascript("$('i').html('')");
     }
 

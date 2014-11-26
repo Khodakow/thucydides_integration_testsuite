@@ -49,6 +49,12 @@ public class CarcasMngr extends BasePage {
     @FindBy(xpath="//a[@id='_left_menu_id_431495535']")
     private WebElementFacade sourseTrafficGoods;
 
+    @FindBy(xpath="//a[@id='menu_top_wm_item_423250255']")
+    private WebElementFacade toolsMainLink;
+    @FindBy(xpath="//a[@id='_left_menu_id_445841172']")
+    private WebElementFacade oficeEditor;
+
+
 
     public String getCarcasUrl(String id){
         return this.find(By.xpath("//a[contains(@data-bind,'left_menu_id') and not(contains(@class,'dark')) and @id='" + id + "']")).getAttribute("href");
@@ -250,6 +256,16 @@ public class CarcasMngr extends BasePage {
         waitForSpinnerDissapear();
         statisticMgr.waitUntilVisible();
         statisticMgr.click();
+        waitForSpinnerDissapear();
+    }
+
+    public void goToMgrOffceEditor(){
+        waitForSpinnerDissapear();
+        toolsMainLink.waitUntilVisible();
+        toolsMainLink.click();
+        waitForSpinnerDissapear();
+        oficeEditor.waitUntilVisible();
+        oficeEditor.click();
         waitForSpinnerDissapear();
     }
 }

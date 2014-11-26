@@ -49,6 +49,11 @@ public class CardSteps extends ScenarioSteps {
         card.goToInstruments();
     }
 
+    @Step("Переход на вкладку Сводная")
+    public void go_to_dashboard_tab() {
+        card.goToDashboardTab();
+    }
+
     @Step
     public ArrayList<String> get_instruments_tab_offer_data(){
         return card.getInstrumentsTableTada();
@@ -78,6 +83,11 @@ public class CardSteps extends ScenarioSteps {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Step
+    public String get_banner_code() {
+        return card.getBannerCode();
     }
 }
     

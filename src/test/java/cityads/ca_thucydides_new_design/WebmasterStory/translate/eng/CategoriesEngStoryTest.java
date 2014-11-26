@@ -1,22 +1,10 @@
 package cityads.ca_thucydides_new_design.WebmasterStory.translate.eng;
 
 import cityads.ca_thucydides_new_design.Constants;
-import cityads.ca_thucydides_new_design.pages.WemasterPages.MainSitePage;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
-import cityads.ca_thucydides_new_design.steps.MainSiteSteps;
-import cityads.ca_thucydides_new_design.steps.SetupSteps;
-import cityads.ca_thucydides_new_design.steps.WebmasterSteps.BugsSteps;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.GoodsCatalogSteps;
-import cityads.ca_thucydides_new_design.steps.WebmasterSteps.ProfileSteps;
-import java.sql.Connection;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.ManagedPages;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.Story;
-import net.thucydides.core.annotations.WithTag;
-import net.thucydides.core.annotations.WithTagValuesOf;
+import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
-import net.thucydides.junit.annotations.Concurrent;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,6 +30,7 @@ public class CategoriesEngStoryTest extends Constants {
 
     
     @Test
+    @Title("Перевод англ категории")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_categories_translation(){
         

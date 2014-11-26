@@ -4,7 +4,6 @@
  */
 package cityads.ca_thucydides_new_design.WebmasterStory.coupons;
 
-import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.GoodsCatalogSteps;
 import net.thucydides.core.annotations.*;
@@ -26,7 +25,7 @@ import java.sql.Connection;
 @RunWith(ThucydidesRunner.class)
 @WithTag(name="Webmaster Tests")
 @Concurrent
-public class GoodsCatalogCodeStoryTest extends Constants {
+public class GoodsCatalogCodeStoryTest{
     
     public Connection con;
     public String wmName;
@@ -49,15 +48,13 @@ public class GoodsCatalogCodeStoryTest extends Constants {
     
       
     
-    @Test @WithTagValuesOf({"block:Goods And Coupons", "role:Webmaster"}) 
+    @Test @WithTagValuesOf({"block:Goods And Coupons", "role:Webmaster"})
+    @Title("Проверка получения кода выгрузки товавров")
     public void test_goods_catalog_get_code()throws Exception{
         String cityLink;
-        String deepLink;
-        
-        
+
         wmName = steps.get_wm_name();
         steps.wm_login(wmName);
-        steps.waitAjax(8000);
         steps.click_goods_and_coupons_link();
         steps.wait_for_all_spinners_dissapears(60);
         steps.click_goods_link();
@@ -65,38 +62,15 @@ public class GoodsCatalogCodeStoryTest extends Constants {
         steps.click_goods_catalog();
         steps.wait_for_all_spinners_dissapears(60);
         steps.click_reset_filter_button();
-        
         steps.wait_for_all_spinners_dissapears(60);
-        steps.waitABit(25000);
-       
-       
         steps.click_getcode_link();
-       
         steps.check_goods_catalog_popup_get_code_is_displayed();
         steps.waitAjax(2000);
         cityLink = steps.get_popup_cityads_link();
         steps.open_url(cityLink);
-        steps.waitAjax(8000);
         steps.check_landing_url();
         steps.close_browser();
-        
-        steps.wm_login(wmName);
-        steps.click_goods_and_coupons_link();
-        steps.wait_for_all_spinners_dissapears(30);
-        steps.click_goods_link();
-        steps.wait_for_all_spinners_dissapears(30);
-        steps.click_goods_catalog();
-        steps.wait_for_all_spinners_dissapears(30);
-        steps.wait_for_goods_card_visible(270);
-        steps.waitAjax(5000);
-        steps.click_getcode_link();
-        steps.waitAjax(5000);
-        deepLink = steps.get_popup_cityads_link();
-        steps.open_url(deepLink);
-        steps.waitAjax(5000);
-        steps.check_landing_url();
-           
-        steps.close_browser();
+
         
     }
     

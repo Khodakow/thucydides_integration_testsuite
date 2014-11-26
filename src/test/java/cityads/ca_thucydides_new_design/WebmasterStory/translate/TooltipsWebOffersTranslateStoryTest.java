@@ -3,12 +3,7 @@ package cityads.ca_thucydides_new_design.WebmasterStory.translate;
 import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.OfferCardSteps;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.ManagedPages;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.Story;
-import net.thucydides.core.annotations.WithTag;
-import net.thucydides.core.annotations.WithTagValuesOf;
+import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import org.junit.Test;
@@ -35,6 +30,7 @@ public class TooltipsWebOffersTranslateStoryTest extends Constants {
 
     
    @Test
+   @Title("Подсказки веб-офферы переводы")
    @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_web_offers_tooltips_translate(){
     String wmName = steps.get_wm_name();  

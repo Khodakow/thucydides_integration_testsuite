@@ -102,6 +102,16 @@ public class GoodsSteps extends ScenarioSteps {
     public void createFeed(String feedName) {
         goods.createFeed(feedName);
     }
+
+    @Step("Получаем первую ссылку на товар из системы")
+    public String get_first_goods_url() {
+        return goods.getFirstGoodLink();
+    }
+
+    @Step("Получаем первую ссылку на товар на сайт рекла")
+    public String get_first_landing_url() {
+        return goods.getFirstLandingUrl();
+    }
 }
     
 

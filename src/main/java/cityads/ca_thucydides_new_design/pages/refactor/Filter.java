@@ -42,8 +42,10 @@ public class Filter extends BasePage {
     public void clickCheckboxInFilter(int filter,int checkbox){
         waitForSpinnerDissapear();
         getFilterCheckbox(filter,checkbox).waitUntilVisible();
-        getFilterCheckbox(filter, checkbox).click();
-        waitForSpinnerDissapear();
+        if(!getFilterCheckbox(filter,checkbox).getAttribute("class").contains("checked")){
+            getFilterCheckbox(filter, checkbox).click();
+            waitForSpinnerDissapear();
+        }
 
     }
 

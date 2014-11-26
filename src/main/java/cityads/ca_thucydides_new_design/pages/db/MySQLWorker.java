@@ -1,6 +1,5 @@
 package cityads.ca_thucydides_new_design.pages.db;
 
-import java.io.UnsupportedEncodingException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +19,40 @@ public class MySQLWorker {
         String nameDB = "monitoring";
 
         Connection connection = null;
+        try {
+
+            Class.forName("com.mysql.jdbc.Driver").newInstance();
+            String url = "jdbc:mysql://" + ipDB + "/" + nameDB+"?useUnicode=true&characterEncoding=UTF-8";
+            String username = userDB;
+            String password = userPassword;
+            connection = DriverManager.getConnection(url, username, password);
+            System.out.println("MySql connected to base: " + connection.getCatalog());
+            return connection;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ClassNotFoundException c) {
+            c.printStackTrace();
+            return null;
+        } catch (InstantiationException i) {
+            i.printStackTrace();
+            return null;
+        } catch (IllegalAccessException a) {
+            a.printStackTrace();
+            return null;
+        }
+
+    }
+
+    private static Connection connectToCityDB() {      //если не заданы параметры базы то коннектимся к тестовой monitoring
+
+        String ipDB = "10.8.0.229";
+        String userDB = "root";
+        String userPassword = "123456";
+        String nameDB = System.getProperty("dbName");
+
+        Connection connection;
         try {
 
             Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -109,6 +142,55 @@ public class MySQLWorker {
         }
 
     }
+
+    //запись оффера в базу в таблицу tableName
+    public static void addPromo() {
+
+        Connection con = connectToCityDB();
+
+        String query1 = "REPLACE INTO office_hot_offer (project_id, action_id, is_active, relnum, added_at) VALUES (1, 1, 1, 1, NOW());";
+        String query2 = "REPLACE INTO office_hot_news (project_id, news_id, relnum, added_at) VALUES (1, 1, 1, NOW());";
+        String query3 = "REPLACE INTO news_has_news_category (news_id, news_category_id) VALUES (1, 7), (2, 7);";
+        String query4 = "UPDATE news set project_id = 1 WHERE id IN (1,2);";
+
+
+
+
+        try {
+            PreparedStatement preparedStmt = con.prepareStatement(query1);
+            preparedStmt.executeQuery();
+
+            preparedStmt = con.prepareStatement(query1);
+            System.out.println("\n============="+preparedStmt);
+            preparedStmt.execute();
+
+            preparedStmt = con.prepareStatement(query2);
+            preparedStmt.execute();
+
+            preparedStmt = con.prepareStatement(query3);
+            preparedStmt.execute();
+
+            preparedStmt = con.prepareStatement(query4);
+            preparedStmt.execute();
+
+
+
+            con.close();
+            System.out.println("connection "+con.toString()+" closed");
+
+        } catch (SQLException s) {
+
+            s.printStackTrace();
+            try {
+                con.close();
+                System.out.println("connection "+con.toString()+" closed");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
 
     //обнуление таблицы со списком офферов
     public static void deleteAllFromOffersTable(){

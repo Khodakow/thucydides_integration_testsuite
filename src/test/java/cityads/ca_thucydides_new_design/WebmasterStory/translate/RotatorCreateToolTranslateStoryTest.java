@@ -21,16 +21,16 @@ import java.sql.Connection;
 @WithTag(name="Webmaster Tests")
 public class RotatorCreateToolTranslateStoryTest extends Constants {
 
-     public Connection con;
-     public String wmName;
-     public String rotatorName = getCurrentDate();
-     private String  bannerSize1;
-     private String  bannerSize2;
-     private String  bannerSize3;
-     protected String AJSCode;
-     protected String JSCode;
-     
-    
+    public Connection con;
+    public String wmName;
+    public String rotatorName = getCurrentDate();
+    private String  bannerSize1;
+    private String  bannerSize2;
+    private String  bannerSize3;
+    protected String AJSCode;
+    protected String JSCode;
+
+
 
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -40,33 +40,34 @@ public class RotatorCreateToolTranslateStoryTest extends Constants {
 
     @Steps
     public BugsSteps bs;
-    
+
     @Steps
     public ProfileSteps profile;
-    
+
     @Steps
     public SetupSteps ss;
     @Steps
     public CarcasSteps carcas;
-  
 
 
- 
-      
-   @Test
-   @WithTagValuesOf({"block:Traslation","role:Webmaster"})
+
+
+
+    @Test
+    @Title("Создание ротатора переводы")
+    @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void checkToolsCreationRotatorTranslation(){
-    String wmName = ss.get_wm_name();  
-    bs.wm_login(wmName);
-     bs.wait_for_all_spinners_dissapears(30);
+        String wmName = ss.get_wm_name();
+        bs.wm_login(wmName);
+        bs.wait_for_all_spinners_dissapears(30);
 
-   carcas.go_to_banner_rotator();
-     bs.wait_for_all_spinners_dissapears(30);
-    bs.click_create_button();
-    bs.wait_for_all_spinners_dissapears(30);
-    bs.change_lang_to_br();
-     bs.wait_for_all_spinners_dissapears(30);
-    bs.check_lang_select();
-    bs.close_browser();
-   }
-} 
+        carcas.go_to_banner_rotator();
+        bs.wait_for_all_spinners_dissapears(30);
+        bs.click_create_button();
+        bs.wait_for_all_spinners_dissapears(30);
+        bs.change_lang_to_br();
+        bs.wait_for_all_spinners_dissapears(30);
+        bs.check_lang_select();
+        bs.close_browser();
+    }
+}

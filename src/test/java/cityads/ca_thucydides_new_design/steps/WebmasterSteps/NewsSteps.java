@@ -4,12 +4,12 @@
  */
 package cityads.ca_thucydides_new_design.steps.WebmasterSteps;
 
-import cityads.ca_thucydides_new_design.pages.MainPage;
 import cityads.ca_thucydides_new_design.pages.WemasterPages.NewsPage;
 import cityads.ca_thucydides_new_design.steps.SetupSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
-import org.junit.Assert;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  *
@@ -17,27 +17,34 @@ import org.junit.Assert;
  */
 public class NewsSteps extends SetupSteps {
 
-    NewsPage newsPage;
+    NewsPage news;
     
     public NewsSteps(Pages pages) {
         super(pages);
     }
-    
-    @Step
+
+    @Step("Проверяем что новостей в списке отображается >0")
     public void check_news_count(){
-        Assert.assertTrue(newsPage.get_news_count()>1);
+        assertTrue(news.getNewsCount()>0);
     }
-    
-    @Step
-    public void check_news_select_categories_is_displayed(){
-        Assert.assertTrue(newsPage.newsSelectContainer.isDisplayed());
+
+    @Step("Получаем название первой новости")
+    public String get_first_news_name(){
+        return news.getFirstNewsName();
     }
-    
-    @Step
+
+    @Step("Клик по первой новости")
     public void click_first_news(){
-        newsPage.firstNewsLink.click();
+        news.clickFirstNews();
     }
-    
+
+    @Step("Поулчаем текст h1 заголовка страницы ")
+    public String get_h1_text(){
+        return news.getH1();
+    }
+
+
+
     
    
     

@@ -124,4 +124,8 @@ public class CarcasStepsMgr extends ScenarioSteps {
     public void go_to_mgr_geolocation() {
         go_to_left_stat_menu_with_id("_left_menu_id_436751152");
     }
+    @Step("Заходим в редактор офиса")
+    public void go_to_office_editor() {
+        carcas.goToMgrOffceEditor();
+    }
 }

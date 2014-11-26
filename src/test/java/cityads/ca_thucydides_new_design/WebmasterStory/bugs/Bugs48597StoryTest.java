@@ -37,7 +37,7 @@ public class Bugs48597StoryTest {
 
     
     @Test@Screenshots(onlyOnFailures = false)
-    @Title("Проверка на сохранение региона в фильтрах после обновления страницы")
+    @Title("Проверка на сохранение региона в фильтрах после обновления страницы 48597")
     public void check_48597(){
         front.login();
         carcas.go_to_web_offers();

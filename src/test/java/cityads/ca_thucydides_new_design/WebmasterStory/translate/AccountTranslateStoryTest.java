@@ -48,6 +48,7 @@ public class AccountTranslateStoryTest{
 
 
     @Test
+    @Title("Аккаунт переводы")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void checkAccountTranslation(){
     String wmName = ss.get_wm_name();  

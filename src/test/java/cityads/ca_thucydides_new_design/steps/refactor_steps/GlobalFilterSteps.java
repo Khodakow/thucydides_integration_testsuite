@@ -9,6 +9,9 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
+import static org.junit.Assert.assertTrue;
+
+
 /**
  *
  * @author s.lugovskiy
@@ -45,6 +48,15 @@ public class GlobalFilterSteps extends ScenarioSteps {
     }
 
 
+    @Step("Устанавливаем составное условие с 2 первыми офферами в списках автозаполнения фильтра и запоминаем оффер")
+    public String set_complex_condition() {
+        return globalFilter.setComplexCondition();
+    }
+
+    @Step("Проверяем что сообщение об ошибке не отображается")
+    public void check_error_not_displayed(){
+        assertTrue("Проверяем что сообщение с ошибкой не отображается ", globalFilter.errorMsgIsVisible());
+    }
 }
     
 

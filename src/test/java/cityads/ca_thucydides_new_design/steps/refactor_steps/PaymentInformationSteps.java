@@ -29,8 +29,13 @@ public class PaymentInformationSteps extends ScenarioSteps {
     }
 
     @Step
-    public void fill_count_form_jur(String name, String fullname, String id, String company) {
-        paymentInfo.fillNewCountFormJur(name,fullname, id, company);
+    public void fill_count_form_jur(String name, String fullname,String company,String ogrn,String inn,String bic,String bank,String bank_office,String bankadres,String correspondent, String cc,String telephone,String email ) {
+        paymentInfo.fillNewCountFormJur(name,fullname, company,ogrn,inn,bic,bank,bank_office,company,bankadres,correspondent,cc,telephone,email);
+    }
+
+    @Step
+    public void fill_count_form_ip(String name, String fullname,String company,String ogrn,String inn,String bic,String bank,String bank_office,String bankadres,String correspondent, String cc,String telephone,String email ) {
+        paymentInfo.fillNewCountFormIP(name,fullname, company,ogrn,inn,bic,bank,bank_office,company,bankadres,correspondent,cc,telephone,email);
     }
 
 
@@ -69,7 +74,7 @@ public class PaymentInformationSteps extends ScenarioSteps {
     @Step("Удаляем все дополнительные счета, если они есть")
     public void delete_additional_counts() {
         paymentInfo.deleteAdditionalCounts();
-        paymentInfo.checkAdditionalCountsNotPresent();
+       // paymentInfo.checkAdditionalCountsNotPresent();
     }
 }
     

@@ -121,7 +121,7 @@ public class DownloadCouponsJsonStoryTest extends Constants {
         steps.fill_subaccount_input(subaccountName);
         steps.submit_form();
         steps.wait_for_all_spinners_dissapears(60);
-
+        steps.waitABit(10000);
         steps.check_blue_table_has_text(downloadName);
       
         steps.wait_for_all_spinners_dissapears(60);

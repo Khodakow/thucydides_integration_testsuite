@@ -16,6 +16,8 @@ public class Goods extends BasePage {
         super(driver);
     }
 
+    private Popup popup;
+
     @FindBy(xpath="//div[contains(@class,'_select _sort_field')]")
     private WebElementFacade sortSelect;
 
@@ -48,6 +50,15 @@ public class Goods extends BasePage {
 
     @FindBy(xpath = "//*[@id='submit_ok']")
     private WebElementFacade save;
+
+    @FindBy(xpath = "//div[contains(@class,'table-card')]")
+    private List<WebElement> goodsCards;
+
+    @FindBy(xpath = "(//a[contains(@class,'button submit code')])[1]")
+    private WebElementFacade getCode;
+
+    @FindBy(xpath = "(//div[contains(@class,'table-card')]/div/div[2]/div/a)[1]")
+    private WebElementFacade landingUrl;
 
     public void resetFilter(){
         this.evaluateJavascript("$('#id_el_input_filter_reset').click()");
@@ -108,6 +119,18 @@ public class Goods extends BasePage {
         name.sendKeys(feedName);
         save.click();
         waitForSpinnerDissapear();
+    }
+
+    public String getFirstGoodLink() {
+        getCode.waitUntilVisible();
+        getCode.click();
+        popup.waitPopup();
+        return popup.getCodeFromTextarea();
+
+    }
+
+    public String getFirstLandingUrl(){
+        return landingUrl.getAttribute("href");
     }
 }
 

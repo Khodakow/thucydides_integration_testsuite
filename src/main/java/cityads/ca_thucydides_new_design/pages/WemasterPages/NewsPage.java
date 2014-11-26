@@ -1,19 +1,12 @@
 package cityads.ca_thucydides_new_design.pages.WemasterPages;
 
-import cityads.ca_thucydides_new_design.pages.*;
-import ch.lambdaj.function.convert.Converter;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
+import cityads.ca_thucydides_new_design.pages.MainPage;
+import net.thucydides.core.annotations.findby.FindBy;
+import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-import net.thucydides.core.pages.PageObject;
 
 import java.util.List;
-
-import static ch.lambdaj.Lambda.convert;
 
 
 public class NewsPage extends MainPage {
@@ -22,29 +15,42 @@ public class NewsPage extends MainPage {
 	public NewsPage(WebDriver driver) {
 		super(driver);
 	}
-        
- 
- 
-        
-        public int get_news_count(){
-            int newsCount;
-            newsCount = getDriver().findElements(By.className("caption")).size();
-            return newsCount;
-        }
-        
-        @FindBy(xpath="//form/div/div[1]")
-        public WebElement newsSelectContainer;
-        
-        //
-        @FindBy(xpath="//a[contains(concat(' ', normalize-space(@class), ' '), ' col-evil underline-h size-14 ') ]")
-        public WebElement firstNewsLink;
-        
-        @FindBy(xpath="//article/p[4]/strong[1]/a")
-        public WebElement newsFirstNewsTitleLink;
-        
-        
 
+    @FindBy(xpath="//div[@id='mainNews']")
+    private WebElementFacade newsContainer;
+
+    @FindBy(xpath="//div[@id='mainNews']/div[contains(@class,'margin-top-small')]")
+    private List<WebElement> news;
+
+    @FindBy(xpath="//div[@id='mainNews']/div[contains(@class,'margin-top-small')]/div")
+    private List<WebElement> newsLinks;
+
+    @FindBy(xpath = "//div/h1")
+    private WebElementFacade h1;
+
+    public String getH1(){
+        h1.waitUntilVisible();
+        return h1.getText();
     }
+
+
+    public int getNewsCount(){
+        return newsLinks.size();
+    }
+
+    public String getFirstNewsName(){
+        return news.get(0).getText();
+    }
+
+    public void clickFirstNews(){
+        waitForSpinnerDissapear();
+        element(news.get(0)).waitUntilVisible();
+        news.get(0).click();
+        waitForSpinnerDissapear();
+    }
+
+
+}
 
 
 

@@ -45,6 +45,7 @@ public class WebmasterMainMgrTest {
 
 
     @Test
+    @Title("Менеджер отчет по вебмастерам")
     public void webmstersMainManagerTest() throws Exception{
         carcas.go_to_mgr_stat_webmasters();
         steps.check_fatal_errors();

@@ -73,7 +73,7 @@ public class CouponsPopUpTranslateStoryTest extends Constants {
         steps.executeScript("$('div.col.size-16.ib').html('')");                   //убираем описание купона
         steps.executeScript("$('div.col-evil.margin-top-small.lh-16').html('')");
 
-        steps.executeScript("$('div[class=\"_button_place\"]>div[has_modal=1][class*=\"input-button\"]').get(0).click();");
+        steps.executeScript("$('div[class*=\"input-button _modal_button\"]').get(0).click()");
         steps.waitABit(2000);
         steps.executeScript("$('div[class=\"col size-16 ib\"]').text('');");
 
@@ -98,7 +98,7 @@ public class CouponsPopUpTranslateStoryTest extends Constants {
         steps.executeScript("$('div.col.size-16.ib').html('')");                   //убираем описание купона
         steps.executeScript("$('div.col-evil.margin-top-small.lh-16').html('')");
 
-        steps.executeScript("$('div[class=\"_button_place\"]>div[has_modal=1][class*=\"input-button\"]').get(1).click();");
+        steps.executeScript("$('div[class*=\"input-button _modal_button\"]').get(1).click()");
         steps.waitABit(2000);
         steps.executeScript("$('div[class=\\\"col-evil margin-top-small lh-16\\\"]').text('');");
         steps.executeScript("$('div[class=\"col size-16 ib\"]').text('');");
@@ -107,7 +107,8 @@ public class CouponsPopUpTranslateStoryTest extends Constants {
         
     }
 
-    @Test @WithTagValuesOf({"block:Goods And Coupons", "role:Webmaster"}) 
+    @Test @WithTagValuesOf({"block:Goods And Coupons", "role:Webmaster"})
+    @Title("Купоны попапы переводы")
     public void test_coupons_PopUp_offers_TranslateStoryTest()throws Exception{
 
         steps.click_goods_and_coupons_link();
@@ -122,7 +123,7 @@ public class CouponsPopUpTranslateStoryTest extends Constants {
         steps.executeScript("$('div.col.size-16.ib').html('')");                   //убираем описание купона
         steps.executeScript("$('div.col-evil.margin-top-small.lh-16').html('')");
 
-        steps.executeScript("$('div[class=\"_button_place\"]>div[has_modal=1][class*=\"input-button\"]').get(2).click();");
+        steps.executeScript("$('div[class*=\"input-button _modal_button\"]').get(2).click()");
         steps.waitABit(2000);
         steps.executeScript("$('div[class=\"col size-16 ib\"]').text('');");
         steps.executeScript("$('div[class=\\\"col-evil margin-top-small lh-16\\\"]').text('');");

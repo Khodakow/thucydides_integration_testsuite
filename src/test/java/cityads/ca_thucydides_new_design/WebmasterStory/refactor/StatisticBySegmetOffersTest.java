@@ -77,32 +77,6 @@ public class StatisticBySegmetOffersTest {
 
     }
 
-    @Test
-    public void statistic_add_to_chart_test() throws Exception{
 
-        steps.click_first_list_additional_parametr_to_blue_table();
-        String searchparametr = "Страны";
-        steps.fill_first_list_additional_par_search_input(searchparametr);
-        steps.click_first_list_additional_par_second_visible_item(searchparametr);
-        steps.waitABit(5000);
-        steps.wait_for_all_spinners_dissapears(120);
-
-        String additionalparametrname = steps.get_text_from_first_element_in_blue_table_additional_parametr();
-        String additionalparametrname2 = additionalparametrname.substring(0,5);
-        String mainparametrname = steps.get_text_from_first_element_in_blue_table_main_parametr().replaceAll("‑","-").split(" ")[0];  //берем только первое слово если имя оффера содержит много слов
-
-
-        steps.click_first_checkbox_in_blue_table();
-        steps.waitABit(1000);
-        steps.click_show_on_chart_icon();
-        steps.wait_for_all_spinners_dissapears(120);
-        steps.scroll_to_top();
-        steps.waitABit(5000);
-        String chartlegend = steps.get_webelement_with_jquery("$('g.highcharts-legend')[0]").getText();
-        steps.check_string_contains_text(chartlegend,additionalparametrname2);
-        steps.check_string_contains_text(chartlegend,mainparametrname);
-
-
-    }
 
 } 

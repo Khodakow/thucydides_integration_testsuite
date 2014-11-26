@@ -39,14 +39,13 @@ public class RotatorDynamic45544Test {
     BannerSteps banner;
 
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test @Screenshots(onlyOnFailures=false)@Title("Проверка на динамику в ротаторе баннеров")
     public void rotatorDynamic45544Test() throws Exception{
 
         front.login();
         carcas.go_to_banner_rotator();
         steps.scroll_to_bottom();
         table.add_dynamic_parameter_tools("Хиты");
-
         steps.close_browser();
 
     }

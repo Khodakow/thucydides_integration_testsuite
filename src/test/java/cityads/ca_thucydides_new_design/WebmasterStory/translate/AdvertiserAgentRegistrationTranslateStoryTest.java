@@ -4,12 +4,7 @@ import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.BaseSteps;
 import cityads.ca_thucydides_new_design.steps.RegistrationSteps;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.ManagedPages;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.Story;
-import net.thucydides.core.annotations.WithTag;
-import net.thucydides.core.annotations.WithTagValuesOf;
+import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import org.junit.Test;
@@ -52,6 +47,7 @@ public class AdvertiserAgentRegistrationTranslateStoryTest extends Constants {
     }
     
     @Test
+    @Title("Регистрация агента переводы")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_agent_registration_translation(){
 

@@ -53,6 +53,30 @@ public class Popup extends PageObject {
     @FindBy(xpath = "//a[contains(@class,'button dark submit _confirm')]")
     private WebElementFacade yes;
 
+    @FindBy(xpath = "//div[contains(@class,'popup modal black')]")
+    private WebElementFacade popupBlack;
+
+    @FindBy(xpath = "//div[contains(@class,'items overflow')]")
+    private WebElementFacade lockeadPopupcheckboxes;
+
+    @FindBy(xpath = "//input[contains(@name,'sites')]")
+    private WebElementFacade lockeadPopupinputDomen;
+
+    @FindBy(xpath = "//textarea[contains(@name,'comment')]")
+    private WebElementFacade lockeadPopupinputComment;
+
+    @FindBy(xpath = "(//a[contains(@id,'id_el_link_action_links')])[2]")
+    private WebElement offerMainLink;
+
+
+
+
+
+
+    //offer tools links
+    @FindBy(xpath = "(//a[@id='id_el_link_action_coupons'])[2]")
+    private WebElementFacade offerCardCouponFeedLink;
+
     public void fillInputSearch(String text,String region){
         inputSearchText.waitUntilVisible();
         inputSearchText.click();
@@ -71,6 +95,11 @@ public class Popup extends PageObject {
         submit.waitUntilVisible();
         submit.click();
 
+    }
+
+    public void clickOfferCouponsLink(){
+        offerCardCouponFeedLink.shouldBeCurrentlyVisible();
+        offerCardCouponFeedLink.click();
     }
 
     public WebElementFacade getPopup(){
@@ -100,6 +129,7 @@ public class Popup extends PageObject {
 
     public String getCodeFromTextarea(){
         copyButton.waitUntilVisible();
+        waitABit(5000);
         WebElement couponsFeedCodename = page.couponsFeedCodeValue;
         String code =  couponsFeedCodename.getAttribute("data-clipboard-text");
         String curdomain = get_curent_domain_name();
@@ -114,6 +144,10 @@ public class Popup extends PageObject {
 
     public void checkPopupIsNotDisplayed() {
         popup.shouldNotBeCurrentlyVisible();
+    }
+
+    public void checkPopupBlackIsNotDisplayed() {
+        popupBlack.shouldNotBeCurrentlyVisible();
     }
 
     public void clickParameterWithText(String text){
@@ -149,6 +183,17 @@ public class Popup extends PageObject {
     public void clickYes() {
         yes.waitUntilVisible();
         yes.click();
+    }
+
+    public void checkStructureInLockedPopup(){
+        lockeadPopupcheckboxes.shouldBeCurrentlyVisible();
+        lockeadPopupinputComment.shouldBeCurrentlyVisible();
+        lockeadPopupinputDomen.shouldBeCurrentlyVisible();
+
+    }
+
+    public void clickOfferNainLink() {
+        offerMainLink.click();
     }
 }
 

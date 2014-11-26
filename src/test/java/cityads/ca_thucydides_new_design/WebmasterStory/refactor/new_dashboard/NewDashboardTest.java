@@ -47,7 +47,7 @@ public class NewDashboardTest {
     @Test
     public void dashboardAllOfferslinkTest() throws Exception{
 
-        newdash.clickkAllOffers();
+        newdash.clickAllOffers();
         steps.check_h1_page_title("Веб-офферы");
 
 

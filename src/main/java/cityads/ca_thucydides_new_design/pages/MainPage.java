@@ -28,7 +28,7 @@ public class MainPage extends BasePage {
     @FindBy(partialLinkText="English")
     public WebElement enLink;
 
-    @FindBy(id="popup-language-link")
+    @FindBy(xpath = "//a[@id='popup-language-link']")
     public WebElement selectLang;
 
     @FindBy(id = "_left_menu_id_3999969")
@@ -116,8 +116,7 @@ public class MainPage extends BasePage {
     public WebElementFacade filterBreadcrumbs;
 
     public List<WebElementFacade> getAllFilterBreadcrumbs(){
-
-        return this.findAll(By.xpath("//div[contains(@class,'margin-left-micro back-grey ib')]"));
+        return this.findAll(By.xpath("//div[contains(@class,'_selected_filters')]"));
     }
 
 

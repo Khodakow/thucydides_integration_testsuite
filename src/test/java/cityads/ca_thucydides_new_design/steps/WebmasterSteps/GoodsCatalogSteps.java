@@ -5,19 +5,19 @@
 package cityads.ca_thucydides_new_design.steps.WebmasterSteps;
 
 import cityads.ca_thucydides_new_design.pages.WemasterPages.GoodsCatalogPage;
-import cityads.ca_thucydides_new_design.steps.SetupSteps;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
-import net.thucydides.core.pages.WebElementFacade;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -43,17 +43,18 @@ public class GoodsCatalogSteps extends CouponsAndPromocodesFilterSaveSteps {
         return page.getGoodsItemCardsCount();
     }
     
-    @Step
+    @Step("Клик нв получить код")
     public void click_getcode_link(){
+        page.getCodeLink.shouldBeCurrentlyVisible();
         page.getCodeLink.click();
     }
     
-    @Step
+    @Step("Проверка что попап отображается")
     public void check_goods_catalog_popup_get_code_is_displayed(){
         page.goodsCatalogGetCodePopup.isDisplayed();
     }
     
-    @Step
+    @Step("Получить ссылку из попапа")
     public String get_popup_cityads_link(){
         String re1="(\\?)";	// Any Single Character 1
         String re2="(url)";	// Variable Name 1
@@ -77,9 +78,18 @@ public class GoodsCatalogSteps extends CouponsAndPromocodesFilterSaveSteps {
             }
     
 
-    @Step
+    @Step("Проверка что лендинг не содержит cityads или хост тестового стенда в ссылке")
     public void check_landing_url() {
-        Assert.assertFalse(getDriver().getCurrentUrl().contains("cityads.ru"));
+        URL host = null;
+        try {
+            host = new URL(System.getProperty("webdriver.base.url"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        String hst = host.getHost();
+        System.out.println(getDriver().getCurrentUrl());
+        Assert.assertFalse(getDriver().getCurrentUrl().contains("cityadspix"));
+        Assert.assertFalse(getDriver().getCurrentUrl().contains(hst));
     }
 
     @Step

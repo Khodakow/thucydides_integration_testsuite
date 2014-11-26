@@ -51,7 +51,7 @@ public class OfferCardStoryTest extends Constants {
        
         offerName = steps.get_first_offer_name();
         steps.click_first_offer();
-       
+        steps.waitABit(5000);
        
         steps.wait_for_start_offer_button_is_visible(15);
         steps.check_description_is_visible();

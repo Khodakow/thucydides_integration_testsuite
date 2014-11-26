@@ -6,18 +6,14 @@ import cityads.ca_thucydides_new_design.steps.SetupSteps;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.BugsSteps;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.OfferListSteps;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.ProfileSteps;
-import java.sql.Connection;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.ManagedPages;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.Story;
-import net.thucydides.core.annotations.WithTag;
-import net.thucydides.core.annotations.WithTagValuesOf;
+import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+
+import java.sql.Connection;
 
 
 @Story(TestSuite.WebMaster.Translate.class)
@@ -58,6 +54,7 @@ public class CampaignsEngStoryTest extends Constants {
 
 
    @Test
+   @Title("Перевод англ офферы")
    @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void checkCampaignsTranslation(){
     String wmName = ss.get_wm_name();  

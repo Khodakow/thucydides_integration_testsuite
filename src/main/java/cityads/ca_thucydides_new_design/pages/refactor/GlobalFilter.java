@@ -24,11 +24,18 @@ public class GlobalFilter extends BasePage {
     @FindBy(xpath = "//span[contains(@class,'icon plus')]")
     private WebElementFacade plusIcon;
 
+    @FindBy(xpath = "//span[contains(@class,'_add_compound')]")
+    private WebElementFacade plusIconComplex;
+
+
     @FindBy(xpath = "//span[contains(@class,'icon add-multy')]")
     private WebElementFacade plusMultiIcon;
 
     @FindBy(xpath = "//input[contains(@class,'_item_value _has_autocomplete')]")
     private WebElementFacade input;
+
+    @FindBy(xpath = "(//input[contains(@class,'_item_value _has_autocomplete')])[2]")
+    private WebElementFacade input2;
 
     @FindBy(xpath = "//div[contains(@class,'autocomplete-results')]")
     private WebElementFacade list;
@@ -56,6 +63,10 @@ public class GlobalFilter extends BasePage {
 
     @FindBy(xpath="//span[(contains(@data-id,'Brazil')or contains(@data-id,'Бразилия'))]")
     private WebElementFacade criteriaOfficeBrazil;
+
+    @FindBy(xpath="//div[contains(@class,'_error_msg') and string-length(text()) > 0]")
+    private WebElementFacade errorMsg;
+
 
 
     public void setSimpleCondition(){
@@ -111,6 +122,38 @@ public class GlobalFilter extends BasePage {
     }
 
 
+    public String setComplexCondition() {
+        waitForSpinnerDissapear();
+        filterIcon.waitUntilVisible();
+        filterIcon.click();
+        filterContainer.waitUntilVisible();
+        filterContainer.click();
+
+        // 1st condition
+        plusIconComplex.waitUntilVisible();
+        plusIconComplex.click();
+        input.click();
+        firstElemeintInList.waitUntilVisible();
+        firstElemeintInList.click();
+
+        // 2nd condition
+        plusIconComplex.waitUntilVisible();
+        plusIconComplex.click();
+        input2.click();
+        firstElemeintInList.waitUntilVisible();
+        String offer = firstElemeintInList.getText();
+        firstElemeintInList.click();
+
+        apply.click();
+        waitForSpinnerDissapear();
+        filterContainer.shouldNotBeCurrentlyVisible();
+        return offer;
+
+    }
+
+    public boolean errorMsgIsVisible(){
+        return errorMsg.isCurrentlyVisible();
+    }
 }
 
 

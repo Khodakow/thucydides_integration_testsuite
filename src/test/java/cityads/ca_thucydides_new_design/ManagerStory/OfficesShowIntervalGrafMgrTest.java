@@ -50,17 +50,21 @@ public class OfficesShowIntervalGrafMgrTest {
 
 
     @Test
+    @Title("Проверка отметики первого офиса на графике в отчете менеджера")
     public void officesShowIntervalGrafManagerTest() throws Exception{
         carcas.go_to_mgr_stat_offices();
         stat.click_by_interval_graf();
+        steps.scroll_to_legend();
         table.tag_first_office_and_check_legend_in_interval_graf();
         steps.check_fatal_errors();
     }
 
-    @Test
+    //@Test
+    @Title("Проверка отметики первого вебмастера на графике в отчете менеджера")
     public void webmasterShowIntervalGrafManagerTest() throws Exception{
         carcas.go_to_mgr_stat_webmasters();
         stat.click_by_interval_graf();
+        steps.scroll_to_legend();
         table.tag_first_webmaster_and_check_legend_in_interval_graf();
         steps.check_fatal_errors();
     }

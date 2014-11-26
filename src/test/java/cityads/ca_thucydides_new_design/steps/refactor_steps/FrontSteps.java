@@ -45,6 +45,12 @@ public class FrontSteps extends ScenarioSteps {
         front.loginMgr();
     }
 
+    @Step("Авторизация менеджера с неверным паролем")
+    public void loginMgrWrongPassword(){
+        front.openBaseUrl();
+        front.loginMgrWrongPwd();
+    }
+
     @Step("Авторизация пользователя с языком и валютой бразилии")
     public void enterBr(){
         front.openBaseUrl();
@@ -114,12 +120,50 @@ public class FrontSteps extends ScenarioSteps {
         assertFalse("Проверяем что велком пейдж исчез",welcome.welcomeIsVisible());
     }
 
-    @Step
+    @Step("Проверяем что пользователь на сводной")
     public void is_on_dashboard(){
         assertTrue("Проверяем что порльзователь попал на сводную",front.checkIsOnDashboard());
     }
 
+    @Step("Редактируем офферы")
+    public void hotOffersEdit(){
+        front.hotOffersedit();
+    }
 
+    @Step("Редактируем акции")
+    public void promoEdit(){
+        front.eventEdit();
+    }
+
+    @Step("Сохраняем форму")
+    public void saveEditorForm(){
+    front.saveForm();
+    }
+
+    @Step("Кликаем на категорию на странице категорий товаров")
+    public void clickCategotyLink(){
+        front.clickAndShowGoodsCategoty();
+    }
+
+    @Step("Кликаем на категорию на странице категорий товаров с помощью ссылки")
+    public void clickCategotyLinks(){
+        front.clickAndShowGoodsCategotyBylink();
+    }
+
+    @Step("Проверяем, что в фильтрах есть категории")
+    public void checkCategotyFilterResult(){
+        front.checkCategoryFilterResult();
+    }
+
+    @Step("Проверяем что открыта не страница 404")
+    public void check_not_404() {
+        front.checkNot404();
+    }
+
+    @Step("заполняем ВМ с указанием выплаты - вручную или manually")
+    public void fill_welcome_page_payments_manually() {
+        welcome.fillWelcomePageManuallyPayments();
+    }
 }
     
 

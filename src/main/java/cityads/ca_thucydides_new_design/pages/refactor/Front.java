@@ -3,6 +3,7 @@ package cityads.ca_thucydides_new_design.pages.refactor;
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 
 public class Front extends BasePage {
@@ -40,6 +41,9 @@ public class Front extends BasePage {
     @FindBy(xpath = "//div[@id='popup-login']")
     private WebElementFacade saveCheckbox;
 
+    @FindBy(xpath = "//h1[contains(text(),'404 Error page')]")
+    private WebElement notFound;
+
     @FindBy(xpath = "//span[@class='submit' and ancestor::form[ancestor::div[@class='popup-padding']]]")
     private WebElementFacade popupLoginSubmit;
 
@@ -51,6 +55,28 @@ public class Front extends BasePage {
 
     @FindBy(xpath="//div[@class='opacity5 back-white']")
     private WebElementFacade opacity;
+
+    @FindBy(xpath="//a[@id='hotoffersEdit']")
+    private WebElementFacade hotOffersEditor;
+
+    @FindBy(xpath="//label[contains(@class,'checkbox')]")
+    private WebElementFacade editorCheckbox;
+
+    @FindBy(xpath="//a[contains(@class,'dark  submit')]")
+    private WebElementFacade applyButton;
+    @FindBy(xpath="//a[contains(@id,'save')]")
+    private WebElementFacade saveForm;
+    @FindBy(xpath="//a[@id='promoEdit']")
+    private WebElementFacade eventEditor;
+    @FindBy(xpath="(//label[contains(@class,'checkbox no-padding')])[1]")
+    private WebElementFacade goodsCategoryCheckbox;
+    @FindBy(xpath="(//div[contains(@class,'category_name po')])[1]")
+    private WebElementFacade goodsCategotyLink;
+    @FindBy(xpath=" (//a[@id='category_show_selected_items'])[1]")
+    private WebElementFacade goodsCategorShowButton;
+    @FindBy(xpath="//div[@class='ib col-evil' and contains(text(),'Категории')]/following-sibling::div")
+    private WebElementFacade goodaCategoryFilterResult;
+
 
     public void login(){
         String passwd = System.getProperty("password");
@@ -202,7 +228,7 @@ public class Front extends BasePage {
 
     public boolean checkIsOnDashboard(){
         waitForSpinnerDissapear();
-        table.waitTable();
+        table.waitOverview();
         boolean dashboardCheck = getDriver().getCurrentUrl().contains("dashboard");
         return dashboardCheck;
     }
@@ -237,8 +263,9 @@ public class Front extends BasePage {
         }
 
 
-        opacity.waitUntilNotVisible();
+
         waitForSpinnerDissapear();
+        opacity.waitUntilNotVisible();
 
         if(getDriver().getCurrentUrl().contains("/login")){
             this.evaluateJavascript("$('form').eq(0).remove()");
@@ -253,6 +280,87 @@ public class Front extends BasePage {
             waitForSpinnerDissapear();
 
         }
+    }
+
+
+
+    public void hotOffersedit(){
+        hotOffersEditor.waitUntilVisible();
+        hotOffersEditor.click();
+        waitABit(2000);
+        editorCheckbox.waitUntilVisible();
+        editorCheckbox.click();
+        applyButton.waitUntilVisible();
+        applyButton.click();
+
+
+
+    }
+
+
+    public void eventEdit(){
+        eventEditor.waitUntilVisible();
+        eventEditor.click();
+        waitABit(2000);
+        editorCheckbox.waitUntilVisible();
+        editorCheckbox.click();
+        applyButton.waitUntilVisible();
+        applyButton.click();
+    }
+
+
+    public void saveForm(){
+        saveForm.waitUntilVisible();
+        saveForm.click();
+
+    }
+
+    public void clickAndShowGoodsCategoty(){
+        goodsCategoryCheckbox.waitUntilVisible().click();
+        goodsCategorShowButton.waitUntilVisible().click();
+        waitForSpinnerDissapear();
+
+    }
+
+    public void clickAndShowGoodsCategotyBylink(){
+        goodsCategotyLink.waitUntilVisible().click();
+
+        waitForSpinnerDissapear();
+        waitABit(5000);
+
+    }
+
+    public void checkCategoryFilterResult(){
+        waitForSpinnerDissapear();
+        goodaCategoryFilterResult.shouldNotBeVisible();
+    }
+
+    public void loginMgrWrongPwd() {
+        String passwd = DataGenerator.getRandomString();
+        String name = System.getProperty("userMgr");
+
+        if (!getDriver().getPageSource().contains("/manager")) {
+            popupLoginLink.waitUntilVisible();
+            popupLoginLink.click();
+            waitABit(500);
+            popupLogin.waitUntilVisible();
+            popupNick.waitUntilVisible();
+            popupNick.clear();
+            waitABit(500);
+            popupPasswd.waitUntilVisible();
+            popupPasswd.clear();
+            waitABit(500);
+            popupNick.sendKeys(name);
+            waitABit(500);
+            popupPasswd.sendKeys(passwd);
+            waitABit(500);
+            popupLoginSubmit.waitUntilVisible();
+            popupLoginSubmit.click();
+        }
+    }
+
+    public void checkNot404() {
+        element(notFound).shouldNotBeCurrentlyVisible();
     }
 }
 

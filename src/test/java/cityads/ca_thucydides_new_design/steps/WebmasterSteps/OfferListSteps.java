@@ -51,7 +51,7 @@ public class OfferListSteps extends SetupSteps {
         page.clickGoToPageArrow();
     }
     
-    @Step
+    @Step("Клик по первому офферу в таблице")
     public void click_first_offer(){
         page.getFirstOfferInTable().click();
         
@@ -87,11 +87,16 @@ public class OfferListSteps extends SetupSteps {
     }
     
     
-    @Step
+    @Step("Проверяем что в первой строке в первом столбце присутствует замок")
     public void check_bluetable_first_line_has_lock(){
-       String firstIconClass = page.getBlueTable().find(By.tagName("tbody")).find(By.tagName("tr")).findBy(By.tagName("td")).find(By.tagName("a")).find(By.tagName("span")).getAttribute("class");
-      Assert.assertTrue(firstIconClass.contains("icon-lock"));
-    }   
+        page.checkFirstLock();
+    }
+
+    @Step("Проверяем что в первой строке в первом столбце присутствует замок")
+    public boolean hasLockOffer(){
+        Boolean check = page.hasLock();
+        return  check;
+    }
 
     @Step
     public void select_regions_in_filter(){

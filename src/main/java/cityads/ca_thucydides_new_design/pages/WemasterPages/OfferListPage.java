@@ -1,28 +1,14 @@
 package cityads.ca_thucydides_new_design.pages.WemasterPages;
 
-import cityads.ca_thucydides_new_design.pages.*;
-import ch.lambdaj.function.convert.Converter;
-
+import cityads.ca_thucydides_new_design.pages.MainPage;
+import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import net.thucydides.core.pages.PageObject;
-
-import java.util.List;
-
-import static ch.lambdaj.Lambda.convert;
-import java.awt.AWTException;
-import java.awt.Robot;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import net.thucydides.core.pages.WebElementFacade;
-import org.junit.Assert;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.support.ui.Select;
+import java.util.List;
 
 
 public class OfferListPage extends MainPage {
@@ -52,6 +38,9 @@ public class OfferListPage extends MainPage {
                   
         @FindBy(xpath="//a[contains(concat(' ', normalize-space(@class), ' '), ' submit  _go_to_page ') ]")
         private WebElement goToPageArrow;
+
+        @FindBy(xpath = "(//td[@class='favlock' and descendant::span[@class='icon-lock'] and not(descendant::span[@class='icon-favorites'])])[1]")
+        private WebElementFacade firstLock;
         
         public void clickGoToPageArrow(){
             element(goToPageArrow).click();
@@ -115,9 +104,16 @@ public class OfferListPage extends MainPage {
         }
 
 
-
-
+    public void checkFirstLock() {
+        waitForSpinnerDissapear();
+        firstLock.shouldBeCurrentlyVisible();
     }
+
+    public boolean hasLock () {
+        return firstLock.isCurrentlyVisible();
+    }
+
+}
 
 
 

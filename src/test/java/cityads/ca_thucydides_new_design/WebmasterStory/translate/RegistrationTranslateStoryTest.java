@@ -34,6 +34,7 @@ public class RegistrationTranslateStoryTest extends Constants {
     
     @Test
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
+    @Title("Регистрация ВМ переводы")
     public void check_wm_registration_translation(){
 
         steps.open_main_page();
@@ -48,10 +49,8 @@ public class RegistrationTranslateStoryTest extends Constants {
     
     @Test
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
+    @Title("Регистрация ВМ сообщения об ошибках переводы")
     public void check_wm_registration_translation_after_login(){
-        
-        String wmName = steps.get_wm_name();
-        steps.wm_login(wmName);
         steps.open_main_page();
         steps.ckick_start_work();
         steps.select_pt_language();
@@ -61,6 +60,7 @@ public class RegistrationTranslateStoryTest extends Constants {
     }
    
     @Test
+    @Title("Забл пароль переводы")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_wm_lost_password_translation(){
 

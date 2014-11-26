@@ -3,18 +3,8 @@ package cityads.ca_thucydides_new_design.WebmasterStory.translate.eng;
 import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.BaseSteps;
-import cityads.ca_thucydides_new_design.steps.MainSiteSteps;
 import cityads.ca_thucydides_new_design.steps.RegistrationSteps;
-import cityads.ca_thucydides_new_design.steps.SetupSteps;
-import cityads.ca_thucydides_new_design.steps.WebmasterSteps.BugsSteps;
-import cityads.ca_thucydides_new_design.steps.WebmasterSteps.ProfileSteps;
-import java.sql.Connection;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.ManagedPages;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.Story;
-import net.thucydides.core.annotations.WithTag;
-import net.thucydides.core.annotations.WithTagValuesOf;
+import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import org.junit.Test;
@@ -43,6 +33,7 @@ public class RegistrationEnStoryTest extends Constants {
     public BaseSteps bSteps;
     
     @Test
+    @Title("Переводы англ регистрация вма")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_wm_registration_translation(){
 
@@ -56,6 +47,7 @@ public class RegistrationEnStoryTest extends Constants {
     }
     
     @Test
+    @Title("Переводы англ регистрация сообщения")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_wm_registration_translation_after_login(){
         
@@ -70,6 +62,7 @@ public class RegistrationEnStoryTest extends Constants {
     }
    
     @Test
+    @Title("Переводы англ регистрация забыл пароль")
     @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_wm_lost_password_translation(){
 

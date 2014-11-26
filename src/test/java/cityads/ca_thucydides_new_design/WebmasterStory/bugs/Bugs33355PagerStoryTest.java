@@ -58,15 +58,11 @@ public class Bugs33355PagerStoryTest extends Constants {
     @Steps
     CarcasSteps carcas;
 
-    @Test //курс обмена пейджер
+    @Test
+    @Title("Курс обмена пейджинг")
     public void check_33355_exchange() throws Exception{
-        String wmName = ss.get_wm_name();
-        bs.wm_login(wmName);
-        bs.click_finances_link();
-        bs.wait_for_all_spinners_dissapears(90);
-        bs.click_exchange_link();
-        bs.wait_for_all_spinners_dissapears(90);
-        bs.wait_for_h1_title_appears("Курс обмена", 25);
+        front.login();
+        carcas.go_to_exchange();
         dateFirstPage = bs.get_currency_date_value();  //дата на первой странице в первой ячейке таблицы
         bs.wait_for_all_spinners_dissapears(90);
         bs.click_go_next_page();
@@ -79,7 +75,8 @@ public class Bugs33355PagerStoryTest extends Constants {
 
     }
 
-    @Test // офферы пейджер
+    @Test
+    @Title("пейджинг")// офферы пейджер
     public void check_33355_offers() throws Exception{
         front.login();
         carcas.go_to_web_offers();

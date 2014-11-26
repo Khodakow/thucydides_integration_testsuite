@@ -53,6 +53,7 @@ public class CouponsTranslateStoryTest extends Constants {
   
    @Test
    @WithTagValuesOf({"block:Traslation","role:Webmaster"})
+   @Title("Купоны переводы")
     public void checkCouponsTranslation(){
     String wmName = ss.get_wm_name();  
     bs.wm_login(wmName);

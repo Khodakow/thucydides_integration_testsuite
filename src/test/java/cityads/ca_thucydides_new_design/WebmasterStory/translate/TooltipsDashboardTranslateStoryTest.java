@@ -28,7 +28,7 @@ public class TooltipsDashboardTranslateStoryTest extends Constants {
     @Steps
     public SetupSteps steps;
 
-   @Test
+   @Test@Title("Подсказки переводы")
    @WithTagValuesOf({"block:Traslation","role:Webmaster"})
     public void check_dashboard_tooltips_translate(){
     String wmName = steps.get_wm_name();  

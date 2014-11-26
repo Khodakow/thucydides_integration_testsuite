@@ -219,9 +219,15 @@ public class TableSteps extends ScenarioSteps {
     }
 
     @Step
-    public void check_all_date_in_main_parametr(String name){
+    public void check_all_data_in_main_parametr(String name){
         table.check_all_elem_in_main_param_blue_table(name);
     }
+
+    @Step
+    public void check_all_data_in_offers_main_parametr(String name){
+        table.check_all_elem_in_offers_param_blue_table(name);
+    }
+
     @Step
     public void check_all_date_in_main_parametr_num_exclude(){
         table.check_all_elem_in_main_param_not_include_num_blue_table();

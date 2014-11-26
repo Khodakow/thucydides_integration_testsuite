@@ -486,6 +486,8 @@ public class Table extends BasePage {
     }
 
     public void showOnGrafFirstElementInTableTagedByCityads(){
+        waitForSpinnerDissapear();
+        allCheckboxesFindedByCityadsInBluetable.shouldBeCurrentlyVisible();
         allCheckboxesFindedByCityadsInBluetable.click();
         clickShowOnChartIcon();
         waitABit(2500);
@@ -496,7 +498,8 @@ public class Table extends BasePage {
     }
 
     public void show_on_Interval_graf_first_element_in_table_taged_by_Cityads(){
-        allCheckboxesFindedByCityadsInBluetable.waitUntilVisible();
+        waitForSpinnerDissapear();
+        allCheckboxesFindedByCityadsInBluetable.shouldBeCurrentlyVisible();
         allCheckboxesFindedByCityadsInBluetable.click();
         clickShowOnChartIcon();
         waitABit(2500);
@@ -507,7 +510,8 @@ public class Table extends BasePage {
     }
 
     public void show_on_graf_first_element_in_table_taged_by_not_unknow(){
-        allCheckboxesFindedNotUnknownInBlueTable.waitUntilVisible();
+        waitForSpinnerDissapear();
+        allCheckboxesFindedNotUnknownInBlueTable.shouldBeCurrentlyVisible();
         allCheckboxesFindedNotUnknownInBlueTable.click();
         clickShowOnChartIcon();
         waitABit(2500);
@@ -523,7 +527,8 @@ public class Table extends BasePage {
     }
 
     public void show_on_Interval_graf_first_element_in_table_taged_by_unknows(){
-        allCheckboxesFindedNotUnknownInBlueTable.waitUntilVisible();
+        waitForSpinnerDissapear();
+        allCheckboxesFindedNotUnknownInBlueTable.shouldBeCurrentlyVisible();
         allCheckboxesFindedNotUnknownInBlueTable.click();
         clickShowOnChartIcon();
         waitABit(2500);
@@ -657,6 +662,15 @@ public class Table extends BasePage {
         waitForSpinnerDissapear();
         getDriver().findElement(By.xpath("//table[contains(@class,'blue_table')]/tbody/tr[descendant::td[contains(text(),'"+feedName+"')]]/td/a[contains(@class,'_payinfo_edit')]")).click();
         waitForSpinnerDissapear();
+    }
+
+    public void check_all_elem_in_offers_param_blue_table(String name) {
+        waitSpinner();
+        List<WebElement> list = this.offersMainParams;
+        for(WebElement elem:list){
+            String elemtext = elem.getText();
+            checkStringContainsText(elemtext, name);
+        }
     }
 }
 

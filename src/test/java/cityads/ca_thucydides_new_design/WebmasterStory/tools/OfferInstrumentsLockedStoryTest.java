@@ -44,7 +44,8 @@ public class OfferInstrumentsLockedStoryTest extends Constants {
     public BannerRotatorSteps bannerSteps;
 
  
-    @Test @WithTagValuesOf({"block:Instruments", "role:Webmaster"})@Title("Проверка что есть недоступные офферы")
+    @Test @WithTagValuesOf({"block:Instruments", "role:Webmaster"})
+    @Title("Проверка что есть недоступные офферы")
     public  void wm_offer_instruments_locked_offer_test() throws Exception{
         
 
@@ -66,21 +67,8 @@ public class OfferInstrumentsLockedStoryTest extends Constants {
         steps.check_description_is_visible();
         steps.click_add_offer_link();
         steps.check_popup_is_currently_visible();
-        
-//        steps.waitAjax(3000);
-//        steps.check_offercard_popup_is_displayed();
-//        steps.click_add_link_popup_button();
-//        
-//        code = steps.get_code_from_popup_textarea();
-//        steps.check_script_code(code);
-     
-       
 
-        
-        
 
-     
-        
         steps.close_browser();
         
     }

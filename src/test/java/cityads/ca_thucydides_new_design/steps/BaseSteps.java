@@ -2,6 +2,7 @@ package cityads.ca_thucydides_new_design.steps;
 
 import cityads.ca_thucydides_new_design.pages.MainPage;
 import cityads.ca_thucydides_new_design.pages.WemasterPages.WelcomePage;
+import cityads.ca_thucydides_new_design.pages.db.MySQLWorker;
 import cityads.ca_thucydides_new_design.pages.refactor.BasePage;
 import cityads.ca_thucydides_new_design.pages.refactor.Front;
 import cityads.ca_thucydides_new_design.pages.refactor.Welcome;
@@ -111,13 +112,9 @@ public class BaseSteps extends FrontSteps {
     }
 
 
-    @Step
+    @Step("Перейти на главную страницу")
     public void open_main_page(){
-        /*
-         * getDriver().manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-           getDriver().manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-         *
-         */
+
         getDriver().get(getPages().getDefaultBaseUrl());
         getDriver().manage().window().maximize();
 
@@ -725,7 +722,7 @@ public class BaseSteps extends FrontSteps {
     }
 
 
-    @Step
+    @Step("Сбросить фильтр с помошью скрипта #id_el_input_filter_reset'.click")
     public void click_reset_filter_button(){
         executeScript("$('#id_el_input_filter_reset').click()");
         try {
@@ -808,7 +805,7 @@ public class BaseSteps extends FrontSteps {
 
     }
 
-    @Step
+    @Step("отсортировать таблицу по первому th")
     public void Sort_blue_table_by_first_th(){
         mainPage.sort_blue_table_by_first_th();
     }
@@ -946,7 +943,7 @@ public class BaseSteps extends FrontSteps {
 
     @Step
     public void check_script_code(String code){
-        assertTrue(!code.isEmpty());
+        assertTrue("Проверяем что строка не пуста",!code.isEmpty());
     }
 
     @Step
@@ -1378,7 +1375,7 @@ public class BaseSteps extends FrontSteps {
         basePage.waitForAbsenceOf("//div[@class='opacity5 back-white']");
     }
 
-    @Step("Ждем крутилки")
+    @Step("Ждем загрузку страницы, всех крутилок и запросов к стате")
     public void wait_for_all_spinners_dissapears(){     //чтобы можно было вызывтаь без времени
         basePage.waitSpinner();
     }
@@ -1464,6 +1461,9 @@ public class BaseSteps extends FrontSteps {
     @Step("Проверяем на наличие слов на кириллице")
     public void check_lang_select(){
         executeScript("$('.blue_table>tbody').remove()");
+        executeScript("$('div[class*=\"margin-top-micro wsn\"]').remove();");
+        executeScript("$('span[class*=\"size-14 col-black\"]').remove();");
+        executeScript("$('.mercedes-res').remove()");
         WebElement elem = mainPage.find(By.xpath("//*"));
         List<String> strings = Arrays.asList(elem.getText().split("[\\-.\\s\\t\\n\\r\\x0b<>,]"));
 
@@ -1973,6 +1973,15 @@ public class BaseSteps extends FrontSteps {
 
     public String get_all_text() {
         return getDriver().findElement(By.xpath("//*")).getText();
+    }
+
+    @Step
+    public void scroll_to_legend() {
+        scroll(getDriver().findElement(By.xpath("//div[contains(@class,'select _table_chart_select_lines')]")));
+    }
+    @Step("Добавляем через запрос акции")
+    public void addPromoMysql(){
+        MySQLWorker.addPromo();
     }
 }
 

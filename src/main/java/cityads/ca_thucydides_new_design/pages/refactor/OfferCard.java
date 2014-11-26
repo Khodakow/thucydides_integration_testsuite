@@ -35,11 +35,17 @@ public class OfferCard extends BasePage {
     @FindBy(xpath="//a[contains(@data-href,'action=detailTools')]")
     private WebElementFacade instrumentsTab;
 
+    @FindBy(xpath="//a[contains(@data-href,'action=detailMain')]")
+    private WebElement dashboardTab;
+
     @FindBy(xpath="//table[@id='table_wm.action_tool_links']/tbody/tr/td[position()=4 or position()=5 or position()=6 or position()=7]")
     private List<WebElement> instrumentsTableData;
 
     @FindBy(xpath="(//table[@id='table_wm.action_tool_goods']/tbody/tr)[last()]/td/a[contains(@class,'icon code pointer')]")
     private WebElementFacade originalGoodsGetCode;
+
+    @FindBy(xpath = "(//a[contains(@class,'_create_link _is_banner')])[1]")
+    private WebElement getBannerCode;
 
     public void isOnOffercardPage(){
         startWork.waitUntilVisible();
@@ -89,6 +95,21 @@ public class OfferCard extends BasePage {
     public String getOfferSite() throws MalformedURLException {
         String site =  getDriver().findElement(By.xpath("//div[contains(@class,'about-offer-short-info')]/p/a")).getAttribute("href");
         return new URL(site).getHost();
+    }
+
+    public String getBannerCode() {
+        waitForSpinnerDissapear();
+        element(getBannerCode).waitUntilVisible();
+        getBannerCode.click();
+        popup.waitPopup();
+        waitABit(5000);
+        return popup.getCodeFromTextarea();
+    }
+
+    public void goToDashboardTab() {
+        waitForSpinnerDissapear();
+        dashboardTab.click();
+        waitForSpinnerDissapear();
     }
 }
 
