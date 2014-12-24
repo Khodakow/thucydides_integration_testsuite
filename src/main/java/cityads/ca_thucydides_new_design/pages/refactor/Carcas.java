@@ -14,12 +14,19 @@ public class Carcas extends BasePage {
     }
 
     private Table table;
+    private Welcome welcome;
 
     @FindBy(xpath="//a[@id='menu_top_wm_item_3641925']")
     private WebElementFacade offers;
 
+    @FindBy(xpath="//a[@id='menu_top_wm_item_3641924']")
+    private WebElementFacade home;
+
     @FindBy(xpath="//a[@id='_left_menu_id_3641940']")
     private WebElementFacade webOffers;
+
+    @FindBy(xpath="//a[@id='_left_menu_id_407479372']")
+    private WebElementFacade mobOffers;
 
     @FindBy(xpath="//a[@id='_left_menu_id_3641921']")
     private WebElementFacade myAccount;
@@ -54,7 +61,11 @@ public class Carcas extends BasePage {
     @FindBy(xpath="//a[@id='_left_menu_id_403459272']")
     private WebElementFacade payments;
 
+    @FindBy(xpath="//a[@id='account_type_switch_to_old']")
+    private WebElementFacade oldButton;
 
+    @FindBy(xpath="//div[@class='section page-header']/h1")
+    private WebElementFacade h1OldInterface;
 
     /*Локаторы статы*/
 
@@ -82,7 +93,6 @@ public class Carcas extends BasePage {
 
     @FindBy(xpath="//a[@id='_left_menu_id_426929753']")
     private WebElementFacade statisticConversionsBySegmets;
-
     @FindBy(xpath="//a[@id='_left_menu_id_426949753']")
     private WebElementFacade statisticConversionsBySegmetsByType;
     @FindBy(xpath="//a[@id='_left_menu_id_426969753']")
@@ -94,7 +104,6 @@ public class Carcas extends BasePage {
 
     @FindBy(xpath="//a[@id='_left_menu_id_428769753']")
     private WebElementFacade statisticConversionsByActivity;
-
     @FindBy(xpath="//a[@id='_left_menu_id_428789753']")
     private WebElementFacade statisticConversionsByActivityByTypes;
     @FindBy(xpath="//a[@id='_left_menu_id_428809753']")
@@ -220,9 +229,9 @@ public class Carcas extends BasePage {
     private WebElementFacade rotatorsH1;
 
     //хлебные кошки
-    @FindBy(xpath = "//div[@class='path']/a")
-    private WebElementFacade firstBreadcrumbTop;
 
+    @FindBy(xpath = "//div[@id='pagePath']/a[1]")
+    private WebElementFacade breadСrumbs;
 
     /*Переход в определенный раздел*/
 
@@ -261,6 +270,16 @@ public class Carcas extends BasePage {
         waitForSpinnerDissapear();
         webOffers.waitUntilVisible();
         webOffers.click();
+        waitForSpinnerDissapear();
+    }
+
+    public void goToMobOffers(){
+        waitForSpinnerDissapear();
+        offers.waitUntilVisible();
+        offers.click();
+        waitForSpinnerDissapear();
+        mobOffers.waitUntilVisible();
+        mobOffers.click();
         waitForSpinnerDissapear();
     }
 
@@ -1024,6 +1043,11 @@ public class Carcas extends BasePage {
         this.getDriver().get(System.getProperty("webdriver.base.url")+"api/dev");
     }
 
+    public void goToHelp(){
+        this.getDriver().get(System.getProperty("webdriver.base.url")+"help/info");
+        this.getDriver().manage().window().maximize();
+    }
+
     public void goToGoods() {
         waitForSpinnerDissapear();
         goodsAndCoupons.waitUntilVisible();
@@ -1113,9 +1137,10 @@ public class Carcas extends BasePage {
         waitOpacity();
     }
 
-    public void clickFirstTopBreadcrumb() {
-        firstBreadcrumbTop.waitUntilVisible();
-        firstBreadcrumbTop.click();
+    public void clickFirstBreadCrumbs() {
+        waitForSpinnerDissapear();
+        breadСrumbs.waitUntilVisible();
+        breadСrumbs.click();
         waitForSpinnerDissapear();
     }
 
@@ -1160,6 +1185,24 @@ public class Carcas extends BasePage {
         }
         payments.click();
         waitForSpinnerDissapear();
+    }
+
+    public void goToDashboard() {
+        waitForSpinnerDissapear();
+        home.click();
+        waitForSpinnerDissapear();
+        table.waitOverview();
+    }
+
+    public void clickOldInterfaceButton() {
+        waitForSpinnerDissapear();
+        oldButton.waitUntilVisible();
+        oldButton.click();
+    }
+
+
+    public void checkH1interfaceOld() {
+        h1OldInterface.shouldBeCurrentlyVisible();
     }
 }
 

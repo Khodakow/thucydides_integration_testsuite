@@ -39,6 +39,7 @@ public class DownloadGoodsStoryTest extends Constants {
     public FilterSteps filter;
     
     @Test
+    @Title("Тест на выгрузку товаров ")
     @WithTagValuesOf({"block:Downloads","role:Webmaster"})
     public void downloads_goods_test() throws Exception{
 

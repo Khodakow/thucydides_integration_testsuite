@@ -140,12 +140,7 @@ public class FrontSteps extends ScenarioSteps {
     front.saveForm();
     }
 
-    @Step("Кликаем на категорию на странице категорий товаров")
-    public void clickCategotyLink(){
-        front.clickAndShowGoodsCategoty();
-    }
-
-    @Step("Кликаем на категорию на странице категорий товаров с помощью ссылки")
+    @Step("Кликаем на категорию на странице категорий товаров (//div[@class='ib _category_name pointer' and descendant::span[descendant::span[@format='num']]])[1]")
     public void clickCategotyLinks(){
         front.clickAndShowGoodsCategotyBylink();
     }
@@ -164,6 +159,12 @@ public class FrontSteps extends ScenarioSteps {
     public void fill_welcome_page_payments_manually() {
         welcome.fillWelcomePageManuallyPayments();
     }
+
+    @Step("Берем баланс")
+    public String getBalance() {
+        return front.getbalance();
+    }
+
 }
     
 

@@ -38,7 +38,7 @@ public class FilterSteps extends ScenarioSteps {
     }
 
 
-    @Step
+    @Step ("Берем ссылку")
     public String get_filter_breadcrumbs(){
         return filter.getSelectedFiltersText();
     }
@@ -61,6 +61,11 @@ public class FilterSteps extends ScenarioSteps {
     @Step
     public void filter_by_keyword_noretarget_getlink(String keyword) {
         filter.filterByKeywordNoRetarget(keyword);
+    }
+
+    @Step
+    public void search_by_keyword(String key) {
+        filter.searchByKeyword(key);
     }
 }
     

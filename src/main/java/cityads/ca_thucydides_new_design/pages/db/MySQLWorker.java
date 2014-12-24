@@ -9,6 +9,7 @@ import java.util.List;
  */
 public class MySQLWorker {
     private final static String offersTable = "offersForTest";
+    private final static String emailtable = "emails";
 
     //объявляем методы статичными чтобы можно было использовать в junit методах с @BeforeClass  (вызывать один раз перед тестами)
     private static Connection connectToDB() {      //если не заданы параметры базы то коннектимся к тестовой monitoring
@@ -212,6 +213,23 @@ public class MySQLWorker {
         }
     }
 
+    public static void deleteEmail(String email){
+        Connection con = connectToDB();
+        try {
+            String query = "DELETE FROM "+emailtable+" WHERE email = '"+ email+"'";
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.execute();
+            con.close();
+        }
+        catch(SQLException s){
+            s.printStackTrace();
+            try {
+                con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
     //получение списка всех активных офферов из базы
     public static List<Object[]> getAllOffersFromDB(){
         ArrayList<Object[]> offers = new ArrayList<Object[]>();
@@ -231,6 +249,34 @@ public class MySQLWorker {
 
 
             return offers;
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            try {
+                con.close();
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            }
+            return null;
+        }
+
+    }
+
+    public static String getEmailFromDB(){
+        Connection con = connectToDB();
+        try {
+            String email = null;
+            Statement st = con.createStatement();
+            String query = ("SELECT email FROM "+emailtable+" LIMIT 1;");
+            ResultSet rs = st.executeQuery(query);
+            while(rs.next()){
+
+                email = rs.getString("email");
+                     System.out.println("email found in DB for test: "+ email);
+            }
+            con.close();
+            return email;
 
 
         } catch (SQLException e) {

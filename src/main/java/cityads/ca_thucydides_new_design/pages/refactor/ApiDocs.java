@@ -54,6 +54,19 @@ public class ApiDocs extends BasePage {
     @FindBy(xpath="//a[contains(@href,'api/dev/lib')]")
     private WebElementFacade lib;
 
+    @FindBy(xpath="//div[@class='header-top']")
+    private WebElementFacade headerTop;
+
+    @FindBy(xpath="//a[@href='https://www.facebook.com/cityadsmedia']")
+    private WebElementFacade buttonFacebook;
+
+    @FindBy(xpath="//a[@href='https://twitter.com/cityads_ru']")
+    private WebElementFacade buttonTwitter;
+
+    @FindBy(xpath="//a[@href='http://vk.com/cityads']")
+    private WebElementFacade buttonVkontakte;
+
+
 
 
     public void clickAuthorization(){
@@ -141,9 +154,30 @@ public class ApiDocs extends BasePage {
         this.evaluateJavascript("$('i').html('')");
     }
 
+    public void checkPanelIsVisible(){
+        headerTop.shouldBeCurrentlyVisible();
+    }
+
+    public void checkSocialButtons(){
+        buttonFacebook.shouldBeCurrentlyVisible();
+        buttonTwitter.shouldBeCurrentlyVisible();
+        buttonVkontakte.shouldBeCurrentlyVisible();
+    }
+
+    public void clickFacebook(){
+        buttonFacebook.waitUntilVisible();
+        buttonFacebook.click();
+    }
+
+
+    public void clickTwitter() {
+        buttonTwitter.waitUntilVisible();
+        buttonTwitter.click();
 }
 
 
-
-
-
+    public void clickVk() {
+        buttonVkontakte.waitUntilVisible();
+        buttonVkontakte.click();
+        }
+    }

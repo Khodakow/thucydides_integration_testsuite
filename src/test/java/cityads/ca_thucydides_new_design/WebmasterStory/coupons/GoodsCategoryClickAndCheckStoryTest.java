@@ -55,18 +55,8 @@ public class GoodsCategoryClickAndCheckStoryTest{
         front.login();
     }
 
-
-
     @Test
-    @Title("Тест на категории в Товарах и купонах 53462")
-    public void test_53462()throws Exception{
-        carcas.go_to_goods_categoty();
-        front.clickCategotyLink();
-        front.checkCategotyFilterResult();
-
-
-}
-    @Test
+    @Screenshots(onlyOnFailures = false)
     @Title("Тест на категории в Товарах и купонах с помощью клика на ссылку 53462")
     public void test_53462_byclick_link()throws Exception{
         carcas.go_to_goods_categoty();

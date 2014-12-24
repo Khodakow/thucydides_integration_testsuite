@@ -48,7 +48,9 @@ public class OfferInstrumentsRotatorsStoryTest{
     public FilterSteps filter;
 
  
-    @Test @WithTagValuesOf({"block:Instruments", "role:Webmaster"})
+    @Test
+    @WithTagValuesOf({"block:Instruments", "role:Webmaster"})
+    @Title("Проверка перехода на ротатор быннеров с карточки оффера")
     public  void wm_offer_instruments_rotator_test() throws Exception{
         
 

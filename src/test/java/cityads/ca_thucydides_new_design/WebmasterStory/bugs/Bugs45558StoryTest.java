@@ -41,13 +41,12 @@ public class Bugs45558StoryTest {
 
 
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
+    @Title("ЛОМАЕТСЯ ШКАЛА НА ГРАФИКЕ ПРИ ДАТЕ ПО ДАТЕ ЗАГРУЗКИ 45558")
     public void stat45558Test() throws Exception{
 
         front.login();
         carcas.go_to_statistic_by_conversion_by_action_byConversion();
-        stat.click_by_load_date();
-        steps.wait_for_all_spinners_dissapears();
         String axis =  steps.get_axis_text();
         steps.check_string_not_contains_text(axis,"-- --");
         steps.check_string_not_contains_text(axis,"--");

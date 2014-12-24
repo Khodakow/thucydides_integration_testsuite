@@ -32,7 +32,7 @@ public class LoginAndCheckOfficesTest {
     FrontSteps front;
 
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void loginAndCheckOfficesTest() throws Exception{
 
         front.loginAndCheckOfices();

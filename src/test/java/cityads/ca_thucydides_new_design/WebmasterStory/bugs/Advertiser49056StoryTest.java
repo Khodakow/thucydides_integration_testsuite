@@ -34,7 +34,8 @@ public class Advertiser49056StoryTest {
 
 
     
-    @Test@Screenshots(onlyOnFailures = false)@Title("Проверяем что рекл не может открыть не свой оффер по прямой ссылке")
+    @Test@Screenshots(onlyOnFailures = false)
+    @Title("Проверяем что рекл не может открыть не свой оффер по прямой ссылке")
     public void check49056test(){
 
         front.loginAdv();

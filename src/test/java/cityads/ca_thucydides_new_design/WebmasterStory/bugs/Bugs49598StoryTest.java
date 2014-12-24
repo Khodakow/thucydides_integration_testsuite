@@ -41,7 +41,8 @@ public class Bugs49598StoryTest {
 
 
     
-    @Test@Screenshots(onlyOnFailures = false)@Title("Проверка на то что кличество товаров не меняется при сортировка")
+    @Test@Screenshots(onlyOnFailures = false)
+    @Title("Проверка на то что кличество товаров не меняется при сортировке")
     public void check49598test(){
 
         front.login();

@@ -28,7 +28,7 @@ public class StatisticsSteps extends BaseSteps {
         super(pages);
     }
 
-    @Step
+    @Step("Клик по дате загрузки")
     public void click_by_load_date(){
         statistic.clickByLoadDate();
         this.waitABit(5000);

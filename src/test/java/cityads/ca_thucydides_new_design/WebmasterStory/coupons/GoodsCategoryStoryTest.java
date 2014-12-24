@@ -45,7 +45,8 @@ public class GoodsCategoryStoryTest extends Constants {
     GoodsCategorySteps steps;
     
 
-    @Test @WithTagValuesOf({"block:Goods And Coupons","role:Webmaster"})    
+    @Test @WithTagValuesOf({"block:Goods And Coupons","role:Webmaster"})
+    @Title("Проверка раздела Категории товаров на количество категорий")
     public void test_goods_category_for_fatal()throws Exception{
         
         wmName = steps.get_wm_name();
@@ -63,7 +64,6 @@ public class GoodsCategoryStoryTest extends Constants {
        
         itemsCount = steps.get_categories_items_count();
         steps.check_categories_titles(10,itemsCount);
-                
         steps.close_browser();
 }
 }

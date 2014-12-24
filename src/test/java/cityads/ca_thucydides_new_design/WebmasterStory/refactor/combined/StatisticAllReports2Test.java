@@ -359,7 +359,7 @@ public class StatisticAllReports2Test {
     }
 
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void webOffersTableSortStoryTest() throws Exception{
 
         carcas.go_to_web_offers();

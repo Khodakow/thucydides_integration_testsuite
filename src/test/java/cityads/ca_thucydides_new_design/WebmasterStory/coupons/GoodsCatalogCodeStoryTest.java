@@ -29,7 +29,7 @@ public class GoodsCatalogCodeStoryTest{
     
     public Connection con;
     public String wmName;
-    private int goodsCardCount;
+
 
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -48,7 +48,8 @@ public class GoodsCatalogCodeStoryTest{
     
       
     
-    @Test @WithTagValuesOf({"block:Goods And Coupons", "role:Webmaster"})
+    @Test
+    @WithTagValuesOf({"block:Goods And Coupons", "role:Webmaster"})
     @Title("Проверка получения кода выгрузки товавров")
     public void test_goods_catalog_get_code()throws Exception{
         String cityLink;

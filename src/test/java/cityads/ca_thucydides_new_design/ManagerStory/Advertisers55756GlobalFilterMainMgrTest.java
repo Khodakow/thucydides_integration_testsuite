@@ -3,8 +3,10 @@ package cityads.ca_thucydides_new_design.ManagerStory;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.MainSiteSteps;
 import cityads.ca_thucydides_new_design.steps.ManagerSteps.CarcasStepsMgr;
-import cityads.ca_thucydides_new_design.steps.WebmasterSteps.StatisticSteps;
-import cityads.ca_thucydides_new_design.steps.refactor_steps.*;
+import cityads.ca_thucydides_new_design.steps.WebmasterSteps.StatisticTopFilterSteps;
+import cityads.ca_thucydides_new_design.steps.refactor_steps.FrontSteps;
+import cityads.ca_thucydides_new_design.steps.refactor_steps.StatisticsSteps;
+import cityads.ca_thucydides_new_design.steps.refactor_steps.TableSteps;
 import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
@@ -13,13 +15,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import java.util.ArrayList;
-
 
 @Story(TestSuite.Manager.class)
 @RunWith(ThucydidesRunner.class)
-
-public class StatisticMgrGoodsTest {
+@WithTag(name="Manager Tests")
+public class Advertisers55756GlobalFilterMainMgrTest {
 
     public String wmName;
 
@@ -30,38 +30,37 @@ public class StatisticMgrGoodsTest {
     public Pages pages;
 
     @Steps
-    public MainSiteSteps steps;
-
-
-    @Steps
     FrontSteps front;
     @Steps
     StatisticsSteps stat;
     @Steps
-    StatisticSteps ssteps;
+    StatisticTopFilterSteps topFilter;
     @Steps
     CarcasStepsMgr carcas;
     @Steps
-    TableSteps table;
+    public MainSiteSteps steps;
     @Steps
-    ConsoleSteps console;
+    public TableSteps table;
 
     @Before
     public void setUp(){
         front.loginMgr();
-        carcas.go_to_mgr_stat_goods();
-        table.setup_number_of_records(100);
     }
-
 
 
     @Test
-    public void statMgrGooodsDuplicateMainParameterTest() throws Exception{
-        ArrayList<String> mainParams = table.get_goods_mainparam();
-        table.check_column_for_unique_values(mainParams);
+    @Title("Проверка работы глобал фильтра у менеджера по реклам")
+    public void advertisers55756MainManagerTest() throws Exception{
+        carcas.go_to_mgr_stat_advertisers();
+        String adv = table.get_first_adv_mainparam();
+        topFilter.fill_top_filter_simple_and_choose_any(adv,2,2);
+        steps.check_fatal_errors();
+        table.check_table_has_text(adv);
+
     }
-
-
+    
+ 
+    
 
     
 } 

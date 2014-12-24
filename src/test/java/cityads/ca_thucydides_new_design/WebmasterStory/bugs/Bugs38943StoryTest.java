@@ -43,7 +43,8 @@ public class Bugs38943StoryTest {
         steps.close_browser();
     }
 
-    @Test@Title("Проверка сортировки товаров по цене по убыванию, задача 38943")
+    @Test
+    @Title("Проверка сортировки товаров по цене по убыванию, задача 38943")
     public void testBugDescSort38943() throws Exception{
 
         front.login();
@@ -56,7 +57,8 @@ public class Bugs38943StoryTest {
         steps.close_browser();
     }
 
-    @Test@Title("Проверка сортировки товаров по цене по возрастанию, задача 38943")
+    @Test
+    @Title("Проверка сортировки товаров по цене по возрастанию, задача 38943")
     public void testBugAscSort38943() throws Exception{
 
         front.login();

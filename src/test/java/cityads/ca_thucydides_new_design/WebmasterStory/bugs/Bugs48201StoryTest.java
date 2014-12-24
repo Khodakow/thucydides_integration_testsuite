@@ -29,6 +29,7 @@ public class Bugs48201StoryTest{
 
     
     @Test
+    @Title("По ссылке ЗАБЫЛИ  ПАРОЛЬ кидает на главную 48201")
     public void check_48201(){
 
         steps.open_main_page();
@@ -38,6 +39,7 @@ public class Bugs48201StoryTest{
         steps.click_enter_button();
         steps.select_en_language();
         steps.click_forgot_password_link();
+        steps.waitABit(5000);
         steps.check_reg_form_displayed();
         steps.submit_form();
         steps.close_browser();

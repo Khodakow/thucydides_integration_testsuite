@@ -39,7 +39,7 @@ public class OfferListPage extends MainPage {
         @FindBy(xpath="//a[contains(concat(' ', normalize-space(@class), ' '), ' submit  _go_to_page ') ]")
         private WebElement goToPageArrow;
 
-        @FindBy(xpath = "(//td[@class='favlock' and descendant::span[@class='icon-lock'] and not(descendant::span[@class='icon-favorites'])])[1]")
+        @FindBy(xpath = "(//td[@class='favlock' and descendant::span[@class='icon-lock'] and not(descendant::span[@class='icon-favorites'])])[1]/a")
         private WebElementFacade firstLock;
         
         public void clickGoToPageArrow(){
@@ -53,7 +53,12 @@ public class OfferListPage extends MainPage {
             return element(getFirstLineInBlueTable().findElement(By.className("name")).findElement(By.tagName("a")));
         }
  
-        
+        public Integer getLocksCountWithJquery(){
+            Long l = (Long) this.evaluateJavascript("return $('span[class=\"icon-lock\"]').size();");
+            return l.intValue();
+        }
+
+
         public void offerlistRegionFilterSelectRegions(){
        
             List<WebElement> regions = offerListRegionFilter.findElements(By.name("geo[]"));
@@ -106,7 +111,7 @@ public class OfferListPage extends MainPage {
 
     public void checkFirstLock() {
         waitForSpinnerDissapear();
-        firstLock.shouldBeCurrentlyVisible();
+        firstLock.shouldBeVisible();
     }
 
     public boolean hasLock () {

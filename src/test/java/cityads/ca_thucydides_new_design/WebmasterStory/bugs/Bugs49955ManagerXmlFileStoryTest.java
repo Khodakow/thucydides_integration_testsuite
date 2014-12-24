@@ -48,7 +48,8 @@ public class Bugs49955ManagerXmlFileStoryTest {
 
 
     
-    @Test@Title("Проверка глобального фильтра у менеджера по офису Бразилия")
+    @Test
+    @Title("Проверка глобального фильтра у менеджера по офису Бразилия")
     @Screenshots(onlyOnFailures = false)
     public void manager49955GlobalFilterStoryTest(){
 
@@ -59,7 +60,8 @@ public class Bugs49955ManagerXmlFileStoryTest {
         steps.close_browser();
 
     }
-    @Test@Title("Проверка выгрузки в эксель у менеджера с глобальным фильтром по офису Бразилия")
+    @Test
+    @Title("Проверка выгрузки в эксель у менеджера с глобальным фильтром по офису Бразилия")
     @Screenshots(onlyOnFailures = false)
     public void manager49955XMLFileStoryTest(){
 

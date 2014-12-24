@@ -37,6 +37,7 @@ public class DownloadsGoodsCopyCodeStoryTest extends Constants {
 
 
     @Test
+    @Title("Тест на выгрузку товаров - скопировать код")
     @WithTagValuesOf({"block:Downloads","role:Webmaster"})
     public void downloads_goods_copy_code_test() throws Exception{
 

@@ -42,6 +42,7 @@ public class Bugs48931StoryTest {
 
     
     @Test@Screenshots(onlyOnFailures = false)
+    @Title("ВЫГРУЗКИ КУПОНОВ. ПРИМЕНЯЯ ФИЛЬТР – ТОЛЬКО АКТИВНЫЕ, В ХМЛ ПОПАДАЮТ УЖЕ НЕАКТИВНЫЕ КУПОНЫ 48931")
     public void check48931test(){
 
         front.login();

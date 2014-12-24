@@ -52,6 +52,11 @@ public class GetLinkSteps extends ScenarioSteps {
     public void check_noretarget_table_has_text(String name) {
         assertTrue("Проверяем что оффер совпадает с оффером из фильтра", getLink.getFirstNoRetargetOffer().contains(name));
     }
+
+    @Step("Клик по параметрам ссылки в ретаргет таблице")
+    public void click_parameters_in_retarget() {
+        getLink.clickParametersInRetarget();
+    }
 }
     
 

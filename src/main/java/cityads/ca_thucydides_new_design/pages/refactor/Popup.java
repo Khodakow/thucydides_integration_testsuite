@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 
 public class Popup extends PageObject {
@@ -24,6 +25,9 @@ public class Popup extends PageObject {
 
     @FindBy(xpath="//div[contains(@class,'popup modal')]")
     private WebElementFacade popup;
+
+    @FindBy(xpath="//div[contains(@class,'popup modal')]/div/a")
+    private WebElementFacade popupLogoutOk;
 
     @FindBy(xpath="//a[@id='id_el_link_action_links' and ancestor::*[contains(@class,'popup modal')]]")
     private WebElementFacade popupToolsLink;
@@ -68,6 +72,8 @@ public class Popup extends PageObject {
     @FindBy(xpath = "(//a[contains(@id,'id_el_link_action_links')])[2]")
     private WebElement offerMainLink;
 
+    @FindBy(xpath = "//div[contains(@class,'popup modal black')]/div/div/div/div/div/div/div[contains(@class,'icon-offer-tools-wrapper')]")
+    private List<WebElement> tools;
 
 
 
@@ -130,8 +136,12 @@ public class Popup extends PageObject {
     public String getCodeFromTextarea(){
         copyButton.waitUntilVisible();
         waitABit(5000);
+        String driver = System.getProperty("webdriver.driver");
+        String code = null;
+
         WebElement couponsFeedCodename = page.couponsFeedCodeValue;
-        String code =  couponsFeedCodename.getAttribute("data-clipboard-text");
+        code =  couponsFeedCodename.getAttribute("data-clipboard-text");
+
         String curdomain = get_curent_domain_name();
         String code2 = code.replace("api.cityads.com",curdomain);
         Assert.assertTrue(!code.isEmpty());
@@ -144,6 +154,10 @@ public class Popup extends PageObject {
 
     public void checkPopupIsNotDisplayed() {
         popup.shouldNotBeCurrentlyVisible();
+    }
+
+    public  void checkPopupVisible() {
+        popup.shouldBeCurrentlyVisible();
     }
 
     public void checkPopupBlackIsNotDisplayed() {
@@ -194,6 +208,14 @@ public class Popup extends PageObject {
 
     public void clickOfferNainLink() {
         offerMainLink.click();
+    }
+
+    public Integer getToolsCount() {
+        return tools.size();
+    }
+
+    public void clickLogoutOk(){
+        popupLogoutOk.click();
     }
 }
 

@@ -37,7 +37,7 @@ public class StatHavingbugTest {
     @Steps
     PopupSteps popup;
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void statlegendplusadditionalTest() throws Exception{
 
         front.login();

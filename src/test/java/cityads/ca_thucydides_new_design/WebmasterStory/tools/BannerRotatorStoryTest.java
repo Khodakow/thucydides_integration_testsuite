@@ -52,6 +52,7 @@ public class BannerRotatorStoryTest extends Constants {
     }
     
     @Test
+    @Title("Тест на ротатор баннеров")
     @WithTagValuesOf({"block:Instruments","role:Webmaster"})
     public void banner_rotator_test() throws Exception{
        
@@ -138,6 +139,7 @@ public class BannerRotatorStoryTest extends Constants {
     }
     
     @Test
+    @Title("Тест на ротатор баннеров только 1100AD и флеш")
     @WithTagValuesOf({"block:Instruments","role:Webmaster"})
     public void banner_rotator_one_offer_flash_banner_test() throws Exception{
 
@@ -192,11 +194,12 @@ public class BannerRotatorStoryTest extends Constants {
     }
 
     @Test
+    @Title("Тест на ротатор баннеров только 1100AD и img")
     @WithTagValuesOf({"block:Instruments","role:Webmaster"})
     public void banner_rotator_one_offer_image_banner_test() throws Exception{
         String rotatorName3 = getCurrentDate()+" "+getRandomIntNumber();
         String offerNameInRotatorParams;
-        String offerWithImgBanner = "003.RU";
+        String offerWithImgBanner = "1100AD";
 
         carcas.go_to_banner_rotator();
         steps.check_fatal_errors();

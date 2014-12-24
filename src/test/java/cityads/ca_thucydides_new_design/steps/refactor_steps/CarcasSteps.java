@@ -93,6 +93,11 @@ public class CarcasSteps extends ScenarioSteps {
     public void go_to_web_offers(){
         carcas.goToWebOffers();
     }
+    @Step("Переход в  раздел Моб-офферы")
+    public void go_to_mob_offers(){
+        carcas.goToMobOffers();
+    }
+
 
     /*Инструменты*/
     @Step("Переход в  раздел Ротатор Баннеров")
@@ -335,7 +340,7 @@ public class CarcasSteps extends ScenarioSteps {
 
     @Step("Переход в каталог товаров")
     public void go_to_goods() {
-      carcas.goToGoodsCatalog();
+        carcas.goToGoodsCatalog();
     }
 
     @Step("Переход в категории товаров")
@@ -358,9 +363,9 @@ public class CarcasSteps extends ScenarioSteps {
         go_to_left_stat_menu_with_id_adv("_left_menu_id_428629753");
     }
 
-    @Step
-    public void click_first_top_breadcrumbs_element(){
-        carcas.clickFirstTopBreadcrumb();
+    @Step("В хлебных крошках нажимаем на первую ссылку из всех доступных")
+    public void click_first_breadcrumbs_link(){
+        carcas.clickFirstBreadCrumbs();
     }
 
     @Step("Переход в платежную информацию")
@@ -395,6 +400,26 @@ public class CarcasSteps extends ScenarioSteps {
     @Step("Переход в раздел -= финансы и выплаты =-")
     public void go_to_payments() {
         carcas.goToPayments();
+    }
+
+    @Step("Переход в хелп")
+    public void go_to_help() {
+        carcas.goToHelp();
+    }
+
+    @Step("Переходим на сводную")
+    public void go_to_dashboard() {
+        carcas.goToDashboard();
+    }
+
+    @Step("Нажимаем на кнопку OLD для перехода в старый интерфейс")
+    public void click_old_interface_button() {
+        carcas.clickOldInterfaceButton();
+    }
+
+    @Step("проверяем H1 в старом интерфейсе")
+    public void check_h1_interface_old() {
+        carcas.checkH1interfaceOld();
     }
 }
     

@@ -1,10 +1,11 @@
 package cityads.ca_thucydides_new_design.WebmasterStory.refactor;
 
-import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.OfferCardSteps;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.StatisticSteps;
+import cityads.ca_thucydides_new_design.steps.refactor_steps.CarcasSteps;
 import cityads.ca_thucydides_new_design.steps.refactor_steps.FilterSteps;
+import cityads.ca_thucydides_new_design.steps.refactor_steps.FrontSteps;
 import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
@@ -20,7 +21,7 @@ import java.sql.Connection;
 @Story(TestSuite.WebMaster.Statistic.class)
 @RunWith(ThucydidesRunner.class)
 @WithTag(name="Webmaster Tests")
-public class StatisticRealtimeStoryTest extends Constants {
+public class StatisticRealtimeStoryTest{
 
      public Connection con;
      public String wmName;
@@ -47,26 +48,27 @@ public class StatisticRealtimeStoryTest extends Constants {
     @Steps
     public FilterSteps filter;
 
+    @Steps
+    public FrontSteps front;
+
+    @Steps
+    public CarcasSteps carcas;
+
+
+
     @Test@Screenshots(onlyOnFailures = true)
     public void statistic_real_time_screen_test() throws Exception{
        
               
-        wmName = steps.get_wm_name();
-        steps.wm_login(wmName);
+        front.login();
         
-        //get link for stat test 
-        offerSteps.click_offer_link();
-        offerSteps.wait_for_all_spinners_dissapears(60);
-        offerSteps.click_web_offers();
-        
-        offerSteps.wait_for_all_spinners_dissapears(60);
-        offerSteps.check_fatal_errors();
+        carcas.go_to_web_offers();
 
         filter.reset_filter();
         filter.submit_filter();
 
 
-        offerSteps.click_offer_by_name("003");
+        offerSteps.click_offer_by_name("1100AD");
         steps.waitABit(4000);
         offerSteps.wait_for_start_offer_button_is_visible(15);
         offerSteps.check_description_is_visible();
@@ -82,7 +84,9 @@ public class StatisticRealtimeStoryTest extends Constants {
         steps.check_fatal_errors();
         steps.wait_for_all_highcharts_displayed(60);   
         steps.wait_for_all_spinners_dissapears(60);
-        
+
+
+
         WebElement chartByMin = steps.get_innerHTML_from_minutes_hightcharts();
         String parametersByMin = steps.get_graph_parameters_from_highchart(chartByMin);
         

@@ -51,7 +51,7 @@ public class BannerRotatorClickTest {
     public FrontSteps front;
 
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void bannerRotatorClickTest() throws Exception{
 
         String name = DataGenerator.getRandomNameWithDate();

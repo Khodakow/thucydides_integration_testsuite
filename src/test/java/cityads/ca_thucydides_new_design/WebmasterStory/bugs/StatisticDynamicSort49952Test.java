@@ -43,7 +43,7 @@ public class StatisticDynamicSort49952Test {
 
 
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void statisticDynamicDisableSort49952Test() throws Exception{
 
         front.login();

@@ -38,6 +38,7 @@ public class DownloadAllGoodsInXMLStoryTest extends Constants {
 
 
     @Test
+    @Title("Тест на выгрузку всех товаров в json")
     @WithTagValuesOf({"block:Downloads","role:Webmaster"})
     public void downloads_allgoods_xml_test() throws Exception{
 

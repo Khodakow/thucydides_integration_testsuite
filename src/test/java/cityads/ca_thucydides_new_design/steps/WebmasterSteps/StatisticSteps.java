@@ -708,7 +708,7 @@ public class StatisticSteps extends SetupSteps {
     @Step
     public void click_any_link_in_legend(int num) {
         page.secondLinkInLegend.waitUntilVisible();
-        page.find(By.xpath("(//table[contains(@class,'no-zebra')]/tbody/tr/td/a)["+num+"]")).click();
+        page.find(By.xpath("(//table[contains(@class,'no-zebra')]/tbody/tr/td/a[contains(@class,'col-blue')])["+num+"]")).click();
         waitABit(5000);
     }
 

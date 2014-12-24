@@ -43,7 +43,9 @@ public class Coupons50030FilterNotSavedStoryTest {
 
 
     
-    @Test@Screenshots(onlyOnFailures = false)
+    @Test
+    @Screenshots(onlyOnFailures = false)
+    @Title("Проверка создания фида купонов с несохраненным фильтром #50030")
     public void checkCouponsFilterNotSavedtest() throws IOException, SAXException, ParserConfigurationException {
         String feedName = DataGenerator.getRandomNameWithDate();
 

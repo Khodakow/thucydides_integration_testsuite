@@ -52,6 +52,7 @@ public class DownloadCouponsAllTest extends Constants {
 
 
     @Test
+    @Title("Тест на выгрузку купонов создание и редактирование")
     @WithTagValuesOf({"block:Downloads","role:Webmaster"})
     public void downloads_coupons_test() throws Exception{
 
@@ -119,6 +120,7 @@ public class DownloadCouponsAllTest extends Constants {
     }
 
     @Test
+    @Title("Тест на выгрузку купонов создание и редактирование")
     @WithTagValuesOf({"block:Downloads","role:Webmaster"})
     public void downloads_coupons_copy_code_test() throws Exception{
 

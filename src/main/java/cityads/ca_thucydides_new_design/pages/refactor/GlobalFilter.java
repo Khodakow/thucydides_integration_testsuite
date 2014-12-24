@@ -3,6 +3,7 @@ package cityads.ca_thucydides_new_design.pages.refactor;
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 
 public class GlobalFilter extends BasePage {
@@ -64,8 +65,8 @@ public class GlobalFilter extends BasePage {
     @FindBy(xpath="//span[(contains(@data-id,'Brazil')or contains(@data-id,'Бразилия'))]")
     private WebElementFacade criteriaOfficeBrazil;
 
-    @FindBy(xpath="//div[contains(@class,'_error_msg') and string-length(text()) > 0]")
-    private WebElementFacade errorMsg;
+    @FindBy(xpath="//div[contains(@class,'_error_msg')]")
+    private WebElement errorMsg;
 
 
 
@@ -145,15 +146,12 @@ public class GlobalFilter extends BasePage {
         firstElemeintInList.click();
 
         apply.click();
+        element(errorMsg).shouldNotBeCurrentlyVisible();
         waitForSpinnerDissapear();
-        filterContainer.shouldNotBeCurrentlyVisible();
         return offer;
 
     }
 
-    public boolean errorMsgIsVisible(){
-        return errorMsg.isCurrentlyVisible();
-    }
 }
 
 

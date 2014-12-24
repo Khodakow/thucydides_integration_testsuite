@@ -39,7 +39,7 @@ public class RotatorDynamic45544Test {
     BannerSteps banner;
 
 
-    @Test @Screenshots(onlyOnFailures=false)@Title("Проверка на динамику в ротаторе баннеров")
+    @Test @Title("Проверка на динамику в ротаторе баннеров")
     public void rotatorDynamic45544Test() throws Exception{
 
         front.login();

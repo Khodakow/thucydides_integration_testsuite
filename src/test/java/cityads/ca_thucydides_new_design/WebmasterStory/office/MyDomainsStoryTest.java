@@ -2,23 +2,16 @@ package cityads.ca_thucydides_new_design.WebmasterStory.office;
 
 import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
-import cityads.ca_thucydides_new_design.steps.WebmasterSteps.BannerRotatorSteps;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.MyDomainsSteps;
-import cityads.ca_thucydides_new_design.steps.WebmasterSteps.StatisticSteps;
-import java.sql.Connection;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.ManagedPages;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.Story;
-import net.thucydides.core.annotations.WithTag;
-import net.thucydides.core.annotations.WithTagValuesOf;
+import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
+
+import java.sql.Connection;
 
 
 @Story(TestSuite.WebMaster.MyDomains.class)
@@ -68,7 +61,7 @@ public class MyDomainsStoryTest extends Constants {
         steps.click_apply_button();
        
         steps.check_blue_table_has_lines();
-        steps.Sort_blue_table_by_first_th();
+        steps.sort_blue_table_by_first_th();
         steps.check_fatal_errors();
         actualDomainName = steps.get_domain_name_in_first_record_in_blue_table();
         steps.check_first_string_in_blue_table_has_domain_name(domainName, actualDomainName);

@@ -39,7 +39,7 @@ public class OffercardInstrumentsSortTest {
     @Steps
     CardSteps card;
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void offercardInstrumentsSortTest() throws Exception{
 
         front.login();

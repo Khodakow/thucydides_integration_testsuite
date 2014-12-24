@@ -40,7 +40,7 @@ public class StatisticDownloadXLSTest {
     @Steps
     TableSteps table;
 
-    @Test @Screenshots(onlyOnFailures=false)@Pending
+    @Test @Pending
     public void statXlsTest() throws Exception{
 
         front.login();

@@ -41,7 +41,7 @@ public class WebOffersSortAndPagesTest {
     TableSteps table;
 
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void webOffersAndPagesSortStoryTest() throws Exception{
 
         front.login();

@@ -1,6 +1,5 @@
 package cityads.ca_thucydides_new_design.WebmasterStory.translate;
 
-import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.SetupSteps;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.BugsSteps;
@@ -19,14 +18,10 @@ import java.sql.Connection;
 @Story(TestSuite.WebMaster.Translate.class)
 @RunWith(ThucydidesRunner.class)
 @WithTag(name="Webmaster Tests")
-public class OfficeTranslateStoryTest extends Constants {
+public class OfficeTranslateStoryTest{
 
     public Connection con;
     public String wmName;
-    public String rotatorName = getCurrentDate();
-    private String  bannerSize1;
-    private String  bannerSize2;
-    private String  bannerSize3;
     protected String AJSCode;
     protected String JSCode;
 
@@ -57,7 +52,7 @@ public class OfficeTranslateStoryTest extends Constants {
     public void checkOfficeTranslation(){
         front.login();
         bs.change_lang_to_br();
-        bs.wait_for_spinner_dissapear(20);
+        bs.wait_for_all_spinners_dissapears();
         bs.check_lang_select();
         bs.close_browser();
     }

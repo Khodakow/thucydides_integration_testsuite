@@ -54,6 +54,7 @@ public class DownloadCouponsXMLStoryTest extends Constants {
 
 
     @Test
+    @Title("Тест на выгрузку купонов в xml")
     @WithTagValuesOf({"block:Downloads","role:Webmaster"})
     public void downloads_coupons_xml_test() throws Exception{
 

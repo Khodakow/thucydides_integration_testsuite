@@ -40,7 +40,7 @@ public class WebOffersTableStringSortTest {
     @Steps
     TableSteps table;
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void webOffersTableStringSortTest() throws Exception{
 
         front.login();

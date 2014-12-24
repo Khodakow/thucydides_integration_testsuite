@@ -39,13 +39,13 @@ public class WebOffersBreadcrumbds49660Test {
     @Steps
     TableSteps table;
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void webOffersBreadcrumbds49660Test() throws Exception{
 
         front.login();
         carcas.go_to_web_offers();
         String legend = filter.get_filter_breadcrumbs();
-        carcas.click_first_top_breadcrumbs_element();
+        carcas.click_first_breadcrumbs_link();
         String newLegend = filter.get_filter_breadcrumbs();
         steps.check_values_are_equals(legend,newLegend);
         steps.close_browser();

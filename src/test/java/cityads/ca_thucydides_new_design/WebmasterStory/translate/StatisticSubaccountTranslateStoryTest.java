@@ -40,7 +40,7 @@ public class StatisticSubaccountTranslateStoryTest {
     @Steps
     TableSteps table;
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     @Title("Стат по субаккаунтам переводы")
     public void statisticByTrafficSoursesBySubaccountTranslateTest() throws Exception{
 

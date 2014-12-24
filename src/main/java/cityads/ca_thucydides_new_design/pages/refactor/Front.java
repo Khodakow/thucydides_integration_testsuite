@@ -64,25 +64,34 @@ public class Front extends BasePage {
 
     @FindBy(xpath="//a[contains(@class,'dark  submit')]")
     private WebElementFacade applyButton;
+
     @FindBy(xpath="//a[contains(@id,'save')]")
     private WebElementFacade saveForm;
+
     @FindBy(xpath="//a[@id='promoEdit']")
     private WebElementFacade eventEditor;
-    @FindBy(xpath="(//label[contains(@class,'checkbox no-padding')])[1]")
+
+    @FindBy(xpath="(//div[@class='item level-2 empty']/div[position()=2])[1]")
     private WebElementFacade goodsCategoryCheckbox;
-    @FindBy(xpath="(//div[contains(@class,'category_name po')])[1]")
+
+    @FindBy(xpath="(//div[@class='ib _category_name pointer' and descendant::span[descendant::span[@format='num']]])[1]")
     private WebElementFacade goodsCategotyLink;
+
     @FindBy(xpath=" (//a[@id='category_show_selected_items'])[1]")
     private WebElementFacade goodsCategorShowButton;
-    @FindBy(xpath="//div[@class='ib col-evil' and contains(text(),'Категории')]/following-sibling::div")
+
+    @FindBy(xpath="(//div[@class='_filter_line' and descendant::div[descendant::span[@data-bind='html: title' and contains(text(),'Категории')]]])/div[contains(@data-bind,'foreach:')]")
     private WebElementFacade goodaCategoryFilterResult;
+
+    @FindBy(xpath="//span[@class='col-blue _header_balance']")
+    private WebElementFacade balanceWm;
 
 
     public void login(){
         String passwd = System.getProperty("password");
         String name = System.getProperty("user");
 
-        if(!getDriver().getPageSource().contains("/webmaster_pro/office/dashboard")) {
+        if(!cabinet.isCurrentlyVisible()) {
             popupLoginLink.waitUntilVisible();
             popupLoginLink.click();
             waitABit(500);
@@ -99,12 +108,12 @@ public class Front extends BasePage {
             waitABit(500);
             popupLoginSubmit.waitUntilVisible();
             popupLoginSubmit.click();
-            waitABit(15000);
+            waitABit(5000);
             opacity.waitUntilNotVisible();
         }
         else{
             cabinet.click();
-            waitABit(15000);
+            waitABit(5000);
         }
 
 
@@ -324,7 +333,6 @@ public class Front extends BasePage {
 
     public void clickAndShowGoodsCategotyBylink(){
         goodsCategotyLink.waitUntilVisible().click();
-
         waitForSpinnerDissapear();
         waitABit(5000);
 
@@ -332,7 +340,7 @@ public class Front extends BasePage {
 
     public void checkCategoryFilterResult(){
         waitForSpinnerDissapear();
-        goodaCategoryFilterResult.shouldNotBeVisible();
+        goodaCategoryFilterResult.shouldBeCurrentlyVisible();
     }
 
     public void loginMgrWrongPwd() {
@@ -358,6 +366,11 @@ public class Front extends BasePage {
             popupLoginSubmit.click();
         }
     }
+
+    public String getbalance(){
+        return  balanceWm.getText().trim().replace("/","").replace("'","").replace("`","").trim();
+    }
+
 
     public void checkNot404() {
         element(notFound).shouldNotBeCurrentlyVisible();

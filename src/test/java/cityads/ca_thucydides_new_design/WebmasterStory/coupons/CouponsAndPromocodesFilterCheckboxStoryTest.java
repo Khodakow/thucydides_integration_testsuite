@@ -47,6 +47,7 @@ public class CouponsAndPromocodesFilterCheckboxStoryTest extends Constants {
 
 
     @Test
+    @Title("Проверка колчества регионов в фильтре в разделе Купоны")
     @WithTagValuesOf({"block:Goods And Coupons", "role:Webmaster"})
     public void coupons_and_promocodes_reigons_filter_test() throws Exception {
 
@@ -60,6 +61,7 @@ public class CouponsAndPromocodesFilterCheckboxStoryTest extends Constants {
     }
 
     @Test
+    @Title("Проверка колчества офферов в фильтре в разделе Купоны")
     @WithTagValuesOf({"block:Goods And Coupons", "role:Webmaster"})
     public void coupons_and_promocodes_offers_filter_test() throws Exception {
 
@@ -73,6 +75,7 @@ public class CouponsAndPromocodesFilterCheckboxStoryTest extends Constants {
     }
 
     @Test
+    @Title("Проверка колчества статусов офферов в фильтре в разделе Купоны")
     @WithTagValuesOf({"block:Goods And Coupons", "role:Webmaster"})
     public void coupons_and_promocodes_status_filter_test() throws Exception {
 
@@ -81,6 +84,7 @@ public class CouponsAndPromocodesFilterCheckboxStoryTest extends Constants {
     }
 
     @Test
+    @Title("Проверка колчества типов купонов в фильтре в разделе Купоны")
     @WithTagValuesOf({"block:Goods And Coupons", "role:Webmaster"})
     public void coupons_and_promocodes_type_filter_test() throws Exception {
 

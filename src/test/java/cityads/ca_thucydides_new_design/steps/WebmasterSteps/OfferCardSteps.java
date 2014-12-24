@@ -7,6 +7,7 @@ package cityads.ca_thucydides_new_design.steps.WebmasterSteps;
 import cityads.ca_thucydides_new_design.pages.MainPage;
 import cityads.ca_thucydides_new_design.pages.WemasterPages.BannerRotatorPage;
 import cityads.ca_thucydides_new_design.pages.WemasterPages.OfferCardPage;
+import com.google.common.net.InternetDomainName;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import org.junit.Assert;
@@ -15,6 +16,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -231,8 +234,12 @@ public class OfferCardSteps extends OfferListSteps {
     }
     
     @Step
-    public String get_offer_site(){
-        return page.getOfferSite();
+    public String get_offer_site() throws MalformedURLException {
+        String site = page.getOfferSite().trim();
+        URL url = new URL(site);
+        String host = url.getHost();
+        return InternetDomainName.from(host).topPrivateDomain().parts().get(0);
+
     }
   
     

@@ -53,10 +53,12 @@ public class OfferInstrumentsShortLinkStoryTest{
     CardSteps card;
 
  
-    @Test @WithTagValuesOf({"block:Instruments", "role:Webmaster"})
+    @Test
+    @WithTagValuesOf({"block:Instruments", "role:Webmaster"})
+    @Title("Проверка сокращенной ссылки в карточке оффера")
     public  void wm_offer_short_link_test() throws Exception{
 
-
+        String offerHost;
         front.login();
         carcas.go_to_web_offers();
         offerName = steps.get_first_offer_name();
@@ -64,8 +66,7 @@ public class OfferInstrumentsShortLinkStoryTest{
         steps.wait_for_start_offer_button_is_visible(25);
         steps.wait_for_h1_title_appears(offerName, 160);
         steps.check_h1_page_title(offerName);
-        offerSite = steps.get_offer_site().replaceAll("\\s+","").trim();
-        String offerHost = steps.getTopDomain(offerSite);
+        offerHost = steps.get_offer_site();
         System.out.println(offerHost);
 
 

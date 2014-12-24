@@ -40,7 +40,7 @@ public class StatisticChartEqualsTableTest {
     @Steps
     TableSteps table;
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void statDashboardTableTest() throws Exception{
 
         front.login();

@@ -34,6 +34,7 @@ public class ConversionPostbackStoryTest extends Constants {
     public ConversionPostbackSteps steps;
     
     @Test
+    @Title("Тест на сохранение конвершн постбек")
     @WithTagValuesOf({"block:Instruments","role:Webmaster"})
     public void conversion_postback_test() throws Exception{
        

@@ -41,6 +41,7 @@ public class StatisticTopFilterPage extends MainPage {
     private WebElementFacade filterContainer;
 
     public void fillTopFilterSimpleInclude(String text, int one, int two){
+        waitForSpinnerDissapear();
         filterOpenLink.waitUntilVisible();
         filterOpenLink.click();
         filterContainer.waitUntilVisible();
@@ -50,6 +51,7 @@ public class StatisticTopFilterPage extends MainPage {
         statInputTopFilterSimple.waitUntilVisible();
         statInputTopFilterSimple.sendKeys(text);
         submitTopFilter();
+        waitForSpinnerDissapear();
     }
 
     public void fillTopFilterSimpleIncludeENTER(String text, int one, int two){

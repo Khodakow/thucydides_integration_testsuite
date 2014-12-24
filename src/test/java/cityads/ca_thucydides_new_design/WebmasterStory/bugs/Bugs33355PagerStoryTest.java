@@ -1,6 +1,5 @@
 package cityads.ca_thucydides_new_design.WebmasterStory.bugs;
 
-import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.SetupSteps;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.BugsSteps;
@@ -20,7 +19,7 @@ import org.openqa.selenium.WebDriver;
 @Story(TestSuite.WebMaster.Bugs.class)
 @RunWith(ThucydidesRunner.class)
 @WithTag(name="pager bugs")
-public class Bugs33355PagerStoryTest extends Constants {
+public class Bugs33355PagerStoryTest{
 
 
 
@@ -59,7 +58,7 @@ public class Bugs33355PagerStoryTest extends Constants {
     CarcasSteps carcas;
 
     @Test
-    @Title("Курс обмена пейджинг")
+    @Title("Курс обмена пейджинг 33355")
     public void check_33355_exchange() throws Exception{
         front.login();
         carcas.go_to_exchange();
@@ -76,7 +75,7 @@ public class Bugs33355PagerStoryTest extends Constants {
     }
 
     @Test
-    @Title("пейджинг")// офферы пейджер
+    @Title("Офферы пейджинг 33355")// офферы пейджер
     public void check_33355_offers() throws Exception{
         front.login();
         carcas.go_to_web_offers();

@@ -54,7 +54,7 @@ public class ChosenOffersStoryTest extends Constants {
        
         steps.click_all_offers_tab();
         steps.wait_for_all_spinners_dissapears(50);
-        oSteps.Sort_blue_table_by_first_th();
+        oSteps.sort_blue_table_by_first_th();
         steps.wait_for_all_spinners_dissapears(50);
 
         steps.click_first_star();

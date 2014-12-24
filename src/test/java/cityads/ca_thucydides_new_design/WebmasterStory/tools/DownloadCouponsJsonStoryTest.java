@@ -51,6 +51,7 @@ public class DownloadCouponsJsonStoryTest extends Constants {
 
 
     @Test
+    @Title("Тест на выгрузку купонов в json")
     @WithTagValuesOf({"block:Downloads","role:Webmaster"})
     public void downloads_coupons_json_test() throws Exception{
 

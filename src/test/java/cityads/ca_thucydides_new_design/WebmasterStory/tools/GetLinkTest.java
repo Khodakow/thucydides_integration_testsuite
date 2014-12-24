@@ -68,7 +68,7 @@ public class GetLinkTest {
 
     }
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     @Title("Проверка гетлинк - сохранить и выйти")
     public void getLinkTest() throws Exception{
         String name = DataGenerator.getRandomNameWithDate();
@@ -100,7 +100,6 @@ public class GetLinkTest {
 
     @Test
     @Title("Проверка гетлинк - сохранить и получить код")
-    @Screenshots(onlyOnFailures=false)
     public void getLinkSaveAndGetcodeTest() throws Exception{
         String name = DataGenerator.getRandomNameWithDate();
         String subacc = DataGenerator.getRandomString();
@@ -130,7 +129,6 @@ public class GetLinkTest {
 
     @Test
     @Title("GetLink Проверка поиска оффера по ключевому слову в таблице retarget")
-    @Screenshots(onlyOnFailures=false)
     public void getLinkOfferSearchRetargetTest(){
 
         carcas.go_to_web_offers();
@@ -149,7 +147,6 @@ public class GetLinkTest {
 
     @Test
     @Title("GetLink Проверка поиска оффера по ключевому слову в таблице no retarget")
-    @Screenshots(onlyOnFailures=false)
     public void getLinkOfferSearchNoRetargetTest(){
 
         carcas.go_to_web_offers();
@@ -172,7 +169,6 @@ public class GetLinkTest {
     }
 
     @Test
-    @Screenshots(onlyOnFailures=false)
     @Title("Проверка гетлинк по первому подходящему офферу в обеих таблицах")
     public void getLinkTestWithOffer() throws Exception{
         String subacc = DataGenerator.getRandomString();

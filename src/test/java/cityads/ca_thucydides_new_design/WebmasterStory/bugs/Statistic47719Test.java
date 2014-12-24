@@ -38,7 +38,7 @@ public class Statistic47719Test {
     @Steps
     TableSteps table;
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void stat47719Test() throws Exception{
 
         front.login();

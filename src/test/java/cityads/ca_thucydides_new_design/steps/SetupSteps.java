@@ -5,10 +5,10 @@ import junit.framework.Assert;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
 import net.thucydides.core.pages.Pages;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -62,8 +62,25 @@ public class SetupSteps extends BaseSteps {
 
 
     @Step
-    public void open_url(String url) {
+    public void open_url(String url){
         getDriver().get(url);
+    }
+
+    @Step
+    public WebDriver set_driver(String proxyurl){
+        Proxy proxy = new Proxy();
+        proxy.setHttpProxy(proxyurl);
+        String hub = System.getProperty("webdriver.remote.url");
+        DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+        capabilities.setCapability(CapabilityType.PROXY,proxy);
+        WebDriver driver = null;
+        try {
+            driver = new RemoteWebDriver(new URL(hub), capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        getPages().setDriver(driver);
+        return driver;
     }
 
     @Step
@@ -357,6 +374,24 @@ public class SetupSteps extends BaseSteps {
     @Step
     public void switch_to_first_iframe() {
         getDriver().switchTo().frame(0);
+    }
+
+    @Step("уменьшить размер окна в N раз")
+    public void resize_window(int i) {
+        Dimension dimension = getDriver().manage().window().getSize();
+        System.out.println("Window size: "+dimension);
+
+        int width = dimension.getWidth();
+        int height = dimension.getHeight();
+        width /= i;
+        height /= i;
+        Dimension newdim = new Dimension(width,height);
+
+        getDriver().manage().window().setSize(newdim);
+        dimension = getDriver().manage().window().getSize();
+        System.out.println("New window size: "+dimension);
+        waitABit(3000);
+        refresh_page();
     }
 }
 

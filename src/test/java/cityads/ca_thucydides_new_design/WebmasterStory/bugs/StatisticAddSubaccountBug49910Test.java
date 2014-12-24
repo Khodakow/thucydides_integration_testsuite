@@ -40,8 +40,7 @@ public class StatisticAddSubaccountBug49910Test {
 
 
 
-
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void statisticAddSubaccountBug49910Test() throws Exception{
 
         front.login();

@@ -3,11 +3,7 @@ package cityads.ca_thucydides_new_design.WebmasterStory.bugs;
 import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.StatisticSteps;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.ManagedPages;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.core.annotations.Story;
-import net.thucydides.core.annotations.WithTag;
+import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
 import org.junit.Test;
@@ -34,6 +30,7 @@ public class Bugs36808StoryTest extends Constants {
 
     
     @Test
+    @Title("ПРОПАДАЕТ ГРАФИК ПРИ ВЫБОРЕ СРАВНИТЕЛЬНЫХ ДАТ В КАЛЕНДАРЕ 36808")
     public void check_36808(){
         String wmName = steps.get_wm_name(); 
         steps.wm_login(wmName);

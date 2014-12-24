@@ -40,7 +40,7 @@ public class DashboardTableSortTest {
     @Steps
     TableSteps table;
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void dashboardTableSortStoryTest() throws Exception{
 
         front.login();

@@ -43,7 +43,7 @@ public class GlobalFilterStatistic45282Test {
     @Steps
     TableSteps table;
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void stat45408Test() throws Exception{
 
         front.login();

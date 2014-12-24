@@ -21,7 +21,7 @@ public class Goods extends BasePage {
     @FindBy(xpath="//div[contains(@class,'_select _sort_field')]")
     private WebElementFacade sortSelect;
 
-    @FindBy(xpath="//div[@class='select-list']")
+    @FindBy(xpath="//div[@class='select-value pointer']")
     private WebElementFacade selectList;
 
     @FindBy(xpath="//a[@data-id='price:desc']")
@@ -130,7 +130,7 @@ public class Goods extends BasePage {
     }
 
     public String getFirstLandingUrl(){
-        return landingUrl.getAttribute("href");
+        return (String) this.evaluateJavascript("return $('div[class*=\"table-card\"]>div>div>div>a').attr('href')");
     }
 }
 

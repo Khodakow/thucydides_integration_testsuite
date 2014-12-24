@@ -12,6 +12,8 @@ public class GetLink extends BasePage {
         super(driver);
     }
 
+    private Popup popup;
+
     @FindBy(xpath="//table[@id='retargetTable']")
     private WebElementFacade retargetTable;
 
@@ -48,6 +50,10 @@ public class GetLink extends BasePage {
 
     @FindBy(xpath = "//textarea[@id='get_code']")
     private WebElementFacade codeArea;
+
+    @FindBy(xpath = "(//td[@data-name='acts']/a[@class='icon params'])[1]")
+    private WebElementFacade retargetParams;
+
 
     public String getFirstRetargetOffer() {
         return firstRetargetOffer.getText();
@@ -93,6 +99,11 @@ public class GetLink extends BasePage {
         return codeArea.getText();
     }
 
+    public void clickParametersInRetarget() {
+        waitForSpinnerDissapear();
+        retargetParams.click();
+        popup.waitPopup();
+    }
 }
 
 

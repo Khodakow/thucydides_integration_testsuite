@@ -368,7 +368,7 @@ public class TableSteps extends ScenarioSteps {
 
     @Step
     public void check_number_is_in_interval_5_percent(int one, int two){
-        boolean ckeck = one <= two*1.05 && one >= two*0.95;
+        boolean ckeck = one <= two*1.10 && one >= two*0.90;
         assertTrue("Проверка что значения различаются не более чем на 5%. "+one+" "+two, ckeck);
     }
 
@@ -432,5 +432,14 @@ public class TableSteps extends ScenarioSteps {
     }
 
 
+    @Step("Получаем имя первого рекла из таблицы (основнйо параметр)")
+    public String get_first_adv_mainparam() {
+        return table.getFirstAdv();
+    }
+
+    @Step("Проверяем что таблица присутствует")
+    public void check_table_is_visible() {
+        assertTrue(table.isTableVisible());
+    }
 }
 

@@ -1,9 +1,10 @@
 package cityads.ca_thucydides_new_design.WebmasterStory.tools;
 
-import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
-import cityads.ca_thucydides_new_design.steps.WebmasterSteps.BannerRotatorSteps;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.OfferCardSteps;
+import cityads.ca_thucydides_new_design.steps.refactor_steps.CarcasSteps;
+import cityads.ca_thucydides_new_design.steps.refactor_steps.FilterSteps;
+import cityads.ca_thucydides_new_design.steps.refactor_steps.FrontSteps;
 import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
@@ -11,25 +12,14 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import java.sql.Connection;
-import java.util.Set;
-
 
 @Story(TestSuite.WebMaster.OfferInstruments.class)
 @RunWith(ThucydidesRunner.class)
 @WithTag(name="Webmaster Tests")
-public class OfferInstrumentsLockedStoryTest extends Constants {
+public class OfferInstrumentsLockedStoryTest{
 
-     private Connection con;
+
      private String wmName;
-     private String offerName;
-     private String offerNameInMultiselect;
-     private String actualOfferName;
-     private String code;
-     private String offerSite;
-     private String actualSite;
-     private Set<String> handleList;
-     private String lastHandle;
 
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -41,26 +31,27 @@ public class OfferInstrumentsLockedStoryTest extends Constants {
     public OfferCardSteps steps;
     
     @Steps
-    public BannerRotatorSteps bannerSteps;
+    public FilterSteps filter;
+    @Steps
+    public CarcasSteps carcas;
+    @Steps
+    public FrontSteps front;
 
  
     @Test @WithTagValuesOf({"block:Instruments", "role:Webmaster"})
-    @Title("Проверка что есть недоступные офферы")
+    @Title("Проверка на наличие недоступных офферов")
     public  void wm_offer_instruments_locked_offer_test() throws Exception{
         
 
-        wmName = steps.get_wm_name();
-        steps.wm_login(wmName);
-        steps.click_offer_link();
+        front.login();
+        carcas.go_to_web_offers();
+        filter.reset_filter();
+        filter.submit_filter();
+        steps.sort_blue_table_by_first_th();
         steps.wait_for_all_spinners_dissapears(60);
-        steps.click_web_offers();
+        steps.sort_blue_table_by_first_th();
         steps.wait_for_all_spinners_dissapears(60);
-        steps.check_fatal_errors();
-        steps.Sort_blue_table_by_first_th();
-        steps.wait_for_all_spinners_dissapears(60);
-        steps.Sort_blue_table_by_first_th(); 
-        steps.wait_for_all_spinners_dissapears(60);
-        steps.check_bluetable_first_line_has_lock();
+        steps.count_locks_with_jquery();
         steps.click_first_offer();
 
         steps.wait_for_start_offer_button_is_visible(15);

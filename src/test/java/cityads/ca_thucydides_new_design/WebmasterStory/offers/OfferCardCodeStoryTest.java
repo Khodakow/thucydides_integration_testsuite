@@ -51,7 +51,7 @@ public class OfferCardCodeStoryTest extends Constants {
        
         steps.check_fatal_errors();
         steps.waitABit(5000);
-        steps.Sort_blue_table_by_first_th();
+        steps.sort_blue_table_by_first_th();
         steps.wait_for_offers_table_appears(60);
         steps.wait_for_all_spinners_dissapears(60);
         steps.waitABit(5000);

@@ -40,6 +40,7 @@ public class DownloadGoodsJsonStoryTest extends Constants {
 
 
     @Test
+    @Title("Тест на выгрузку товаров в json")
     @WithTagValuesOf({"block:Downloads","role:Webmaster"})
     public void downloads_goods_json_test() throws Exception{
 

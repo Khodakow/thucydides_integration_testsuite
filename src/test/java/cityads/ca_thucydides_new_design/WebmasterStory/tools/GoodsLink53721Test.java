@@ -53,14 +53,15 @@ public class GoodsLink53721Test {
     @Title("Проверка совпадения ссылки на товар в интерфейсе ВМа и после редиректа, фильтр - в наличие")
     public void goodsLink53721Test() throws Exception{
 
-        filter.click_checkbox_in_filter(6,2);
+        filter.reset_filter();
+        filter.click_checkbox_in_filter(2,1);
         filter.submit_filter();
         steps.check_fatal_errors();
         String url = goods.get_first_goods_url();
         String landing = goods.get_first_landing_url();
         steps.open_url(url);
-        String redirectedUrl = steps.get_current_url();
-        steps.check_string_contains_text(redirectedUrl,landing);
+        String redirectedUrl = steps.get_curent_domain_name();
+        steps.check_string_contains_text(landing,redirectedUrl);
 
 
     }

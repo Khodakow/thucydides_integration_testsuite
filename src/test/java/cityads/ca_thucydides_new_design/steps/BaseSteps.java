@@ -28,6 +28,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.*;
@@ -70,7 +71,7 @@ public class BaseSteps extends FrontSteps {
     
     @Step
     public void check_string_contains_text(String str, String text){
-        assertTrue("Проверка что строка " + str + " содержит " + text, str.contains(text));
+        assertThat(str, containsString(text));
     }
 
     @Step
@@ -98,16 +99,9 @@ public class BaseSteps extends FrontSteps {
     
     @Step("Проверяем на наличие sql error, fatal error и exception")
     public void check_fatal_errors(){
-
-
-        assertFalse(getDriver().getPageSource().contains("sql error"));
-        assertFalse(getDriver().getPageSource().contains("SELECT"));
-        assertFalse(getDriver().getPageSource().contains("ORDER BY"));
-        assertFalse(getDriver().getPageSource().contains("sql error"));
-        assertFalse(getDriver().getPageSource().contains("SQL error"));
-        assertFalse(getDriver().getPageSource().contains("fatal error"));
-        assertFalse(getDriver().getPageSource().contains("exception"));
-
+        List<String> strings = Arrays.asList(getDriver().getPageSource().split("[\\-.\\s\\t\\n\\r\\x0b<>,]"));
+        ArrayList<String> words = get_all_fatals_from_array(strings);
+        check_array_has_fatals(words);
 
     }
 
@@ -806,7 +800,7 @@ public class BaseSteps extends FrontSteps {
     }
 
     @Step("отсортировать таблицу по первому th")
-    public void Sort_blue_table_by_first_th(){
+    public void sort_blue_table_by_first_th(){
         mainPage.sort_blue_table_by_first_th();
     }
 
@@ -1475,11 +1469,15 @@ public class BaseSteps extends FrontSteps {
     }
 
     @Step
-    public void check_array_has_elements(ArrayList<String> list){
+     public void check_array_has_elements(ArrayList<String> list){
         assertFalse("Найдены слова на кириллице!",list.size()>0);
     }
 
     @Step
+    public void check_array_has_fatals(ArrayList<String> list){
+        assertFalse("В исходном коде найдены подохрительные слова !",list.size()>0);
+    }
+
     public ArrayList<String> get_all_rus_words_from_array(List<String> words){
         ArrayList<String> rusWords = new ArrayList<String>();
         for(String s : words){
@@ -1524,6 +1522,25 @@ public class BaseSteps extends FrontSteps {
         return rusWords;
     }
 
+    public ArrayList<String> get_all_fatals_from_array(List<String> words){
+        ArrayList<String> rusWords = new ArrayList<String>();
+        for(String s : words){
+            if((      s.contains("Fatal")
+                    ||s.contains("Sql error")
+                    ||s.contains("SQL")
+                    ||s.contains("SQL ERROR")
+                    ||s.contains("FATAL")
+                    ||s.contains("SELECT")
+                    ||s.contains("FATAL")
+                    ||s.contains("ORDER BY")
+                    ||s.contains("exception")
+                    ||s.contains("sql error")
+            )){
+                rusWords.add(StringEscapeUtils.escapeHtml4((StringEscapeUtils.escapeHtml3(s))));
+            }
+        }
+        return rusWords;
+    }
 
 
     @Step
@@ -1926,7 +1943,7 @@ public class BaseSteps extends FrontSteps {
     }
 
 
-    @Step
+    @Step("Берем текущий URL")
     public String get_current_url() {
         return getDriver().getCurrentUrl();
     }

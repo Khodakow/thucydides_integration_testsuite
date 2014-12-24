@@ -44,6 +44,7 @@ public class Bugs49704ClearGlobalFilterStoryTest {
 
     
     @Test@Screenshots(onlyOnFailures = false)
+    @Title("ГЛОБАЛ ФИЛЬТР - ПРИ КЛИКЕ НА СБРОСИТЬ ФИЛЬТР ОЧИЩАЕТСЯ НО ДАННЫЕ НЕ МЕНЯЮТСЯ")
     public void clearFilter49704StoryTest(){
 
         front.login();
@@ -53,7 +54,6 @@ public class Bugs49704ClearGlobalFilterStoryTest {
         global.reset_filter();
         String conditionNew = global.get_condition();
         steps.check_string_has_changed(condition,conditionNew);
-
 
 
 

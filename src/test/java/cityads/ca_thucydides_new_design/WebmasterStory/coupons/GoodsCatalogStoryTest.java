@@ -56,7 +56,8 @@ public class GoodsCatalogStoryTest extends Constants {
     @Steps
     FilterSteps filter;
     
-    @Test @WithTagValuesOf({"block:Goods And Coupons", "role:Webmaster"})    
+    @Test @WithTagValuesOf({"block:Goods And Coupons", "role:Webmaster"})
+    @Title("Проверка раздела Каталог Товаров - количество товаров")
     public void test_goods_catalog()throws Exception{
         
         wmName = steps.get_wm_name();
@@ -69,8 +70,7 @@ public class GoodsCatalogStoryTest extends Constants {
         steps.wait_for_all_spinners_dissapears(60);
         steps.click_reset_filter_button();
         steps.wait_for_all_spinners_dissapears(60);
-      
-    
+
         
         //goods count = 20
         goodsCardCount = steps.get_goods_cards_count();
@@ -92,9 +92,7 @@ public class GoodsCatalogStoryTest extends Constants {
         steps.check_fatal_errors();
         goodsCardCount5 = steps.get_goods_cards_count();
         steps.check_goods_card_count(1, goodsCardCount5);
-               
 
-      
         
         steps.close_browser();
         

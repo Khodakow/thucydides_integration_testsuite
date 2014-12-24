@@ -42,7 +42,7 @@ public class Statistic47687Test {
     @Steps
     ConsoleSteps console;
 
-    @Test @Screenshots(onlyOnFailures=false)
+    @Test
     public void stat47687Test() throws Exception{
 
         front.login();

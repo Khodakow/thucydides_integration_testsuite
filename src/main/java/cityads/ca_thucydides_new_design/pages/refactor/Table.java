@@ -93,6 +93,9 @@ public class Table extends BasePage {
     @FindBy(xpath="//td[descendant::nobr[2] and not(contains(node()[2],'Неизвестно')) and not(contains(node()[2],'Unknown')) ]/nobr/a")
     private WebElementFacade sudoInTable;
 
+    @FindBy(xpath="(//td[descendant::nobr[2] and not(contains(node()[2],'Неизвестно')) and not(contains(node()[2],'Unknown')) ]/nobr)[1]")
+    private WebElementFacade advFirst;
+
     @FindBy(xpath="//*[contains(text(),'нет прав для просмотра')]")
     private WebElementFacade noRightsText;
 
@@ -671,6 +674,10 @@ public class Table extends BasePage {
             String elemtext = elem.getText();
             checkStringContainsText(elemtext, name);
         }
+    }
+
+    public String getFirstAdv(){
+        return advFirst.getText();
     }
 }
 

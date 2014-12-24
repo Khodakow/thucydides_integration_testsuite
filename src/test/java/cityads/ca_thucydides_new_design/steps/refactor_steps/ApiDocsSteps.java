@@ -37,7 +37,6 @@ public class ApiDocsSteps extends ScenarioSteps {
         page.clickSoap();
     }
 
-
     @Step
     public void go_to_rest(){
         page.clickRest();
@@ -88,8 +87,32 @@ public class ApiDocsSteps extends ScenarioSteps {
         page.clickUser();
     }
 
+    @Step("Проверка шапки в Api/dev")
+    public void check_top_panel_is_visible() {
+        page.checkPanelIsVisible();
+    }
+
+    @Step("Проверяем кнопки соц.сетей")
+    public void check_social_buttons() {
+        page.checkSocialButtons();
 
 
+    }
+
+    @Step("Клик по кнопке Facebook")
+    public void click_facebook() {
+        page.clickFacebook();
+    }
+
+
+    @Step
+    public void click_twitter() {
+        page.clickTwitter();
+    }
+
+
+    @Step
+    public void clickVk() {
+        page.clickVk();
+    }
 }
-    
-

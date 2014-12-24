@@ -42,7 +42,7 @@ public class BasePage extends PageObject {
     @FindBy(xpath="//div[@class= '_content_place' and contains(text(),'технических работ') or contains(text(),'trabalhos técnicos') or contains(text(),'server maintenance')]")
     private WebElementFacade statError;
 
-    @FindBy(xpath="//div[contains(@class,'_window_title') and contains(text(),'Запросы')]")
+    @FindBy(xpath="//div[contains(@class,'_window_title') and (contains(text(),'Запросы') or contains(text(),'Pedido'))]")
     private WebElementFacade popupVersion;
 
     @FindBy(xpath = "//a[contains(@id,'statExportButton')]")
@@ -146,7 +146,6 @@ public class BasePage extends PageObject {
         System.out.println("stat error: "+statError.isCurrentlyVisible());
         if(statError.isCurrentlyVisible()){
             this.evaluateJavascript("$('div[class=\"_queries_log\"]').click()");
-            popupVersion.waitUntilVisible();
             //сдвигаем  попап с ошибкой чтобы было видно
             this.evaluateJavascript("$('div[class*=\"popup modal black show transition3\"]:eq(0)').css('left','0px')");
 

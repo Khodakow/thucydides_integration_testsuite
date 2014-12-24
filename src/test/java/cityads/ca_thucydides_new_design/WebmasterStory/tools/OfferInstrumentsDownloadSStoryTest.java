@@ -34,12 +34,6 @@ public class OfferInstrumentsDownloadSStoryTest extends Constants {
     public OfferCardSteps steps;
 
     @Steps
-    public BannerRotatorSteps bannerSteps;
-
-    @Steps
-    public DownloadsSteps downloadSteps;
-
-    @Steps
     public FrontSteps front;
 
     @Steps
@@ -55,10 +49,11 @@ public class OfferInstrumentsDownloadSStoryTest extends Constants {
 
 
 
-    @Test @WithTagValuesOf({"block:Instruments", "role:Webmaster"})
+    @Test
+    @WithTagValuesOf({"block:Instruments", "role:Webmaster"})
+    @Title("Проверка перехода на выгрузку товаров с карточки оффера #54513")
     public  void wm_offer_instruments_downloads_goods_test() throws Exception{
         front.login();
-        String offerNameHardcore = "Aliexpress";
 
         carcas.go_to_web_offers();
         steps.wait_for_filters();
@@ -86,7 +81,7 @@ public class OfferInstrumentsDownloadSStoryTest extends Constants {
 
     }
 
-    //@Test @WithTagValuesOf({"block:Instruments", "role:Webmaster"})
+    @Test @WithTagValuesOf({"block:Instruments", "role:Webmaster"})
     public  void wm_offer_instruments_downloads_coupons_test() throws Exception{
 
         front.login();
@@ -94,7 +89,7 @@ public class OfferInstrumentsDownloadSStoryTest extends Constants {
         steps.wait_for_filters();
 
         steps.click_reset_filter_button();
-        steps.click_apply_right_filter();
+        filter.submit_filter();
         steps.wait_for_all_spinners_dissapears(60);
 
         filter.click_checkbox_in_filter(4,2);
@@ -105,8 +100,6 @@ public class OfferInstrumentsDownloadSStoryTest extends Constants {
 
         steps.click_offer_instruments_tab_by_id();
         steps.wait_for_all_spinners_dissapears(60);
-
-        steps.scroll_to_bottom();
 
         if (steps.getDriver().getCurrentUrl().contains("cityads")) {
             steps.click_create_download_coupons_icon();

@@ -24,15 +24,7 @@ public class ProfileStoryTest extends Constants {
      private String randomString1 = getRandomString(); 
      private String randomString2 = getRandomString(); 
      private String randomString3 = getRandomString(); 
-     boolean newsState;
-     boolean productState;
-     boolean offerState;
-     boolean techNewsState;
-     boolean newsState2;
-     boolean productState2;
-     boolean offerState2;
-     boolean techNewsState2;
-     private String countValueActual;
+
 
     @Managed(uniqueSession = true)
     public WebDriver webdriver;
@@ -44,7 +36,7 @@ public class ProfileStoryTest extends Constants {
     public ProfileSteps steps;
     
  
-    @Test @WithTagValuesOf({"block:Office", "role:Webmaster"})
+    //@Test @WithTagValuesOf({"block:Office", "role:Webmaster"})
     public  void profile_test_personal_info() throws Exception{
 
         
@@ -72,45 +64,7 @@ public class ProfileStoryTest extends Constants {
         steps.check_profile_top20_is_saved(randomString2);
         steps.close_browser();
     }
-    
-//    @Pending
-//    @Test @WithTagValuesOf({"block:Office", "role:Webmaster"}) 
-//    public void profile_test_billing_info() throws Exception{
-//        
-//        wmName = steps.get_wm_name();
-//        steps.wm_login(wmName);
-//        steps.check_fatal_errors();
-//        steps.click_profile_link();
-//        steps.check_fatal_errors();
-//        steps.click_profile_billing_tab();
-//           
-//        steps.waitAjax(8000);
-//            
-//            
-//        if(!steps.check_if_second_tab_has_warning()){
-//            //steps.check_your_manager_block_are_displayed();
-//           
-//            steps.check_fatal_errors();
-//            steps.fill_wm_profile_count_number(wmProfileTab2CountNumber);
-//           
-//            steps.select_currency_in_profile(wmProfileCurrency);
-//            steps.select_WMZ();
-//            steps.submit_profile_tab2();
-//            steps.close_browser();
-//          
-//            steps.wm_login(wmName);
-//            steps.check_fatal_errors();
-//            steps.click_profile_link();
-//            steps.check_fatal_errors();
-//            steps.click_profile_billing_tab();
-//           
-//            steps.waitAjax(8000);
-//            if(!steps.check_if_second_tab_has_warning()){countValueActual = steps.get_billing_count();
-//            steps.check_saved_count_value(wmProfileTab2CountNumber,countValueActual);}
-//        }
-//
-//        steps.close_browser();
-//    }
+
     
     @Test @WithTagValuesOf({"block:Office", "role:Webmaster"})  
     public void profile_test_notifications_info() throws Exception{
@@ -128,16 +82,15 @@ public class ProfileStoryTest extends Constants {
 
         steps.wait_for_all_spinners_dissapears(90);
         steps.check_fatal_errors();
-        //steps.check_your_manager_block_are_displayed();
 
         
        boolean checkBox1State1 = steps.get_i_checkbox_state(0);
-       boolean checkBox2State1 = steps.get_i_checkbox_state(1);
-       boolean checkBox3State1 = steps.get_i_checkbox_state(2);
-       boolean checkBox4State1 = steps.get_i_checkbox_state(3);
-       boolean checkBox5State1 = steps.get_i_checkbox_state(4);
-       boolean checkBox6State1 = steps.get_i_checkbox_state(5);
-       boolean checkBox7State1 = steps.get_i_checkbox_state(6);
+//       boolean checkBox2State1 = steps.get_i_checkbox_state(1);
+//       boolean checkBox3State1 = steps.get_i_checkbox_state(2);
+//       boolean checkBox4State1 = steps.get_i_checkbox_state(3);
+//       boolean checkBox5State1 = steps.get_i_checkbox_state(4);
+//       boolean checkBox6State1 = steps.get_i_checkbox_state(5);
+//       boolean checkBox7State1 = steps.get_i_checkbox_state(6);
 
         
         steps.click_all_checkboxes();
@@ -150,23 +103,23 @@ public class ProfileStoryTest extends Constants {
         
         
        boolean checkBox1State2 = steps.get_i_checkbox_state(0);
-       boolean checkBox2State2 = steps.get_i_checkbox_state(1);
-       boolean checkBox3State2 = steps.get_i_checkbox_state(2);
-       boolean checkBox4State2 = steps.get_i_checkbox_state(3);
-       boolean checkBox5State2 = steps.get_i_checkbox_state(4);
-       boolean checkBox6State2 = steps.get_i_checkbox_state(5);
-       boolean checkBox7State2 = steps.get_i_checkbox_state(6);
+//       boolean checkBox2State2 = steps.get_i_checkbox_state(1);
+//       boolean checkBox3State2 = steps.get_i_checkbox_state(2);
+//       boolean checkBox4State2 = steps.get_i_checkbox_state(3);
+//       boolean checkBox5State2 = steps.get_i_checkbox_state(4);
+//       boolean checkBox6State2 = steps.get_i_checkbox_state(5);
+//       boolean checkBox7State2 = steps.get_i_checkbox_state(6);
 
     
         
         
         steps.check_checkbox_status_has_changed(checkBox1State1, checkBox1State2);
-        steps.check_checkbox_status_has_changed(checkBox2State1, checkBox2State2);
-        steps.check_checkbox_status_has_changed(checkBox3State1, checkBox3State2);
-        steps.check_checkbox_status_has_changed(checkBox4State1, checkBox4State2);
-        steps.check_checkbox_status_has_changed(checkBox5State1, checkBox5State2);
-        steps.check_checkbox_status_has_changed(checkBox6State1, checkBox6State2);
-        steps.check_checkbox_status_has_changed(checkBox7State1, checkBox7State2);
+//        steps.check_checkbox_status_has_changed(checkBox2State1, checkBox2State2);
+//        steps.check_checkbox_status_has_changed(checkBox3State1, checkBox3State2);
+//        steps.check_checkbox_status_has_changed(checkBox4State1, checkBox4State2);
+//        steps.check_checkbox_status_has_changed(checkBox5State1, checkBox5State2);
+//        steps.check_checkbox_status_has_changed(checkBox6State1, checkBox6State2);
+//        steps.check_checkbox_status_has_changed(checkBox7State1, checkBox7State2);
  
         
         steps.check_fatal_errors();

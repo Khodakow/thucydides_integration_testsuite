@@ -10,13 +10,14 @@ import cityads.ca_thucydides_new_design.steps.SetupSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.pages.WebElementFacade;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  *
@@ -81,9 +82,9 @@ public class OfferListSteps extends SetupSteps {
         } catch (InterruptedException ex) {
             Logger.getLogger(OfferListSteps.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Assert.assertTrue(page.offerListCategoryFilter.isDisplayed());
-        Assert.assertTrue(page.offerListRegionFilter.isDisplayed());
-        Assert.assertTrue(page.offerListToolFilter.isDisplayed());
+        assertTrue(page.offerListCategoryFilter.isDisplayed());
+        assertTrue(page.offerListRegionFilter.isDisplayed());
+        assertTrue(page.offerListToolFilter.isDisplayed());
     }
     
     
@@ -91,6 +92,14 @@ public class OfferListSteps extends SetupSteps {
     public void check_bluetable_first_line_has_lock(){
         page.checkFirstLock();
     }
+
+    @Step("Считаем число замков с помощью скрипта $('span[class=\"icon-lock\"]').size() и проверяем что > 0")
+    public void count_locks_with_jquery(){
+        Integer size = page.getLocksCountWithJquery();
+        //assertNotNull("проверяем что $('span[class=\"icon-lock\"]').size() не Null ",size);
+        assertTrue(size > 0);
+    }
+
 
     @Step("Проверяем что в первой строке в первом столбце присутствует замок")
     public boolean hasLockOffer(){

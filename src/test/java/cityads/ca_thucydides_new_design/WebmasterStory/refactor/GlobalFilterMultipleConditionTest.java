@@ -49,7 +49,6 @@ public class GlobalFilterMultipleConditionTest {
         front.login();
         carcas.go_to_statistic_by_conversion_by_offers();
         String offer = global.set_complex_condition();
-        global.check_error_not_displayed();
         table.check_all_data_in_offers_main_parametr(offer);
 
     }

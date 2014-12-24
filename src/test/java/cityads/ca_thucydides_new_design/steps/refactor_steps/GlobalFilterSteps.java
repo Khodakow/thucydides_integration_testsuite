@@ -9,8 +9,6 @@ import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
 
-import static org.junit.Assert.assertTrue;
-
 
 /**
  *
@@ -53,10 +51,10 @@ public class GlobalFilterSteps extends ScenarioSteps {
         return globalFilter.setComplexCondition();
     }
 
-    @Step("Проверяем что сообщение об ошибке не отображается")
+/*    @Step("Проверяем что сообщение об ошибке не отображается")
     public void check_error_not_displayed(){
         assertTrue("Проверяем что сообщение с ошибкой не отображается ", globalFilter.errorMsgIsVisible());
-    }
+    }*/
 }
     
 

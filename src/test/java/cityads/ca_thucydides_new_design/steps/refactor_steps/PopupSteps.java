@@ -29,6 +29,14 @@ public class PopupSteps extends ScenarioSteps {
     @Step("Проверяем что popup не отображается")
     public void check_popup_is_not_displayed(){
         popup.checkPopupIsNotDisplayed();
+
+    }
+
+    @Step("Проверяем что логаут popup отображается и нажимаем кнпк ОК")
+    public void check_logout_popup_and_close(){
+        popup.checkPopupVisible();
+        popup.clickLogoutOk();
+        popup.checkPopupIsNotDisplayed();
     }
 
     @Step("Клик по иконке Выгруза купонов в попапе")
@@ -44,6 +52,11 @@ public class PopupSteps extends ScenarioSteps {
     @Step("Кликаем ссылку -=ССЫЛКИ=- в попапе оффера")
     public void click_offercard_main_links() {
         popup.clickOfferNainLink();
+    }
+
+    @Step("Считаем количество инструментво в попапе офферы")
+    public Integer get_tools_count(){
+        return popup.getToolsCount();
     }
 }
     
