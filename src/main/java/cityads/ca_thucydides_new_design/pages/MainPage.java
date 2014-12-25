@@ -675,6 +675,8 @@ public class MainPage extends BasePage {
     @FindBy(xpath="//a[@class='col-blacky underline-h icon-lang dropdown-link']")
     public WebElement ru;
 
+    @FindBy(xpath="//div[contains(@class,'ib dropdown')]/a")
+    public WebElement lang;
 
     //col-blacky underline-h icon-lang dropdown-link
 

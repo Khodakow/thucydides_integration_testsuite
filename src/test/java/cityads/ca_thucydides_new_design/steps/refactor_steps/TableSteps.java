@@ -441,5 +441,15 @@ public class TableSteps extends ScenarioSteps {
     public void check_table_is_visible() {
         assertTrue(table.isTableVisible());
     }
+
+    @Step("Получаем все даты кликов в отчете по конверсии")
+    public ArrayList<String> get_conversions_click_dates() {
+        return table.getConversionsClickDates();
+    }
+
+    @Step("Получаем все даты конверсий в отчете по конверсии")
+    public ArrayList<String> get_conversions_dates() {
+        return table.getConversionsDates();
+    }
 }
 

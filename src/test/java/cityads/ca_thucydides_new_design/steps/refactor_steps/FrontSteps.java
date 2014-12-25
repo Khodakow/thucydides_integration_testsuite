@@ -31,6 +31,8 @@ public class FrontSteps extends ScenarioSteps {
     public void enter(){
         front.openBaseUrl();
         front.login();
+        front.setRuLang();
+
     }
 
     @Step("Авторизация рекламодателя")

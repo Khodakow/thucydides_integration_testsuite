@@ -111,6 +111,12 @@ public class Table extends BasePage {
     @FindBy(xpath = "//td[contains(@class,'category_lvl_1')]")
     private List<WebElement> vertikalsMainParam;
 
+    @FindBy(xpath = "//td[contains(@class,'click_time_no_aggr')]/nobr/div")
+    private List<WebElement> convClickDates;
+
+    @FindBy(xpath = "//td[contains(@class,'lead_time_no_aggr')]/nobr/div")
+    private List<WebElement> convDates;
+
     @FindBy(xpath = "//td[contains(@class,'promo_size')]")
     private List<WebElement> promosizeMainParam;
 
@@ -678,6 +684,24 @@ public class Table extends BasePage {
 
     public String getFirstAdv(){
         return advFirst.getText();
+    }
+
+    public ArrayList<String> getConversionsClickDates() {
+        ArrayList<String> dates = new ArrayList<String>();
+        for( WebElement elem : convClickDates){
+            String elemtext = elem.getText().split(" +")[0];
+            dates.add(elemtext);
+        }
+        return dates;
+    }
+
+    public ArrayList<String> getConversionsDates() {
+        ArrayList<String> dates = new ArrayList<String>();
+        for( WebElement elem : convDates){
+            String elemtext = elem.getText().split(" +")[0];
+            dates.add(elemtext);
+        }
+        return dates;
     }
 }
 

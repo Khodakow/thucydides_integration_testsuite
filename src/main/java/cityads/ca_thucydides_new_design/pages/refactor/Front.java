@@ -1,5 +1,6 @@
 package cityads.ca_thucydides_new_design.pages.refactor;
 
+import cityads.ca_thucydides_new_design.pages.MainPage;
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.WebElementFacade;
 import org.openqa.selenium.WebDriver;
@@ -18,6 +19,7 @@ public class Front extends BasePage {
     private Form form;
     private Welcome welcome;
     private Table table;
+    MainPage mainPage;
 
 
     @FindBy(xpath = "//a[@class='login-link' and contains(@href,'dashboard')]")
@@ -374,6 +376,16 @@ public class Front extends BasePage {
 
     public void checkNot404() {
         element(notFound).shouldNotBeCurrentlyVisible();
+    }
+
+
+    public void setRuLang() {
+        System.out.println("Current lang: " + mainPage.lang.getText());
+        if(!mainPage.lang.getText().contains("ru")) {
+            System.out.println("Changing lang to ru");
+            mainPage.click_select_lang();
+            mainPage.click_first_lang();
+        }
     }
 }
 

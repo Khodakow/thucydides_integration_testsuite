@@ -9,8 +9,6 @@ import cityads.ca_thucydides_new_design.steps.BaseSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import org.junit.Assert;
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
@@ -148,9 +146,9 @@ public class BugsSteps extends BaseSteps {
     }
 
     @Step
-    public void setDateToCalendar(String s) {
+    public void set_date_to_calendar(String s) {
         getDriver().findElement(By.xpath("//input[@id='period']")).clear();
-        executeScript("$('#period').val('21.01.2014 - 21.03.2014')");
+        executeScript("$('#period').val("+s+")");
         getDriver().findElement(By.xpath("//input[@id='period']")).sendKeys(Keys.RETURN);
     }
 

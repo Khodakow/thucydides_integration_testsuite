@@ -92,7 +92,7 @@
                 <configuration>
 
                     <includes>
-                        <include>**/TooltipsDashboardTranslateStoryTest.java</include>
+                        <include>**/StatisticByConversions56579Test.java</include>
                     </includes>
 
                     <argLine>-Xmx1024m</argLine>
@@ -102,13 +102,13 @@
                         <thucydides.only.save.failing.screenshots>false</thucydides.only.save.failing.screenshots>
                         <webdriver.remote.url>http://127.0.0.1:4444/wd/hub</webdriver.remote.url>
                         <webdriver.base.url>http://cityads.com/</webdriver.base.url>
-                        <user>jewi@coldemail.info</user>
+                        <user>me0i@mail.ru</user>
                         <password>123698745</password>
                         <userMgr>a.hodakov@cityads.ru</userMgr>
                         <passwordMgr>q1w2e3r4t5</passwordMgr>
 
-                        <userAdv>e901@cityads.ru</userAdv>
-                        <passwordAdv>12345</passwordAdv>
+                        <userAdv>test.rekl@mail.ru</userAdv>
+                        <passwordAdv>111401</passwordAdv>
 
                         <chrome.switches>--test-type</chrome.switches>
 
@@ -1360,6 +1360,7 @@
                                 <include>**/StatisticSubaccountExcelDownloadTest.java</include>
                                 <include>**/GlobalFilterMultipleConditionTest.java</include>
                                 <include>**/StatisticRealtimeTableStoryTest.java</include>
+                                <include>**/StatisticByConversions56579Test.java</include>
 
 
                             </includes>

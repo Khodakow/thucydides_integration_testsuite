@@ -47,9 +47,9 @@ public class BugsFilterStoryTest{
   @Test
   @Title("СКВОЗНОЙ КАЛЕНДАРЬ 34190")
   public void check_34190_calendar_crossPage() throws InterruptedException{
-      String s = "21.01.2014 - 21.03.2014";
+      String s = "'21.01.2014 - 21.03.2014'";
       front.login();
-      bs.setDateToCalendar(s);
+      bs.set_date_to_calendar(s);
       bs.wait_for_all_spinners_dissapears();
       bs.refresh_page();
       bs.wait_for_all_spinners_dissapears();

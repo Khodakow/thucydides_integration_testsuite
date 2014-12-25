@@ -20,8 +20,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import static org.junit.Assert.assertTrue;
 
 public class SetupSteps extends BaseSteps {
 
@@ -393,6 +396,29 @@ public class SetupSteps extends BaseSteps {
         waitABit(3000);
         refresh_page();
     }
+
+    @Step
+    public ArrayList<Date> convert_string_to_dates(ArrayList<String> list) throws ParseException {
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        ArrayList<Date> dates = new ArrayList<Date>();
+        for (String elem : list){
+            Date date = format.parse(elem);
+            dates.add(date);
+        }
+        return dates;
+    }
+
+    @Step
+    public void check_years_in_dates_list(ArrayList<Date> dates) {
+        Calendar cal = Calendar.getInstance();
+        for(Date date : dates){
+            cal.setTime(date);
+            int year = cal.get(Calendar.YEAR);
+            assertTrue("Проверяем что год  "+ year +" в дате больше чем 2012", year > 2012);
+        }
+    }
+
+
 }
 
     
