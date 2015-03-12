@@ -1,6 +1,5 @@
 package cityads.ca_thucydides_new_design.WebmasterStory.delete;
 
-import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.DownloadsSteps;
 import net.thucydides.core.annotations.*;
@@ -15,7 +14,7 @@ import org.openqa.selenium.WebDriver;
 
 @Story(TestSuite.WebMaster.Delete.class)
 @RunWith(ThucydidesRunner.class)
-public class DeleteAllDownloadsGoodsStoryTest extends Constants {
+public class DeleteAllDownloadsGoodsStoryTest{
 
     
      private String wmName;

@@ -74,9 +74,7 @@ public class GetLinkTest {
         String name = DataGenerator.getRandomNameWithDate();
         String subacc = DataGenerator.getRandomString();
 
-        steps.check_fatal_errors();
         form.create_form();
-
         String firstRetargetOffer = getLink.get_first_retarget_offer();         //заполминаем офферы которые были выбраны в гет-линке для теста
         String firstNoretargetOffer = getLink.get_first_noretarget_offer();
 
@@ -89,7 +87,6 @@ public class GetLinkTest {
         steps.close_browser();
 
         steps.open_url(code);       //переход по ссылке
-        steps.check_fatal_errors();
         String host = steps.getUrlHost(steps.getCurrentUrl().replace("www.",""));
         steps.check_string_not_contains_text(host, "cityads");
         steps.check_string_not_contains_text(host,"warthunder");
@@ -104,7 +101,6 @@ public class GetLinkTest {
         String name = DataGenerator.getRandomNameWithDate();
         String subacc = DataGenerator.getRandomString();
 
-        steps.check_fatal_errors();
         form.create_form();
 
         String firstRetargetOffer = getLink.get_first_retarget_offer();         //заполминаем офферы которые были выбраны в гет-линке для теста
@@ -117,7 +113,6 @@ public class GetLinkTest {
         steps.close_browser();
 
         steps.open_url(code);       //переход по ссылке
-        steps.check_fatal_errors();
         String host = steps.getUrlHost(steps.getCurrentUrl().replace("www.",""));
         steps.check_string_not_contains_text(host,"cityads");
         steps.check_string_not_contains_text(host,"warthunder");
@@ -136,6 +131,7 @@ public class GetLinkTest {
         //отсеиваем только офферы с товарами
         filter.click_checkbox_in_filter(4, 3);
         filter.submit_filter();
+        steps.executeScript("$('.blue_table>thead>tr').remove()");
 
         String name = table.get_first_aviable_offer_name();
         carcas.go_to_getlink();
@@ -153,8 +149,10 @@ public class GetLinkTest {
 
         //отсеиваем только офферы с товарами
         filter.click_checkbox_in_filter(4,3);
+        filter.submit_filter();
 
         //получаем имя и сайт первого доступного оффера
+        steps.executeScript("$('.blue_table>thead>tr').remove()");
         String name = table.get_first_aviable_offer_name();
         table.click_first_aviable_offer();
         String site = card.get_offer_site();
@@ -178,6 +176,7 @@ public class GetLinkTest {
         //отсеиваем только офферы с товарами
         filter.click_checkbox_in_filter(4, 3);
         filter.submit_filter();
+        steps.executeScript("$('.blue_table>thead>tr').remove()");
 
         //получаем имя первого доступного оффера
         String name = table.get_first_aviable_offer_name();
@@ -201,7 +200,6 @@ public class GetLinkTest {
         String code = getLink.fill_getlink_form_and_get_code(name,subacc);
 
         steps.open_url(code);       //переход по ссылке
-        steps.check_fatal_errors();
         String host = steps.getUrlHost(steps.getCurrentUrl().replace("www.",""));
 
         steps.check_string_contains_text(site,host);

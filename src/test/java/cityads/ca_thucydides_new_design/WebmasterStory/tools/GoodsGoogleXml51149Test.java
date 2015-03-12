@@ -53,7 +53,7 @@ public class GoodsGoogleXml51149Test {
         front.login();
         carcas.go_to_web_offers();
         filter.reset_filter();
-        filter.click_checkbox_in_filter(2, 3);
+        filter.click_checkbox_in_filter(4, 3);
         filter.submit_filter();
         table.click_first_aviable_offer();
         card.go_to_instrument_tab();
@@ -61,17 +61,13 @@ public class GoodsGoogleXml51149Test {
         String code = card.get_goods_original_code();
         steps.open_url(code);
         steps.check_fatal_errors();
-        String page = steps.get_all_text();
-        //проверяем что на экране
-        int size = steps.get_node_numbers("<entry>",page);
-        steps.check_value_gteater_then_min(size,20);
 
         //проверяем что отдается по апи гет - запросом
         String responseApi = api.send_clean_get_request(code);
         ArrayList<String> list = steps.parse_xml_feed_responce_for_node(responseApi,"link");
 
         //получаем первую ссылку из фида
-        String link = "http://"+(list.get(0).replace("//",""));
+        String link = (list.get(0));
         steps.open_url(link);
 
         String host = steps.get_curent_domain_name();

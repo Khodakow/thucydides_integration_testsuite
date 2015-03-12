@@ -42,9 +42,11 @@ public class Pager extends BasePage {
     public void setupTableWithNumberRecord(int number){
         if(!getDriver().findElement(By.className("blue_table")).getText().contains("данных")) {
 
+            this.waitABit(5000);
             settings.waitUntilVisible();
             waitForSpinnerDissapear();
             settings.click();
+            this.waitABit(2000);
             contextMenu.waitUntilVisible();
             selectChoose.waitUntilVisible();
             selectChoose.click();

@@ -44,17 +44,21 @@ public class OfferInstruments53581StoryTest {
     public void setUp(){
         front.login();
         carcas.go_to_web_offers();
+
     }
 
     @Test
     @WithTagValuesOf({"block:Instruments", "role:Webmaster"})
     @Title("Проверка на получение ссылки с карточки оффера после получения кода баннера с закладки Инструменты. Задача 53581")
-    public  void wm_offer_instruments_rotator_test() throws Exception{
+    public  void offerInstruments53581StoryTest() throws Exception{
+
         filter.click_checkbox_in_filter(4,1);
         filter.submit_filter();
+        steps.executeScript("$('.blue_table>thead>tr').remove()");
         table.click_first_aviable_offer();
         card.go_to_instrument_tab();
         card.get_banner_code();
+        steps.executeScript("$('a[class*=\"close\"]').click();");
         card.go_to_dashboard_tab();
         card.start_work_with_offer();
         popup.click_offercard_main_links();

@@ -72,12 +72,10 @@ public class RegistrationStoryTest extends Constants {
         //steps.check_url_has_success1();
         //teps.check_success_message_is_displayed();
         front.is_on_dashboard();
-
-
-        
+/*
         steps.open_url(tempMailUrl);
         steps.login_into_temp_mail(randomMailFullName);
-        steps.wait_for_activation_email(300);
+        steps.wait_for_activation_email(300);*/
 
         //шаги не требуются в новой регистрации
         /*steps.click_action_letter_title();

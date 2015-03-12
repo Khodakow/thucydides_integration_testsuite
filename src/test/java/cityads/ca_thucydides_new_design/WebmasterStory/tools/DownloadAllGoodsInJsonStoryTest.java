@@ -3,7 +3,9 @@ package cityads.ca_thucydides_new_design.WebmasterStory.tools;
 import cityads.ca_thucydides_new_design.Constants;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.WebmasterSteps.DownloadsSteps;
-import cityads.ca_thucydides_new_design.steps.XMLSteps;
+import cityads.ca_thucydides_new_design.steps.refactor_steps.CarcasSteps;
+import cityads.ca_thucydides_new_design.steps.refactor_steps.FilterSteps;
+import cityads.ca_thucydides_new_design.steps.refactor_steps.FrontSteps;
 import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
@@ -33,7 +35,11 @@ public class DownloadAllGoodsInJsonStoryTest extends Constants {
     @Steps
     public DownloadsSteps steps;
     @Steps
-    public XMLSteps apiSteps;
+    public FrontSteps front;
+    @Steps
+    public CarcasSteps carcas;
+    @Steps
+    public FilterSteps filter;
 
 
 
@@ -43,63 +49,48 @@ public class DownloadAllGoodsInJsonStoryTest extends Constants {
     public void downloads_allgoods_json_test() throws Exception{
 
 
-        String filterName = null;
+        front.login("/webmaster/products_and_coupons/products/catalog_403319272.0.htm");
+        filter.reset_filter();
+        steps.wait_for_all_spinners_dissapears();
 
-
-        wmName = steps.get_wm_name();
-        steps.wm_login(wmName);
-        steps.click_goods_and_coupons_link();
-        steps.wait_for_all_spinners_dissapears(30);
-        steps.click_goods_link();
-        steps.click_goods_catalog();
-        steps.wait_for_all_spinners_dissapears(180);
-        steps.check_fatal_errors();
-          steps.click_reset_filter_button();
-        steps.wait_for_all_spinners_dissapears(120);
-
-        filterName = getCurrentDate()+" "+getRandomIntNumber();
         String downloadName = getCurrentDate()+" "+getRandomIntNumber();
         String subaccountName = getCurrentDate()+" "+getRandomIntNumber();
 
 
         steps.click_apply_right_filter();
-        steps.wait_for_all_spinners_dissapears(60);
+        steps.wait_for_all_spinners_dissapears();
         
 
         
         steps.uncheck_filters_move_checkbox();
-        steps.waitABit(1000);
         //переход в инструменты - выгрузки
         steps.click_goods_filter_create_tool_link();
-        steps.wait_for_all_spinners_dissapears(90);
-        steps.waitAjax(10000);
+        steps.wait_for_all_spinners_dissapears();
         steps.check_h1_page_title("Добавление фида");
-        steps.wait_for_all_spinners_dissapears(60);
+        steps.wait_for_all_spinners_dissapears();
 
 
         steps.fill_name_input(downloadName);
         steps.fill_subaccount_input(subaccountName);
         steps.submit_form();
-        steps.wait_for_all_spinners_dissapears(60);
+        steps.wait_for_all_spinners_dissapears();
         steps.check_blue_table_has_text(downloadName);
         
 
-        steps.wait_for_all_spinners_dissapears(30);
-
+        steps.wait_for_all_spinners_dissapears();
 
         WebElement string = steps.get_blue_table_string_with_text(downloadName);
         steps.click_icon_in_blue_table_line(1, string);
 
         //steps.click_icon_in_blue_table_first_line(1);
-        steps.wait_for_all_spinners_dissapears(30);
-        steps.waitAjax(2000);
+        steps.wait_for_all_spinners_dissapears();
         steps.click_popup_select();
         steps.click_tools_json_format();
-        steps.waitAjax(2000);
         String url = steps.get_feed_code();
         steps.check_string_contains_text(url,"goods");
-        steps.wait_for_all_spinners_dissapears(30);
+        steps.wait_for_all_spinners_dissapears();
         steps.open_url(url);
+        steps.check_text_in_page("url");
         steps.check_text_in_page("total");
         steps.close_browser();
 

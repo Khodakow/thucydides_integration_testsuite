@@ -12,7 +12,7 @@ public class NewDashboard extends BasePage {
         super(driver);
     }
 
-    @FindBy(xpath="//a[@id='lnk-all-offers']")
+    @FindBy(xpath="(//a[contains(@class,'all-offers')])[1]")
     private WebElementFacade alloffersink;
 
     @FindBy(xpath="//div[@id='mainSummary']")

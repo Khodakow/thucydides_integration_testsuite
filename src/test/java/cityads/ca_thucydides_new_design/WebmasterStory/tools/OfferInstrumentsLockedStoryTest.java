@@ -51,6 +51,7 @@ public class OfferInstrumentsLockedStoryTest{
         steps.wait_for_all_spinners_dissapears(60);
         steps.sort_blue_table_by_first_th();
         steps.wait_for_all_spinners_dissapears(60);
+        steps.executeScript("$('.blue_table>thead>tr').remove()");
         steps.count_locks_with_jquery();
         steps.click_first_offer();
 

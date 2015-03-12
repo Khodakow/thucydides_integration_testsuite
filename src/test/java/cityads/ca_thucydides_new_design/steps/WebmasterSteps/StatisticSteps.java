@@ -705,10 +705,17 @@ public class StatisticSteps extends SetupSteps {
     }
 
 
-    @Step
+    @Step("Кликаем по любой синей ссылке в над таблицей легенде")
     public void click_any_link_in_legend(int num) {
         page.secondLinkInLegend.waitUntilVisible();
         page.find(By.xpath("(//table[contains(@class,'no-zebra')]/tbody/tr/td/a[contains(@class,'col-blue')])["+num+"]")).click();
+        waitABit(5000);
+    }
+
+    @Step("Кликаем по любой ссылке в над таблицей легенде")
+    public void click_any_black_link_in_legend(int num) {
+        page.secondLinkInLegend.waitUntilVisible();
+        page.find(By.xpath("(//table[contains(@class,'no-zebra')]/tbody/tr/td/a)["+num+"]")).click();
         waitABit(5000);
     }
 
@@ -736,6 +743,7 @@ public class StatisticSteps extends SetupSteps {
 
             click_any_link_main_param_in_blue_table(1);
 
+
             wait_for_all_spinners_dissapears(120);
             String new_h1 = get_h1_in_page();
 
@@ -746,6 +754,13 @@ public class StatisticSteps extends SetupSteps {
             check_string_has_changed(new_h1,new_h1_2);
         }
     }
-
+    @Step("Клик по хлебным крошкам над таблицей и клик по второму основному параеметру в таблице")
+    public void check_breadcrums_by_click_in_link_blue_table_geo(){
+        if(!blue_table_data_check()) {
+            wait_for_all_spinners_dissapears(120);
+            click_any_link_main_param_in_blue_table(2);
+            wait_for_all_spinners_dissapears(120);
+        }
+    }
 
 }

@@ -47,7 +47,6 @@ public class Statistic47687Test {
 
         front.login();
         carcas.go_to_statistic_by_conversion_by_segments_byOffers();
-        table.setup_number_of_records(100);
         ssteps.wait_for_all_spinners_dissapears();
         table.click_checkbox_left_column(1);
         ssteps.wait_for_all_spinners_dissapears();
@@ -57,7 +56,7 @@ public class Statistic47687Test {
         steps.check_fatal_errors();
         console.check_console_log();
         ssteps.wait_for_all_spinners_dissapears();
-        table.click_checkbox_left_column(4);
+        table.click_checkbox_left_column(1);
 
 
         steps.close_browser();

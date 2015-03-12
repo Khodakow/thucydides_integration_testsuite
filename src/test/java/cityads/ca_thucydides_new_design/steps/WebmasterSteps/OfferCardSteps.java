@@ -162,7 +162,17 @@ public class OfferCardSteps extends OfferListSteps {
         page.getOfferTabs().findElement(By.id("unical_id_detail_offer_1")).click();
     }
 
-        
+
+    @Step("Кликаем на вкладку выбора динамических банеров")
+    public void click_dynamic_tab_by_path(){
+
+        page.dynamicTabByPath.waitUntilVisible().click();
+    }
+
+    @Step("Кликаем на получить код динамических банеров")
+    public void click_dynamic_get_code(){
+        page.dynamicGetCodeLink.waitUntilVisible().click();
+    }
     @Step
     public void click_offer_terms_paid_search(){
         page.getOfferTabs().findElement(By.id("tab_offer_inner_page_inner-2")).click();

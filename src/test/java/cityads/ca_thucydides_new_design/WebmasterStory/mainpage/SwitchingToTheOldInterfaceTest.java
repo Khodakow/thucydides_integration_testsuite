@@ -1,6 +1,5 @@
 package cityads.ca_thucydides_new_design.WebmasterStory.mainpage;
 
-import cityads.ca_thucydides_new_design.pages.refactor.Carcas;
 import cityads.ca_thucydides_new_design.requirements.TestSuite;
 import cityads.ca_thucydides_new_design.steps.SetupSteps;
 import cityads.ca_thucydides_new_design.steps.refactor_steps.CarcasSteps;
@@ -35,6 +34,7 @@ public class SwitchingToTheOldInterfaceTest {
     public CarcasSteps carcas;
 
     @Test
+    @Pending
     @Screenshots(onlyOnFailures = false)
     @Title("Переход из нового в старый интерфейс")
     public void switchOldInterfaceTest() throws Exception{

@@ -217,6 +217,10 @@ public class Popup extends PageObject {
     public void clickLogoutOk(){
         popupLogoutOk.click();
     }
+
+    public void close() {
+
+    }
 }
 
 

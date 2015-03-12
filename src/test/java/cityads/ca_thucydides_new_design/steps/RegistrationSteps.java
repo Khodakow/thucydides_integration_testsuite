@@ -120,7 +120,8 @@ public class RegistrationSteps extends MainSiteSteps {
     public void click_agree_checkbox(){
         if(!page.agreeCheckbox.getAttribute("class").contains("checked")){
             page.getAgreeCheckbox().click();}
-                
+        if(!page.agreeCheckbox2.getAttribute("class").contains("checked")){
+            page.getAgreeCheckbox2().click();}
     }
 
     @Step

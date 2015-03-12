@@ -103,7 +103,9 @@ public class OfferCard extends BasePage {
         getBannerCode.click();
         popup.waitPopup();
         waitABit(5000);
-        return popup.getCodeFromTextarea();
+        String code =  popup.getCodeFromTextarea();
+        popup.close();
+        return code;
     }
 
     public void goToDashboardTab() {

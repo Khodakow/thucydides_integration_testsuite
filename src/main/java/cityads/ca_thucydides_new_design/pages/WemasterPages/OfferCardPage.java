@@ -26,6 +26,12 @@ public class OfferCardPage extends PageObject {
         @FindBy(xpath="//*[@id=\"list_form\"]/div/div/div/table")
         private WebElement offerCardTable;
 
+
+        @FindBy(xpath="((//tbody)[6]/tr/td/a)[2]")
+        public WebElementFacade dynamicTabByPath;
+        @FindBy(xpath="(//table[contains(@id,'banners')]/tbody/tr/td/a[contains(@class,'create_link')])[1]")
+        public WebElementFacade dynamicGetCodeLink;
+
         public WebElementFacade  descriptionLogo(){
             return element(descriptionLogoOffer);
         }

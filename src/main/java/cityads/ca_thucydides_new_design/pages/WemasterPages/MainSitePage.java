@@ -7,7 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-
+import java.util.List;
 
 
 public class MainSitePage extends MainPage {
@@ -20,13 +20,13 @@ public class MainSitePage extends MainPage {
  
         @FindBy(linkText="Панель управления")
         public WebElement controlPanelLink;
-        
+
         @FindBy(linkText="Платформа")
         public WebElement platformLink;
         
         @FindBy(linkText="Аналитика")
         public WebElement analiticLink;
-        
+
         @FindBy(linkText="Live Product Base")
         public WebElement liveProductBaseLink;
         
@@ -41,6 +41,15 @@ public class MainSitePage extends MainPage {
         
         @FindBy(linkText="E-mail платформа")
         public WebElement emailPlatformLink;
+
+        @FindBy(xpath="(//table[contains(@class,'blue-table')])[1]/tbody/tr")
+        public List<WebElement> trInMainSiteTableWebmaster;
+
+        @FindBy(xpath="(//table[contains(@class,'blue-table')])[2]/tbody/tr")
+        public List<WebElement> trInMainSiteTableAdvertizers;
+
+        @FindBy(xpath="(//table[contains(@class,'blue-table')])[3]/tbody/tr")
+        public List<WebElement> trInMainSiteTableOffers;
         
         public void check_links_are_present_in_platform_page(){
             element(controlPanelLink).isCurrentlyVisible();

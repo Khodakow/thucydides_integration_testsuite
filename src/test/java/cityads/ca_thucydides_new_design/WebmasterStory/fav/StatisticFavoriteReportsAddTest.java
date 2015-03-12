@@ -51,6 +51,7 @@ public class StatisticFavoriteReportsAddTest {
 
 
     @Test
+    @Title("Тест на избранные отчеты")
     public void statisticFavoriteButtonNotVisibleOffersTest() throws Exception{
     carcas.go_to_standart_statistic_offers();
 

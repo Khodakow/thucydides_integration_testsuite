@@ -94,9 +94,7 @@ public class BannerClickHighloadStoryTest extends Constants {
         steps.wait_for_all_spinners_dissapears(90);
 
         //get code
-        steps.waitAjax(2000);
-        bannerSteps.scroll_to_select();
-        steps.click_select_choose_toggle();
+         steps.click_select_choose_toggle();
         steps.select_javascript_code();
         steps.check_fatal_errors();
         JSCode = bannerSteps.get_js_code_from_textarea();
@@ -165,8 +163,6 @@ public class BannerClickHighloadStoryTest extends Constants {
         steps.wait_for_all_spinners_dissapears(90);
 
         //get code
-        steps.waitAjax(2000);
-        bannerSteps.scroll_to_select();
         steps.click_select_choose_toggle();
         steps.select_ajs_code();
         steps.check_fatal_errors();

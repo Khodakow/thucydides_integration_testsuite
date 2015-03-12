@@ -21,6 +21,11 @@ public class Front extends BasePage {
     private Table table;
     MainPage mainPage;
 
+    @FindBy(xpath = "//a[contains(@id,'unical_id_defau')]")
+    private WebElementFacade histrorytab;
+
+    @FindBy(xpath = "//div[contains(@class,'_manager_service_info')]")
+    private WebElementFacade managerServiceInfo;
 
     @FindBy(xpath = "//a[@class='login-link' and contains(@href,'dashboard')]")
     private WebElementFacade cabinet;
@@ -76,7 +81,7 @@ public class Front extends BasePage {
     @FindBy(xpath="(//div[@class='item level-2 empty']/div[position()=2])[1]")
     private WebElementFacade goodsCategoryCheckbox;
 
-    @FindBy(xpath="(//div[@class='ib _category_name pointer' and descendant::span[descendant::span[@format='num']]])[1]")
+    @FindBy(xpath="(//div[@class='ib _category_name pointer'])[1]")
     private WebElementFacade goodsCategotyLink;
 
     @FindBy(xpath=" (//a[@id='category_show_selected_items'])[1]")
@@ -88,10 +93,23 @@ public class Front extends BasePage {
     @FindBy(xpath="//span[@class='col-blue _header_balance']")
     private WebElementFacade balanceWm;
 
+    @FindBy(xpath="//a[@class='with-hover-underline col-blacky']")
+    private WebElementFacade isCurentlyLogin;
+
+    public void clickAndCheckmanagerServiceInfo(){
+        histrorytab.waitUntilVisible();
+        histrorytab.click();
+        managerServiceInfo.shouldBeVisible();
+    }
+
+    public boolean isCurrentlyLogIn() {
+        return isCurentlyLogin.isCurrentlyVisible();
+    }
 
     public void login(){
         String passwd = System.getProperty("password");
         String name = System.getProperty("user");
+
 
         if(!cabinet.isCurrentlyVisible()) {
             popupLoginLink.waitUntilVisible();
@@ -111,6 +129,65 @@ public class Front extends BasePage {
             popupLoginSubmit.waitUntilVisible();
             popupLoginSubmit.click();
             waitABit(5000);
+
+            if(getDriver().getCurrentUrl().contains("tester.sagl")){            //костыль на обход sql error на тестовом стенде
+                openBaseUrl();
+                cabinet.click();
+            }
+
+            opacity.waitUntilNotVisible();
+        }
+        else{
+            cabinet.click();
+            waitABit(5000);
+        }
+
+
+        opacity.waitUntilNotVisible();
+        waitForSpinnerDissapear();
+
+        if(getDriver().getCurrentUrl().contains("/login")){
+            this.evaluateJavascript("$('form').eq(0).remove()");
+            popupNick.waitUntilVisible();
+            popupNick.clear();
+            popupPasswd.waitUntilVisible();
+            popupPasswd.clear();
+            popupNick.sendKeys(name);
+            popupPasswd.sendKeys(passwd);
+            loginFormBigSubmit.waitUntilVisible();
+            loginFormBigSubmit.click();
+            opacity.waitUntilNotVisible();
+        }
+    }
+
+    public void login(String wmName){
+        String passwd = System.getProperty("password");
+        String name = wmName;
+
+        if(!cabinet.isCurrentlyVisible()) {
+            popupLoginLink.waitUntilVisible();
+            popupLoginLink.click();
+            waitABit(500);
+            popupLogin.waitUntilVisible();
+            popupNick.waitUntilVisible();
+            popupNick.clear();
+            waitABit(500);
+            popupPasswd.waitUntilVisible();
+            popupPasswd.clear();
+            waitABit(500);
+            popupNick.sendKeys(name);
+            waitABit(500);
+            popupPasswd.sendKeys(passwd);
+            waitABit(500);
+            popupLoginSubmit.waitUntilVisible();
+            popupLoginSubmit.click();
+            waitABit(5000);
+
+            if(getDriver().getCurrentUrl().contains("tester.sagl")){            //костыль на обход sql error на тестовом стенде
+                openBaseUrl();
+                cabinet.click();
+            }
+
             opacity.waitUntilNotVisible();
         }
         else{
@@ -158,6 +235,12 @@ public class Front extends BasePage {
             popupLoginSubmit.waitUntilVisible();
             popupLoginSubmit.click();
             waitABit(15000);
+
+            if(getDriver().getCurrentUrl().contains("tester.sagl")){            //костыль на обход sql error на тестовом стенде
+                openBaseUrl();
+                cabinet.click();
+            }
+
             opacity.waitUntilNotVisible();
         }
         else{
@@ -206,6 +289,12 @@ public class Front extends BasePage {
             popupLoginSubmit.waitUntilVisible();
             popupLoginSubmit.click();
             waitABit(15000);
+
+            if(getDriver().getCurrentUrl().contains("tester.sagl")){            //костыль на обход sql error на тестовом стенде
+                openBaseUrl();
+                cabinet.click();
+            }
+
             opacity.waitUntilNotVisible();
         }
         else{
@@ -231,11 +320,6 @@ public class Front extends BasePage {
         }
     }
 
-    public void enterAfterLogin(){
-        cabinet.waitUntilVisible();
-        cabinet.click();
-        waitForSpinnerDissapear();
-    }
 
     public boolean checkIsOnDashboard(){
         waitForSpinnerDissapear();
@@ -266,6 +350,12 @@ public class Front extends BasePage {
             popupLoginSubmit.waitUntilVisible();
             popupLoginSubmit.click();
             waitABit(15000);
+
+            if(getDriver().getCurrentUrl().contains("tester.sagl")){            //костыль на обход sql error на тестовом стенде
+                openBaseUrl();
+                cabinet.click();
+            }
+
             opacity.waitUntilNotVisible();
         }
         else{

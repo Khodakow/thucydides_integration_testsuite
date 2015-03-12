@@ -72,6 +72,7 @@ public class OfferCardInstrumentsDownloadStoryTest{
         steps.fill_in_search_filter("PrintClick");
         filter.submit_filter();
 
+        steps.executeScript("$('.blue_table>thead>tr').remove()");
         String offer = table.get_first_aviable_offer_name();
         table.click_first_aviable_offer();
         steps.wait_for_all_spinners_dissapears(60);
@@ -111,6 +112,8 @@ public class OfferCardInstrumentsDownloadStoryTest{
 
         filter.click_checkbox_in_filter(4,2);
         filter.submit_filter();
+        steps.executeScript("$('.blue_table>thead>tr').remove()");
+
 
         String offer = table.get_first_aviable_offer_name();
         table.click_first_aviable_offer();

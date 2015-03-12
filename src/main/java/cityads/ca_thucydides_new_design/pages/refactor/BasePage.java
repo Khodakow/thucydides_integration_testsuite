@@ -10,6 +10,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.FluentWait;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -54,8 +57,16 @@ public class BasePage extends PageObject {
     @FindBy(xpath = "//a[contains(@class,'button dark  submit')]")
     private WebElementFacade submitExport;
 
-    @FindBy(xpath = "//a[contains(text(),'XLSX')]")
+    @FindBy(xpath = "//a[contains(text(),'XLS')]")
     private WebElementFacade xls;
+
+    @FindBy(xpath = "//a[contains(@ff_params,'q_data_group==event_time_month')]")
+    private WebElementFacade byMonth;
+
+    @FindBy(xpath = "//div[@time]")
+    private List<WebElement> months;
+
+
 
     public void waitOpacity(){
         new FluentWait<WebDriver>(getDriver()).
@@ -72,7 +83,7 @@ public class BasePage extends PageObject {
     public void waitSpinner(){
         new FluentWait<WebDriver>(getDriver()).
                 withTimeout(160, TimeUnit.SECONDS).
-                pollingEvery(1, TimeUnit.SECONDS).
+                pollingEvery(500, TimeUnit.MILLISECONDS).
                 ignoring(NoSuchElementException.class).
                 until(new Predicate<WebDriver>(){
                     public boolean apply(WebDriver driver){
@@ -84,7 +95,7 @@ public class BasePage extends PageObject {
 
         new FluentWait<WebDriver>(getDriver()).
                 withTimeout(120, TimeUnit.SECONDS).
-                pollingEvery(1, TimeUnit.SECONDS).
+                pollingEvery(500, TimeUnit.MILLISECONDS).
                 ignoring(NoSuchElementException.class).
                 until(new Predicate<WebDriver>(){
                     public boolean apply(WebDriver driver){
@@ -100,7 +111,15 @@ public class BasePage extends PageObject {
         this.baseUrl = System.getProperty("webdriver.base.url");
         getDriver().get(this.baseUrl);
         getDriver().manage().window().maximize();
+
     }
+    public void openBaseUrlPlusDirect(String url){
+        this.baseUrl = System.getProperty("webdriver.base.url");
+        String directUrl = (baseUrl+url);
+        getDriver().get(directUrl);
+        getDriver().manage().window().maximize();
+    }
+
     public void waitForSpinnerDissapear(){
         waitSpinner();
     }
@@ -170,6 +189,14 @@ public class BasePage extends PageObject {
         cityCheck = (Boolean)((JavascriptExecutor)getDriver()).executeScript("return typeof(CityAds) == 'undefined'");
         if(!contextCheck && !cityCheck){
             check =  (Boolean)((JavascriptExecutor)getDriver()).executeScript("return typeof (CityAds.context.current.requesterInterface.requesters.table) == 'undefined';");
+            if(!check){
+                try {
+                    int requestId = ((Long) this.evaluateJavascript("return CityAds.context.current.requesterInterface.requesters.table.req_id[0]")).intValue();
+                    System.out.println("-------->>>>   Request ID = " + requestId);
+                }
+                catch(Exception e) {
+                }
+            }
         }
         System.out.println("table ready: "+check);
         return check;
@@ -182,6 +209,14 @@ public class BasePage extends PageObject {
         contextCheck = (Boolean)((JavascriptExecutor)getDriver()).executeScript("return CityAds.context.current==null");
         if(!contextCheck){
             check =  (Boolean)((JavascriptExecutor)getDriver()).executeScript("return typeof (CityAds.context.current.requesterInterface.requesters.map) == 'undefined';");
+            if(!check){
+                try {
+                    int requestId = ((Long) this.evaluateJavascript("return CityAds.context.current.requesterInterface.requesters.map.req_id[0]")).intValue();
+                    System.out.println("-------->>>>   Request ID = " + requestId);
+                }
+                catch(Exception e) {
+                }
+            }
         }
         System.out.println("map ready: "+check);
         return check;
@@ -193,6 +228,14 @@ public class BasePage extends PageObject {
         contextCheck = (Boolean)((JavascriptExecutor)getDriver()).executeScript("return CityAds.context.current==null");
         if(!contextCheck){
             check =  (Boolean)((JavascriptExecutor)getDriver()).executeScript("return typeof (CityAds.context.current.requesterInterface.requesters.chart) == 'undefined';");
+            if(!check){
+                try {
+                    int requestId = ((Long) this.evaluateJavascript("return CityAds.context.current.requesterInterface.requesters.chart.req_id[0]")).intValue();
+                    System.out.println("-------->>>>   Request ID = " + requestId);
+                }
+                catch(Exception e) {
+                }
+            }
         }
         System.out.println("chart ready: "+check);
         return check;
@@ -204,6 +247,14 @@ public class BasePage extends PageObject {
         contextCheck = (Boolean)((JavascriptExecutor)getDriver()).executeScript("return CityAds.context.current==null");
         if(!contextCheck){
             check =  (Boolean)((JavascriptExecutor)getDriver()).executeScript("return typeof (CityAds.context.current.requesterInterface.requesters.delta_chart) == 'undefined';");
+            if(!check){
+                try {
+                    int requestId = ((Long) this.evaluateJavascript("return CityAds.context.current.requesterInterface.requesters.delta_chart.req_id[0]")).intValue();
+                    System.out.println("-------->>>>   Request ID = " + requestId);
+                }
+                catch(Exception e) {
+                }
+            }
         }
         System.out.println("delta chart ready: "+check);
         return check;
@@ -221,6 +272,21 @@ public class BasePage extends PageObject {
 
     public void exportSpinerNotVisible() {
         exportSpinner.shouldNotBeVisible();
+    }
+
+    public void clickByMonth() {
+        byMonth.waitUntilVisible();
+        byMonth.click();
+        waitForSpinnerDissapear();
+    }
+
+    public Set<String> getMonths(){
+        waitForSpinnerDissapear();
+        Set<String> mnths = new HashSet<String>();
+        for(WebElement month: months){
+            mnths.add(month.getText());
+        }
+        return mnths;
     }
 }
 

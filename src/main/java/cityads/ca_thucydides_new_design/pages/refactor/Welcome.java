@@ -104,7 +104,6 @@ public class Welcome extends BasePage {
 
     public void fillWelcomePage(){
         waitForSpinnerDissapear();
-        waitABit(1000);
 
         if(errorPopup.isCurrentlyVisible()){
             errorPopupClose.click();
@@ -133,12 +132,13 @@ public class Welcome extends BasePage {
             getSaveButton().waitUntilVisible();
             getSaveButton().click();
             waitForSpinnerDissapear();
-            table.waitOverview();
-            waitForSpinnerDissapear();
+            //table.waitOverview();
+            //waitForSpinnerDissapear();
         }
-        table.waitOverview();
+        //table.waitOverview();
         this.evaluateJavascript("$('.usabilla_live_button_container').remove();");
         waitForSpinnerDissapear();
+        this.evaluateJavascript("CityAds.vars.dontFixTable = true;");
     }
 
     public void fillBaseStepYes(){
@@ -226,7 +226,7 @@ public class Welcome extends BasePage {
             getSaveButton().waitUntilVisible();
             getSaveButton().click();
             waitForSpinnerDissapear();
-            table.waitTable();
+            table.waitOverview();
             waitForSpinnerDissapear();
         }
         else{
@@ -252,7 +252,6 @@ public class Welcome extends BasePage {
             getSaveButton().waitUntilVisible();
             getSaveButton().click();
             waitForSpinnerDissapear();
-            table.waitTable();
             waitForSpinnerDissapear();
         }
         waitABit(15000);
@@ -288,23 +287,8 @@ public class Welcome extends BasePage {
             map.waitUntilVisible();
             this.find(By.xpath("//div[contains(@class,'_office_select')]/div/div")).click();
             int num = this.findAll(By.xpath("//a[contains(@class,'select-item')]")).size();
-            Assert.assertEquals("В оффисах больше 4 значений",num,4);
-
-            //fillRegion();//добавляем костыль и заполняем первой тайм зоной т к нет россии
-
-            getNext2Button().waitUntilVisible();
-            getNext2Button().click();
-            waitForSpinnerDissapear();
-            map.waitUntilVisible();
-            getSaveButton().waitUntilVisible();
-            getSaveButton().click();
-            waitForSpinnerDissapear();
-            table.waitTable();
-            waitForSpinnerDissapear();
+            Assert.assertEquals("В оффисах больше 4 значений", num, 4);
         }
-        table.waitTable();
-        this.evaluateJavascript("$('.usabilla_live_button_container').remove();");
-        waitForSpinnerDissapear();
     }
 
     public void fillWelcomePageForse() {

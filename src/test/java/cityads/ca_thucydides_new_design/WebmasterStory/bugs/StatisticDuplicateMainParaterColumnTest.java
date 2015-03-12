@@ -55,7 +55,6 @@ public class StatisticDuplicateMainParaterColumnTest {
     public void statOffersDuplicateMainParameterTest() throws Exception{
 
         carcas.go_to_statistic_by_conversion_by_segments_byOffers();
-        table.setup_number_of_records(100);
         ArrayList<String> mainParams = table.get_offers_mainparam();
         table.check_column_for_unique_values(mainParams);
     }
@@ -64,7 +63,6 @@ public class StatisticDuplicateMainParaterColumnTest {
     public void statVertikaliDuplicateMainParameterTest() throws Exception{
 
         carcas.go_to_statistic_by_conversion_by_segments_byVerticals();
-        table.setup_number_of_records(100);
         ArrayList<String> mainParams = table.get_vertikals_mainparam();
         table.check_column_for_unique_values(mainParams);
 
@@ -74,7 +72,6 @@ public class StatisticDuplicateMainParaterColumnTest {
     public void statPromoSizeDuplicateMainParameterTest() throws Exception{
 
         carcas.go_to_statistic_by_conversion_by_tools_bySizeofPromo();
-        table.setup_number_of_records(100);
         ArrayList<String> mainParams = table.get_promosize_mainparam();
         table.check_column_for_unique_values(mainParams);
 

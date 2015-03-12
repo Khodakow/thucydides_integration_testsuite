@@ -54,7 +54,7 @@ public class BugsFilterStoryTest{
       bs.refresh_page();
       bs.wait_for_all_spinners_dissapears();
       String s1 = bs.get_date_from_period();
-      bs.check_values_are_equals(s1, s);
+      bs.check_values_are_equals(s1, s.replaceAll("'",""));
       bs.click_statistic_link();
       bs.wait_for_all_spinners_dissapears();
       bs.click_stat_traffic_source_link();
@@ -67,7 +67,7 @@ public class BugsFilterStoryTest{
       stat.wait_highchart_displayed(60);
       stat.check_blue_table_is_visible();
       String s2 = bs.get_date_from_period();
-      bs.check_values_are_equals(s2, s);
+      bs.check_values_are_equals(s2, s.replaceAll("'",""));
 
   }
 

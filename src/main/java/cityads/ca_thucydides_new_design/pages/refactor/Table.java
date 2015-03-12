@@ -409,6 +409,10 @@ public class Table extends BasePage {
     public void checkStringContainsText(String str, String text){
         Assert.assertTrue("Проверяем что строка "+str  +" содержит подстроку " +text,str.contains(text));
     }
+    @Step
+    public void checkStringnotContainsText(String str, String text){
+        Assert.assertTrue("Проверяем что строка "+str  +" не содержит подстроку " +text,!str.contains(text));
+    }
 
     public void checkAllH1ByClicksInBlueTable() {
         if (!blueTableNoDataCheck()) {
@@ -472,6 +476,14 @@ public class Table extends BasePage {
         for(WebElement elem:list){
             String elemtext = elem.getText();
             checkStringContainsText(elemtext, name);
+        }
+    }
+    public void check_all_elem_in_main_param_blue_table_not_contains(String name){
+        waitSpinner();
+        List<WebElement> list = this.allElemInMainParametr;
+        for(WebElement elem:list){
+            String elemtext = elem.getText();
+            checkStringnotContainsText(elemtext,name);
         }
     }
 

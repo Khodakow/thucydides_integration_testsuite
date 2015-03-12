@@ -45,8 +45,6 @@ public class Statistic44058Test {
 
         front.login();
         carcas.go_to_statistic_by_SourseTraffic_by_sourses_by_subaccount();
-        //steps.scroll_to_bottom();
-        table.setup_number_of_records(100);
         int number = table.get_strings_number();
         table.sort_by_main_parameter();
         int numberNew = table.get_strings_number();

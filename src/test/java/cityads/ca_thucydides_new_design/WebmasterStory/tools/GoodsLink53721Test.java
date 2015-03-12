@@ -6,7 +6,6 @@ import cityads.ca_thucydides_new_design.steps.refactor_steps.*;
 import net.thucydides.core.annotations.*;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.junit.runners.ThucydidesRunner;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
@@ -41,11 +40,6 @@ public class GoodsLink53721Test {
 
 
 
-    @Before
-    public void setUp(){
-        front.login();
-        carcas.go_to_goods();
-    }
 
 
     @Test
@@ -53,10 +47,12 @@ public class GoodsLink53721Test {
     @Title("Проверка совпадения ссылки на товар в интерфейсе ВМа и после редиректа, фильтр - в наличие")
     public void goodsLink53721Test() throws Exception{
 
+        front.login("/webmaster/products_and_coupons/products/catalog_403319272.0.htm?&geo[]=186");
         filter.reset_filter();
         filter.click_checkbox_in_filter(2,1);
         filter.submit_filter();
         steps.check_fatal_errors();
+        steps.wait_opacity();
         String url = goods.get_first_goods_url();
         String landing = goods.get_first_landing_url();
         steps.open_url(url);

@@ -43,22 +43,9 @@ public class Bugs38943StoryTest {
         steps.close_browser();
     }
 
-    @Test
-    @Title("Проверка сортировки товаров по цене по убыванию, задача 38943")
-    public void testBugDescSort38943() throws Exception{
-
-        front.login();
-        carcas.go_to_goods();
-        goods.click_USD_checkbox();
-        steps.click_apply_right_filter();
-        steps.wait_for_all_spinners_dissapears(90);
-        goods.sort_by_price_desc();
-        goods.check_goods_price_desc_sort();
-        steps.close_browser();
-    }
 
     @Test
-    @Title("Проверка сортировки товаров по цене по возрастанию, задача 38943")
+    @Title("Проверка сортировки товаров по цене задача 38943")
     public void testBugAscSort38943() throws Exception{
 
         front.login();

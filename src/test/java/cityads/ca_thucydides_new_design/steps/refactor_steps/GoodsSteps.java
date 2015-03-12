@@ -112,6 +112,17 @@ public class GoodsSteps extends ScenarioSteps {
     public String get_first_landing_url() {
         return goods.getFirstLandingUrl();
     }
+
+    @Step("Получаем ссылки на все картинки ст страницы из интерфейса")
+    public ArrayList<String> get_images_urls() {
+        ArrayList<String> images = goods.getAllImagesUrls();
+        return images;
+    }
+
+    @Step("Проверяем что картинка из карточки товара открывается по ссылке в браузере (проверка на таймаут)")
+    public void check_image_displayed() {
+        goods.checkImageDisplayed();
+    }
 }
     
 

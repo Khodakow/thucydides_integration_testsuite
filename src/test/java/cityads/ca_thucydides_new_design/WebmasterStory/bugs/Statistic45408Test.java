@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
 
-@Story(TestSuite.WebMaster.Bugs.class)
+@Story(TestSuite.WebMaster.Statistic.class)
 @RunWith(ThucydidesRunner.class)
 @WithTag(name="Webmaster Tests")
 public class Statistic45408Test {
@@ -40,7 +40,7 @@ public class Statistic45408Test {
     @Steps
     TableSteps table;
 
-    @Test
+    @Test@Title("статистика задача 45408")
     public void stat45408Test() throws Exception{
 
         front.login();

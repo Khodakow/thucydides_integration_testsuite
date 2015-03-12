@@ -48,14 +48,34 @@ public class StatTable extends Table {
         evaluateJavascript("$('html, body').animate({ scrollTop: $('.blue_table').offset().top }, 0);");
     }
 
+    boolean isListOfZeros(List<Float> myList){
+        System.out.println(myList);
+        for(Float o: myList){
+        if (!((o == 0.0) || (o == 0) || (String.valueOf(o).equals("0.00")) || (String.valueOf(o).equals("0.0"))))
+                return false;
+        }
+        System.out.println("no data for sort test");
+        return true;
+    }
+
     public ArrayList<Float> getColumnSortedData(int column){
         int count = 0;
-        if(getTh(column).isCurrentlyVisible()){
-            while(!getTh(column).getAttribute("class").contains("th-down sorted")){
-                clickTh(column);
-                count++;
-                if(count>3){
-                    break;
+        if(getTh(column).isCurrentlyVisible()) {
+            List<WebElement> values = getDriver().findElements(By.xpath("//table[contains(@class,'blue_table')]/tbody/tr/td[position()=" + column + "]/nobr"));
+            int size = values.size();
+            if (size > 1) {
+                ArrayList<Float> tds = new ArrayList<Float>();
+                for (WebElement value : values) {
+                    tds.add(Float.valueOf(value.getAttribute("innerHTML").trim().replace("%", "").replaceAll("’", "")));
+                }
+                if (!isListOfZeros(tds)) {
+                    while (!getTh(column).getAttribute("class").contains("th-down sorted")) {
+                        clickTh(column);
+                        count++;
+                        if (count > 3) {
+                            break;
+                        }
+                    }
                 }
             }
         }

@@ -54,7 +54,6 @@ public class OfficesShowIntervalGrafMgrTest {
     public void officesShowIntervalGrafManagerTest() throws Exception{
         carcas.go_to_mgr_stat_offices();
         stat.click_by_interval_graf();
-        steps.scroll_to_legend();
         table.tag_first_office_and_check_legend_in_interval_graf();
         steps.check_fatal_errors();
     }
@@ -64,7 +63,6 @@ public class OfficesShowIntervalGrafMgrTest {
     public void webmasterShowIntervalGrafManagerTest() throws Exception{
         carcas.go_to_mgr_stat_webmasters();
         stat.click_by_interval_graf();
-        steps.scroll_to_legend();
         table.tag_first_webmaster_and_check_legend_in_interval_graf();
         steps.check_fatal_errors();
     }

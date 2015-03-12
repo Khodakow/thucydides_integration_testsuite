@@ -39,16 +39,16 @@ public class Statistic45539Test {
     TableSteps table;
 
     @Test
+    @Title("ВМ. СТАТИСТИКА. УСТРОЙСТВА-DEVICES TYPES. ПРИ НАЖАТИИ В ХЛЕБНЫХ КРОШКАХ, ПЕРЕКИДЫВАЕТ В ДРУГОЙ ОТЧЕТ.")
     public void stat45539Test() throws Exception{
 
         front.login();
         carcas.go_to_statistic_by_auditory_by_devices_byTypes();
         carcas.shoud_be_on_devicetype_page();
-        steps.click_any_link_in_legend(1);
+        steps.click_any_black_link_in_legend(1);
         steps.wait_for_all_spinners_dissapears();
         steps.check_fatal_errors();
         carcas.shoud_be_on_devicetype_page();
-
         steps.close_browser();
 
     }

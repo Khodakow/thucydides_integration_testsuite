@@ -13,7 +13,6 @@ import org.junit.Assert;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -95,7 +94,7 @@ public class ApiSteps extends SetupSteps{
         wr.flush();
         wr.close();
         BufferedReader in = new BufferedReader(
-        new InputStreamReader(con.getInputStream(), "UTF-8"));
+                new InputStreamReader(con.getInputStream(), "UTF-8"));
         String inputLine;
         StringBuffer response = new StringBuffer();
 
@@ -103,13 +102,6 @@ public class ApiSteps extends SetupSteps{
             response.append(inputLine);
         }
         in.close();
-
-
-        //parameters
-//                System.out.println("PAR  "+parameters );
-//                System.out.println("URL "+newUrl );
-//                System.out.println(response.toString());
-
         return response.toString();
     }
 
@@ -119,34 +111,16 @@ public class ApiSteps extends SetupSteps{
         BufferedReader rd;
         String line;
         String result = "";
-
-
-
-        URL url = new URL(apiAdress);
+        URL url = new URL(apiAdress.trim().replaceAll("'",""));
         HttpURLConnection conGet;
         conGet = (HttpURLConnection) url.openConnection();
-        //add reuqest header
         conGet.setRequestMethod("GET");
-        //conGet.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36");
-
-        System.out.println("\nSending get request : " + url);
-
-        // Send get request
-        try {
-            rd = new BufferedReader(new InputStreamReader(conGet.getInputStream()));
-        } catch (IOException e) {
-            e.printStackTrace();
-            return "<br/>Server returned 504 \n"+e.getLocalizedMessage();
-        }
+        rd = new BufferedReader(new InputStreamReader(conGet.getInputStream()));
         while ((line = rd.readLine()) != null) {
             result += line;
         }
         rd.close();
-
-        String currentUrl = url.toString();
         Thread.sleep(500);
-
-
         return result;
     }
 

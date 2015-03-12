@@ -421,6 +421,16 @@ public class CarcasSteps extends ScenarioSteps {
     public void check_h1_interface_old() {
         carcas.checkH1interfaceOld();
     }
+
+    @Step("Переходим в раздел настройка АПИ")
+    public void go_to_api_settings() {
+        carcas.clickApiSettings();
+    }
+
+    @Step("Проверяем что в меню слева выбран раздел АПИ")
+    public void check_left_api_menu() {
+        carcas.checkLeftApiMenu();
+    }
 }
     
 

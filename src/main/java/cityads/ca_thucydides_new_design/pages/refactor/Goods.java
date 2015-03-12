@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Goods extends BasePage {
@@ -60,6 +62,13 @@ public class Goods extends BasePage {
     @FindBy(xpath = "(//div[contains(@class,'table-card')]/div/div[2]/div/a)[1]")
     private WebElementFacade landingUrl;
 
+    @FindBy(xpath = "//div[contains(@class,'_show_all_images pointer')]")
+    private List<WebElement> images;
+
+    @FindBy(xpath = "//img[contains(@src,'cnt.my')]")
+    private WebElementFacade fullscreenImage;
+
+
     public void resetFilter(){
         this.evaluateJavascript("$('#id_el_input_filter_reset').click()");
         waitForSpinnerDissapear();
@@ -80,8 +89,9 @@ public class Goods extends BasePage {
 
     public void sortByPriseAsc(){
         waitForSpinnerDissapear();
-        sortSelect.waitUntilVisible();
-        sortSelect.click();
+/*        sortSelect.waitUntilVisible();
+        sortSelect.click();*/
+        evaluateJavascript("$('._sort_field').trigger('click')");
         waitForSpinnerDissapear();
         selectList.waitUntilVisible();
         priceAsc.waitUntilVisible();
@@ -132,6 +142,23 @@ public class Goods extends BasePage {
     public String getFirstLandingUrl(){
         return (String) this.evaluateJavascript("return $('div[class*=\"table-card\"]>div>div>div>a').attr('href')");
     }
+
+    public ArrayList<String> getAllImagesUrls() {
+        ArrayList<String> urls = new ArrayList<String>();
+        for (WebElement image : images){
+            String style = image.getAttribute("style");
+            Pattern pattern = Pattern.compile("url\\((.+?)\\)");
+            Matcher matcher = pattern.matcher(style);
+            matcher.find();
+            String url = matcher.group(1).trim();
+            urls.add(url);
+        }
+        return urls;
+    }
+
+    public void checkImageDisplayed() {
+        fullscreenImage.shouldBeCurrentlyVisible();
+     }
 }
 
 

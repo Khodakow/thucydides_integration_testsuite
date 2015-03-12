@@ -22,6 +22,9 @@ public class Carcas extends BasePage {
     @FindBy(xpath="//a[@id='menu_top_wm_item_3641924']")
     private WebElementFacade home;
 
+    @FindBy(xpath="//a[contains(@class,'_stat_api_config')]")
+    private WebElementFacade apiSettings;
+
     @FindBy(xpath="//a[@id='_left_menu_id_3641940']")
     private WebElementFacade webOffers;
 
@@ -1203,6 +1206,14 @@ public class Carcas extends BasePage {
 
     public void checkH1interfaceOld() {
         h1OldInterface.shouldBeCurrentlyVisible();
+    }
+
+    public void clickApiSettings() {
+        apiSettings.click();
+    }
+
+    public void checkLeftApiMenu() {
+        api.shouldBeCurrentlyVisible();
     }
 }
 

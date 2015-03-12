@@ -31,6 +31,13 @@ public class CarcasMngr extends BasePage {
     @FindBy(xpath="//a[@id='_left_menu_id_423010285']")
     private WebElementFacade conversionsWebmastersMgr;
 
+    @FindBy(id="_left_menu_id_423010355")
+    private WebElementFacade countrysstersMgr;
+    @FindBy(id="_left_menu_id_426489652")
+    private WebElementFacade auditoryMgr;
+    @FindBy(id="_left_menu_id_423010335")
+    private WebElementFacade auditorycountryMgr;
+
     @FindBy(xpath="//a[@id='_left_menu_id_429539752']")
     private WebElementFacade conversionsInstruments;
     @FindBy(xpath="//a[@id='_left_menu_id_429579752']")
@@ -83,6 +90,31 @@ public class CarcasMngr extends BasePage {
 
 
     }
+
+    public void goToMgrStatByCountry() {
+
+        waitForSpinnerDissapear();
+        statisticMgr.waitUntilVisible();
+        statisticMgr.click();
+        waitForSpinnerDissapear();
+        if(!auditorycountryMgr.isCurrentlyVisible()){
+            auditoryMgr.click();
+            waitForSpinnerDissapear();
+        }
+
+        if(!countrysstersMgr.isCurrentlyVisible()){
+            auditorycountryMgr.click();
+            waitForSpinnerDissapear();
+        }
+
+        countrysstersMgr.waitUntilVisible();
+        countrysstersMgr.click();
+        waitForSpinnerDissapear();
+
+
+
+    }
+
 
     public void goToMgrStatByAdvertisers() {
 

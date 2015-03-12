@@ -64,11 +64,6 @@ public class HotOffers55749Test {
         hot.stop_slider();
     }
 
-    @Test
-    @Title("Проверка полей в Хот офферс")
-    public void dashboardGoBacklinkTest() throws Exception{
-        hot.check_fields();
-    }
 
     @Test
     @Title("Проверка верстки при уменьшении размеров окна")
@@ -78,7 +73,7 @@ public class HotOffers55749Test {
         hot.check_offercard_tooltip_number();
     }
 
-    //@Test
+    @Test
     @Title("Проверка совпадения инструментов по офферу из хотофферс и из раздела офферы")
     public void check_hotoffers_instruments(){
         hot.click_first_slider();

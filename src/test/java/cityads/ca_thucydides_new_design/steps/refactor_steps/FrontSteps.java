@@ -13,7 +13,6 @@ import net.thucydides.core.steps.ScenarioSteps;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
 /**
  *
  * @author s.lugovskiy
@@ -27,6 +26,11 @@ public class FrontSteps extends ScenarioSteps {
         super(pages);
     }
 
+    @Step("Клик на таб история операций и проверка что service info присутсвует")
+    public void clickHistoryOperationAndCHeckmanagerServiceInfo(){
+        front.clickAndCheckmanagerServiceInfo();
+                                                                 }
+
     @Step("Авторизация пользователя")
     public void enter(){
         front.openBaseUrl();
@@ -34,6 +38,25 @@ public class FrontSteps extends ScenarioSteps {
         front.setRuLang();
 
     }
+
+    @Step("Авторизация пользователя с лидами")
+    public void enter_lead_wm(String url, String wmName){
+        front.openBaseUrlPlusDirect(url);
+        if(!front.isCurrentlyLogIn()) {
+            front.login(wmName);
+            front.setRuLang();
+        }
+    }
+
+    @Step("Авторизация пользователя через директ")
+    public void enter(String url){
+        front.openBaseUrlPlusDirect(url);
+        if(!front.isCurrentlyLogIn()) {
+            front.login();
+            front.setRuLang();
+        }
+    }
+
 
     @Step("Авторизация рекламодателя")
     private void enterAdv() {
@@ -78,9 +101,21 @@ public class FrontSteps extends ScenarioSteps {
         welcome.fillWelcomePageBr();
     }
 
-    @StepGroup("Авторизация пользователя и заполнение WP")
+    @StepGroup//("Авторизация пользователя и заполнение WP")
     public void login(){
         enter();
+        fill_welcome_page();
+    }
+
+    @Step
+    public void login(String url){
+        enter(url);
+        fill_welcome_page();
+    }
+
+    @Step
+    public void login(String url,String wmName){
+        enter_lead_wm(url,wmName);
         fill_welcome_page();
     }
 
@@ -116,6 +151,18 @@ public class FrontSteps extends ScenarioSteps {
         front.login();
         welcome.fillWelcomePageAndCheckOffices();
     }
+    @Step
+    public void openBaseUrl(String url) {
+        front.openBaseUrlPlusDirect(url);
+    }
+
+    @Step
+    public void open() {
+        if(!this.getDriver().getCurrentUrl().contains(System.getProperty("webdriver.base.url"))){
+            this.getDriver().get(System.getProperty("webdriver.base.url"));
+        }
+    }
+
 
     @Step
     public void check_WP_is_not_visible(){
@@ -165,6 +212,11 @@ public class FrontSteps extends ScenarioSteps {
     @Step("Берем баланс")
     public String getBalance() {
         return front.getbalance();
+    }
+
+    @Step
+    public void log(String code){
+
     }
 
 }

@@ -38,12 +38,12 @@ public class PopUpLogOutStoryTest {
         front.login();
     }
 
-    @Test
+    @Test@Pending
     @Screenshots(onlyOnFailures = false)
     @Title("Проверка popup окна при окончании сессии (Logout)")
     public void popUpLogOutStoryTest() throws Exception{
 
-        steps.executeScript("CityAds.notifyLogoff();");
+        steps.execute_javascript_logoff();
         popup.check_logout_popup_and_close();
         String url =  steps.get_current_url();
         steps.check_string_contains_text(url,"/ru/login");

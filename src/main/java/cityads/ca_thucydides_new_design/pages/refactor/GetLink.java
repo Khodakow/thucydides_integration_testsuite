@@ -103,6 +103,7 @@ public class GetLink extends BasePage {
         waitForSpinnerDissapear();
         retargetParams.click();
         popup.waitPopup();
+        this.evaluateJavascript("$('table[class*=\"_hasTableHover\"]>tbody>tr>td').text('');");
     }
 }
 

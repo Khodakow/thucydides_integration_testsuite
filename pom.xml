@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <webdriver.driver>firefox</webdriver.driver>
-        <webdriver.timeouts.implicitlywait>90000</webdriver.timeouts.implicitlywait>
+        <webdriver.timeouts.implicitlywait>30000</webdriver.timeouts.implicitlywait>
 
         <!-- <webdriver.timeouts.pageLoadTimeout>1000</webdriver.timeouts.pageLoadTimeout>-->
     </properties>
@@ -92,7 +92,7 @@
                 <configuration>
 
                     <includes>
-                        <include>**/StatisticByConversions56579Test.java</include>
+                        <include>**/TextShiftCreateToolTranslateStoryTest.java</include>
                     </includes>
 
                     <argLine>-Xmx1024m</argLine>
@@ -102,9 +102,9 @@
                         <thucydides.only.save.failing.screenshots>false</thucydides.only.save.failing.screenshots>
                         <webdriver.remote.url>http://127.0.0.1:4444/wd/hub</webdriver.remote.url>
                         <webdriver.base.url>http://cityads.com/</webdriver.base.url>
-                        <user>me0i@mail.ru</user>
+                        <user>jewi@coldemail.info</user>
                         <password>123698745</password>
-                        <userMgr>a.hodakov@cityads.ru</userMgr>
+                            <userMgr>a.hodakov@cityads.ru</userMgr>
                         <passwordMgr>q1w2e3r4t5</passwordMgr>
 
                         <userAdv>test.rekl@mail.ru</userAdv>
@@ -115,11 +115,11 @@
                         <!--<ie.browserCommandLineSwitches>private</ie.browserCommandLineSwitches>
                             <ie.ensureCleanSession>true</ie.ensureCleanSession>-->
 
-                        <userWelcome>e899@cityads.ru</userWelcome>
-                        <passwordWelcome>12345</passwordWelcome>
+                        <userWelcome>s.lugovskoi@yandex.ru</userWelcome>
+                        <passwordWelcome>123698745</passwordWelcome>
 
-                        <userBrazil>e904@cityads.ru</userBrazil>
-                        <passwordBrazil>12345</passwordBrazil>
+                        <userBrazil>brazillllllcityuser@mailinator.com</userBrazil>
+                        <passwordBrazil>123698745</passwordBrazil>
 
                         <userVk>79160942467</userVk>
                         <passwordVk>motobi63</passwordVk>
@@ -392,7 +392,7 @@
 
                             <includes>
 
-
+                                <include>**/CountryMainParamMgrTest.java</include>
 
                                 <include>**/AdvertisersStatTest.java</include>
                                 <include>**/AdvertisersLoginTest.java</include>
@@ -408,6 +408,7 @@
                                 <include>**/Offices47866MgrTest.java</include>
                                 <include>**/LoginMgrStoryTest.java</include>
                                 <include>**/Advertisers55756GlobalFilterMainMgrTest.java</include>
+                                <include>**/BalanceInfo55399MgrTest.java</include>
 
 
 
@@ -739,7 +740,7 @@
                             <includes>
                                 <include>**/Bugs*StoryTest.java</include>
                                 <include>**/RotatorDynamic45544Test.java</include>
-
+                                <include>**/GoodsKeywordFilterStoryTest.java</include>
                                 <include>**/GlobalFilterStatistic45282Test.java</include>
                                 <include>**/Statistic45539Test.java</include>
                                 <include>**/Statistic44058Test.java</include>
@@ -754,7 +755,7 @@
                                 <include>**/StatisticChartEqualsTableTest.java</include>
 
                                 <include>**/WebOffersSortAndPagesTest.java</include>
-
+                                <include>**/Bugs58862StoryTest.java</include>
                                 <include>**/Advertiser49056StoryTest.java</include>
 
                                 <include>**/WebOffersBreadcrumbds49721Test.java</include>
@@ -1463,16 +1464,11 @@
                             <argLine>-Xmx1024m</argLine>
                             <systemPropertyVariables>
 
-                                <!--настройки для фантома-->
-                                <phantomjs.page.customHeaders.User-Agent>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36</phantomjs.page.customHeaders.User-Agent>
-                                <phantomjs.page.settings.clearMemoryCaches>true</phantomjs.page.settings.clearMemoryCaches>
-
-
-                                <webdriver.driver>${webdriver.driver}</webdriver.driver>
+                                <webdriver.driver>chrome</webdriver.driver>
                                 <thucydides.store.html.source>false</thucydides.store.html.source>
                                 <webdriver.chrome.driver>${project.basedir}\chromedriver.exe</webdriver.chrome.driver>
                                 <webdriver.ie.driver>${project.basedir}\IEDriverServer.exe</webdriver.ie.driver>
-                                <thucydides.only.save.failing.screenshots>true</thucydides.only.save.failing.screenshots>
+                                <thucydides.only.save.failing.screenshots>false</thucydides.only.save.failing.screenshots>
                                 <webdriver.remote.url>http://127.0.0.1:4444/wd/hub</webdriver.remote.url>
                                 <webdriver.base.url>http://cityads.com/</webdriver.base.url>
                                 <chrome.switches>--test-type</chrome.switches>
@@ -1546,6 +1542,8 @@
                         <configuration>
                             <includes>
 
+                            <!--    <include>**/DeleteAllCouponFiltersTest.java</include>
+                                <include>**/DeleteAllGoodsFiltersTest.java</include>-->
                                 <include>**/Delete*StoryTest.java</include>
                             </includes>
 
@@ -1571,6 +1569,171 @@
 
                                 <userWelcome>s.lugovskoi@yandex.ru</userWelcome>
                                 <passwordWelcome>123698745</passwordWelcome>
+
+                            </systemPropertyVariables>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>2.3.2</version>
+                        <configuration>
+                            <source>1.5</source>
+                            <target>1.5</target>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>net.thucydides.maven.plugins</groupId>
+                        <artifactId>maven-thucydides-plugin</artifactId>
+                        <version>0.9.229</version>
+                        <executions>
+                            <execution>
+                                <id>thucydides-reports</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>aggregate</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <!-- smoke profile -->
+        <profile>
+            <id>smoke</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.17</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.17</version>
+                        <configuration>
+                            <includes>
+                                <include>**/LoginStoryTest.java</include>
+                                <include>**/OfferCardCodeStoryTest.java</include>
+                                <include>**/DownloadGoodsJsonStoryTest.java</include>
+                                <include>**/StatisticBySegmetOffersTest.java</include>
+
+                            </includes>
+                            <argLine>-Xmx1024m</argLine>
+                            <parallel>classes</parallel>
+                            <threadCount>4</threadCount>
+                            <perCoreThreadCount>false</perCoreThreadCount>
+
+                            <systemPropertyVariables>
+
+                                <!--настройки для фантома-->
+                                <phantomjs.page.customHeaders.User-Agent>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36</phantomjs.page.customHeaders.User-Agent>
+                                <phantomjs.page.settings.clearMemoryCaches>true</phantomjs.page.settings.clearMemoryCaches>
+
+
+                                <webdriver.driver>${webdriver.driver}</webdriver.driver>
+                                <thucydides.store.html.source>false</thucydides.store.html.source>
+                                <webdriver.chrome.driver>${project.basedir}\chromedriver.exe</webdriver.chrome.driver>
+                                <webdriver.ie.driver>${project.basedir}\IEDriverServer.exe</webdriver.ie.driver>
+                                <thucydides.only.save.failing.screenshots>true</thucydides.only.save.failing.screenshots>
+                                <webdriver.remote.url>http://10.8.15.52:4444/wd/hub</webdriver.remote.url>
+                                <webdriver.base.url>http://cityads.com.br/</webdriver.base.url>
+                                <chrome.switches>--test-type</chrome.switches>
+
+                                <user>me0i@mail.ru</user>
+                                <password>123698745</password>
+
+                                <userWelcome>s.lugovskoi@yandex.ru</userWelcome>
+                                <passwordWelcome>123698745</passwordWelcome>
+
+                            </systemPropertyVariables>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>2.3.2</version>
+                        <configuration>
+                            <source>1.5</source>
+                            <target>1.5</target>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>net.thucydides.maven.plugins</groupId>
+                        <artifactId>maven-thucydides-plugin</artifactId>
+                        <version>0.9.229</version>
+                        <executions>
+                            <execution>
+                                <id>thucydides-reports</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>aggregate</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <!-- carcas profile -->
+        <profile>
+            <id>carcas</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.17</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.17</version>
+                        <configuration>
+                            <includes>
+                                <include>**/ConsoleStoryTest.java</include>
+                            </includes>
+                            <argLine>-Xmx1024m</argLine>
+
+                            <systemPropertyVariables>
+
+
+                                <webdriver.driver>chrome</webdriver.driver>
+                                <thucydides.store.html.source>false</thucydides.store.html.source>
+                                <webdriver.chrome.driver>${project.basedir}\chromedriver.exe</webdriver.chrome.driver>
+                                <webdriver.ie.driver>${project.basedir}\IEDriverServer.exe</webdriver.ie.driver>
+                                <thucydides.only.save.failing.screenshots>true</thucydides.only.save.failing.screenshots>
+                                <webdriver.remote.url>http://10.8.15.52:4444/wd/hub</webdriver.remote.url>
+                                <webdriver.base.url>http://branch.team.sagl/</webdriver.base.url>
+                                <chrome.switches>--test-type</chrome.switches>
+
+                                <user>e894@cityads.ru</user>
+                                <password>12345</password>
+
+                                <userWelcome>e905@cityads.ru</userWelcome>
+                                <passwordWelcome>12345</passwordWelcome>
 
                             </systemPropertyVariables>
                         </configuration>
@@ -1845,7 +2008,7 @@
 
                             <argLine>-Xmx1024m</argLine>
                                    <parallel>classes</parallel>
-                            <threadCount>16</threadCount>
+                            <threadCount>40</threadCount>
                             <perCoreThreadCount>false</perCoreThreadCount>
 
                             <systemPropertyVariables>
@@ -1907,7 +2070,132 @@
                 </plugins>
             </build>
         </profile>
+        <!-- translate esp profile-->
+        <profile>
+            <id>translateesp</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.17</version>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>2.17</version>
+                        <configuration>
+                            <includes>
 
+
+                                <!--
+                                <include>**/TeaserIssueBlockSettingsStoryTest.java</include>
+                                <include>**/LinksRotatorStoryTest.java</include>
+                                <include>**/NewsStoryTest.java</include>
+                                <include>**/*SmartBannersStoryTest.java</include>
+                                <include>**/TeaserIssueStoryTest.java</include>
+                                <include>**/FinancialFeedStoryTest.java</include>
+                                <include>**/ManagerSvodnayaStoryTest.java</include>
+                                <include>**/IndividualTargetCPLStoryTest.java</include>
+                                <include>**/PricePlatformStoryTest.java</include>
+                                <include>**/PricePlatformCreateStoryTest.java</include>
+
+
+                                <include>**/ExchangeStoryTest.java</include>
+                                <include>**/TopOffersStoryTest.java</include>
+                                <include>**/MainPageStoryTest.java</include>
+                                <include>**/OfferListStoryTest.java</include>
+                                <include>**/OperationHistory*.java</include>
+                                <include>**/ChosenOffersStoryTest*.java</include>
+                                <include>**/BannerRotatorStoryTest*.java</include>
+                                <include>**/GoodsCatalogStoryTest.java</include>
+                                <include>**/GoodsCatalogCodeStoryTest.java</include>
+
+                                <include>**/GoodsCategoryStoryTest.java</include>
+                                <include>**/StatisticStoryTest.java</include>
+                                <include>**/OfferCardStoryTest.java</include>
+                                <include>**/OfferCardCodeStoryTest.java</include>
+                                <include>**/PaymentStoryTest.java</include>
+                                <include>**/OfferInstrumentsRotatorsStoryTest.java</include>
+                                <include>**/OfferInstrumentsLinksStoryTest.java</include>
+                                <include>**/ProfileStoryTest_Boy.java</include>
+                                <include>**/BlogStoryTest.java</include>
+                                <include>**/ConversionPostbackStoryTest.java</include>
+                                <include>**/BugsStoryTest.java</include>
+
+                                <include>**/CouponsAndPromocodesStoryTest.java</include>
+                                <include>**/WelcomepageStoryTest.java</include>
+                                <include>**/Bugs*StoryTest.java</include> -->
+                                <include>**/esp/*EspStoryTest.java</include>
+
+                            </includes>
+
+                            <argLine>-Xmx1024m</argLine>
+                            <!--<parallel>classes</parallel>
+                            <threadCount>40</threadCount>
+                            <perCoreThreadCount>false</perCoreThreadCount>-->
+
+                            <systemPropertyVariables>
+
+                                <!--настройки для фантома-->
+                                <phantomjs.page.customHeaders.User-Agent>Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.154 Safari/537.36</phantomjs.page.customHeaders.User-Agent>
+                                <phantomjs.page.settings.clearMemoryCaches>true</phantomjs.page.settings.clearMemoryCaches>
+
+
+                                <webdriver.driver>${webdriver.driver}</webdriver.driver>
+                                <thucydides.store.html.source>false</thucydides.store.html.source>
+                                <webdriver.chrome.driver>${project.basedir}\chromedriver.exe</webdriver.chrome.driver>
+                                <webdriver.ie.driver>${project.basedir}\IEDriverServer.exe</webdriver.ie.driver>
+                                <thucydides.only.save.failing.screenshots>true</thucydides.only.save.failing.screenshots>
+                                <webdriver.remote.url>http://10.8.15.52:4444/wd/hub</webdriver.remote.url>
+                                <webdriver.base.url>http://beta.cityads.com.br/</webdriver.base.url>
+                                <chrome.switches>--test-type</chrome.switches>
+
+                                <user>testercityads2@mailinator.com</user>
+                                <password>q1w2e3r4t5</password>
+
+                                <userWelcome>s.lugovskoi@yandex.ru</userWelcome>
+                                <passwordWelcome>123698745</passwordWelcome>
+
+                            </systemPropertyVariables>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>2.3.2</version>
+                        <configuration>
+                            <source>1.5</source>
+                            <target>1.5</target>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>net.thucydides.maven.plugins</groupId>
+                        <artifactId>maven-thucydides-plugin</artifactId>
+                        <version>0.9.229</version>
+                        <executions>
+                            <execution>
+                                <id>thucydides-reports</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>aggregate</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
         <!-- office profile -->
         <profile>
             <id>office</id>
@@ -1927,7 +2215,10 @@
                         <configuration>
 
                             <includes>
-                                <include>**/SwitchingToTheOldInterfaceTest.java</include>
+                                <include>**/MainPageTableTest.java</include>
+                                <include>**/WebOffersTableSortTest.java</include>
+                                <include>**/LoginAndCheckOfficesTest.java</include>
+                                <include>**/AccountPersonalInfoStoryTest.java</include>
                                 <include>**/BreadcrumbsStoryTest.java</include>
                                 <include>**/PopUpLogOutStoryTest.java</include>
                                 <include>**/NewDashboardTest.java</include>
@@ -1964,13 +2255,13 @@
                                 <include>**/GoodsLink53721Test.java</include>
                                 <include>**/ApiDocs54708StoryTest.java</include>
                                 <include>**/HotOffers55749Test.java</include>
-
+                                <include>**/WebOffersBreadcrumbds49660Test.java</include>
 
                             </includes>
 
                             <argLine>-Xmx1024m</argLine>
                             <parallel>classes</parallel>
-                            <threadCount>30</threadCount>
+                            <threadCount>50</threadCount>
                             <perCoreThreadCount>false</perCoreThreadCount>
 
                             <systemPropertyVariables>
@@ -2285,6 +2576,8 @@
                         <configuration>
 
                             <includes>
+                                <include>**/DCOBannersTest.java</include>
+                                <include>**/BackUrlStoryTest.java</include>
                                 <include>**/BannerRotatorStoryTest.java</include>
                                 <include>**/ConversionPostbackStoryTest.java</include>
                                 <include>**/DownloadCouponsAllTest.java</include>
@@ -2305,7 +2598,8 @@
                                 <include>**/DownloadCouponsJsonStoryTest.java</include>
                                 <include>**/CouponsAndPromocodesFilterCheckboxStoryTest.java</include>
                                 <include>**/GoodsCategoryClickAndCheckStoryTest.java</include>
-
+                                <include>**/GoodsGoogleXml51149Test.java</include>
+                                <include>**/GoodsImagesTest.java</include>
                                 <include>**/CouponsAndPromocodesStoryTest.java</include>
                                 <include>**/GoodsCatalogCheckboxStoryTest.java</include>
                                 <include>**/GoodsCatalogCodeStoryTest.java</include>
@@ -2313,10 +2607,10 @@
                                 <include>**/GoodsCategoryStoryTest.java</include>
                                 <include>**/Coupons50030FilterNotSavedStoryTest.java</include>
                                 <include>**/BannerRotatorEditLinkTestTest.java</include>
-
+                                <include>**/BannerRotatorClickTest.java</include>
                                 <include>**/PaymentInformationTest.java</include>
                                 <include>**/PaymentInformationIPTest.java</include>
-
+                                <include>**/GoodsCategoryStoryTest.java</include>
 
 
                                 <include>**/GetLinkTest.java</include>
@@ -2325,7 +2619,7 @@
 
                             <argLine>-Xmx1024m</argLine>
                             <parallel>classes</parallel>
-                            <threadCount>40</threadCount>
+                            <threadCount>50</threadCount>
                             <perCoreThreadCount>false</perCoreThreadCount>
 
                             <systemPropertyVariables>
@@ -2526,15 +2820,19 @@
                         <version>2.17</version>
                         <configuration>
                             <includes>
-                                <include>**/*Translate*StoryTest.java</include>
-                                <include>**/*Translate*Test.java</include>
-                                <include>**/ApiDocsTranslateTest.java</include>
+                                <include>**/StatisticGeoStoryTest.java</include>
+                                <include>**/br/*Translate*StoryTest.java</include>
+                                <include>**/br/*Translate*Test.java</include>
+                                <include>**/br/ApiDocsTranslateTest.java</include>
+                                <include>**/eng/*Translate*StoryTest.java</include>
+                                <include>**/eng/*Translate*Test.java</include>
+                                <include>**/eng/ApiDocsTranslateTest.java</include>
 
                             </includes>
 
                             <argLine>-Xmx1024m</argLine>
                             <parallel>classes</parallel>
-                            <threadCount>16</threadCount>
+                            <threadCount>40</threadCount>
                             <perCoreThreadCount>false</perCoreThreadCount>
 
                             <systemPropertyVariables>
@@ -2661,7 +2959,7 @@
 
                             <argLine>-Xmx1024m</argLine>
                            <parallel>classes</parallel>
-                            <threadCount>5</threadCount>
+                            <threadCount>40</threadCount>
                             <perCoreThreadCount>false</perCoreThreadCount>
 
                             <systemPropertyVariables>

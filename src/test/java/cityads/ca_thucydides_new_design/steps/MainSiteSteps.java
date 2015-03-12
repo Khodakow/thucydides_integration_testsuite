@@ -10,6 +10,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
+import static org.junit.Assert.assertFalse;
+
 public class MainSiteSteps extends SetupSteps {
 
     MainSitePage page;
@@ -145,4 +147,33 @@ public class MainSiteSteps extends SetupSteps {
             check_string_has_changed("0",elemtext);
         }
     }
+
+
+    @Step("Переключаем таблицу")
+    public void click_and_hold_mainpage_bluetable(int num){
+        this.executeScript("$('.hb-navi>a').get("+num+").click()");
+        this.waitABit(500);
+        this.executeScript("$('.hb-banner').trigger('mouseenter');");
+    }
+
+    @Step("Проверяем что таблица с вебмастерами не пуста")
+    public void check_mainpage_table_contains_data_webmaster(){
+        int countWebmaster = page.trInMainSiteTableWebmaster.size();
+
+        assertFalse("Проверяем что кол-во строк не 0, сейчас "+countWebmaster+"",countWebmaster==0);
+    }
+
+    @Step("Проверяем что таблица с реклами не пуста")
+    public void check_mainpage_table_contains_data_advertizer(){
+        int countAdvertizers = page.trInMainSiteTableAdvertizers.size();
+
+        assertFalse("Проверяем что кол-во строк не 0, сейчас "+countAdvertizers+"",countAdvertizers==0);
+    }
+    @Step("Проверяем что таблица с офферами не пуста")
+    public void check_mainpage_table_contains_data_offers(){
+        int countOffers = page.trInMainSiteTableOffers.size();
+
+        assertFalse("Проверяем что кол-во строк не 0, сейчас "+countOffers+"",countOffers==0);
+    }
+
 }

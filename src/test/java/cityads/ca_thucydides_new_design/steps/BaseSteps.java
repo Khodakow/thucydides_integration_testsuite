@@ -216,6 +216,12 @@ public class BaseSteps extends FrontSteps {
     }
 
     @Step
+    public void  select_esp_language(){
+        mainPage.selectLang.click();
+        mainPage.espLink.click();
+    }
+
+    @Step
     public void  select_en_language(){
         mainPage.selectLang.click();
         mainPage.enLink.click();
@@ -343,6 +349,7 @@ public class BaseSteps extends FrontSteps {
     @Step
     public void submit_form(){
         mainPage.submitOk.click();
+        waitABit(5000);
     }
 
 
@@ -895,7 +902,8 @@ public class BaseSteps extends FrontSteps {
 
     @Step
     public void click_select_choose_toggle(){
-        mainPage.selectChooseToggle.click();
+        //mainPage.selectChooseToggle.click();
+        executeScript("$('._code_toggle').trigger('click')");
     }
 
     @Step
@@ -917,12 +925,14 @@ public class BaseSteps extends FrontSteps {
     @Step
     public void select_javascript_code(){
 
-        mainPage.javascriptSelect.click();
+        //mainPage.javascriptSelect.click();
+        executeScript("$('[data-id=\"feedJsField\"]').click()");
     }
 
     @Step
     public void select_ajs_code(){
-        mainPage.ajsSelect.click();
+        //mainPage.ajsSelect.click();
+        executeScript("$('[data-id=\"feedJsaField\"]').click()");
     }
 
     @Step
@@ -1134,12 +1144,10 @@ public class BaseSteps extends FrontSteps {
                     count++;
                     accept_alert();
                     wait_for_all_spinners_dissapears(120);
-
+                    if(count>50){
+                        break;
+                    }
                 }
-            }
-            else if(count>50){  //чтобы не было вечного цикла если удаление сломалось
-                check_blue_table_has_no_data();
-                break;
             }
             else {
                 check_blue_table_has_no_data();
@@ -1423,6 +1431,12 @@ public class BaseSteps extends FrontSteps {
         mainPage.click_third_lang();
     }
 
+    @Step("Переключаем язык на Es")
+    public  void change_lang_to_es(){
+        mainPage.click_select_lang();
+        mainPage.click_fourth_lang();
+    }
+
     @Step("Переключаем язык на Англ")
     public  void change_lang_to_en(){
         mainPage.click_select_lang();
@@ -1460,9 +1474,6 @@ public class BaseSteps extends FrontSteps {
         executeScript("$('.mercedes-res').remove()");
         WebElement elem = mainPage.find(By.xpath("//*"));
         List<String> strings = Arrays.asList(elem.getText().split("[\\-.\\s\\t\\n\\r\\x0b<>,]"));
-
-        scroll_to_apply_filter_button();
-
         ArrayList<String> rusWords = get_all_rus_words_from_array(strings);
         check_array_has_elements(rusWords);
 
@@ -1475,7 +1486,7 @@ public class BaseSteps extends FrontSteps {
 
     @Step
     public void check_array_has_fatals(ArrayList<String> list){
-        assertFalse("В исходном коде найдены подохрительные слова !",list.size()>0);
+        assertFalse("В исходном коде найдены подозрительные слова !",list.size()>0);
     }
 
     public ArrayList<String> get_all_rus_words_from_array(List<String> words){
@@ -1527,10 +1538,9 @@ public class BaseSteps extends FrontSteps {
         for(String s : words){
             if((      s.contains("Fatal")
                     ||s.contains("Sql error")
-                    ||s.contains("SQL")
                     ||s.contains("SQL ERROR")
-                    ||s.contains("FATAL")
-                    ||s.contains("SELECT")
+                    ||s.contains("SQL error")
+                         ||s.contains("FATAL")
                     ||s.contains("FATAL")
                     ||s.contains("ORDER BY")
                     ||s.contains("exception")
@@ -1903,7 +1913,14 @@ public class BaseSteps extends FrontSteps {
 
     @Step
     public String get_tooltip_text(){
-        return mainPage.tooltip.getText();
+        try {
+            String text = mainPage.tooltip.getText();
+            return text;
+        }
+        catch(Exception e){
+            return " ";
+        }
+
     }
 
 
@@ -1999,6 +2016,38 @@ public class BaseSteps extends FrontSteps {
     @Step("Добавляем через запрос акции")
     public void addPromoMysql(){
         MySQLWorker.addPromo();
+    }
+
+    @Step("CityAds.notifyLogoff();")
+    public void execute_javascript_logoff() {
+        try{
+        mainPage.evaluateJavascript("CityAds.notifyLogoff();");}
+        catch(Exception e){
+
+        }
+    }
+
+    @Step("Удаляем все фильтрыы")
+    public void delete_all_filters() {
+        mainPage.deleteAllFilters();
+    }
+
+    @Step
+    public void wait_opacity() {
+        basePage.waitOpacity();
+    }
+
+    @Step
+    public void check_diff(Integer goodsnumber, int goodsCount) {
+        float dele = 0;
+        if(goodsnumber>goodsCount) {
+             dele = ((float) goodsnumber / (float) goodsCount) * 100;
+        }
+        if(goodsCount>goodsnumber) {
+             dele = ((float) goodsCount / (float) goodsnumber) * 100;
+        }
+        assertTrue("Процент расхождения значения total из выгрузки "+goodsnumber+" и значения из интерфейса раздела товаров"+goodsCount+" ,больше 10 процентов(сейчас на "+dele+")",dele <10);
+
     }
 }
 

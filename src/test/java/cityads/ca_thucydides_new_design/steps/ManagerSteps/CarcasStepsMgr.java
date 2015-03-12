@@ -65,6 +65,11 @@ public class CarcasStepsMgr extends ScenarioSteps {
         carcas.goToMgrStatByOffices();
     }
 
+
+    @Step("Переходим в отчет менеджера по stranam")
+    public void go_to_mgr_stat_country() {
+        carcas.goToMgrStatByCountry();
+    }
     @Step
     public void go_to_mgr_stat_advertisers() {
         carcas.goToMgrStatByAdvertisers();

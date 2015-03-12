@@ -3,6 +3,7 @@ package cityads.ca_thucydides_new_design.pages.highload;
 import net.thucydides.core.annotations.findby.FindBy;
 import net.thucydides.core.pages.PageObject;
 import net.thucydides.core.pages.WebElementFacade;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -18,6 +19,11 @@ public class BannerstestPage extends PageObject{
 
     @FindBy(xpath="//a[contains(@href,'click')]")
     private WebElementFacade bannerIMG;
+
+    @FindBy(xpath="//iframe[contains(@src,'p.cnt.my')]")
+    private WebElementFacade frame;
+
+
 
     @FindBy(xpath="//a[contains(@href,'cid')]")
     private WebElementFacade bannerLink;
@@ -43,6 +49,17 @@ public class BannerstestPage extends PageObject{
     public void clickBanner(){
         bannerIMG.waitUntilVisible();
         bannerIMG.click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void clickDCOBanner(){
+        getDriver().switchTo().frame(frame);
+        getDriver().findElement(By.xpath("//a")).click();
+
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

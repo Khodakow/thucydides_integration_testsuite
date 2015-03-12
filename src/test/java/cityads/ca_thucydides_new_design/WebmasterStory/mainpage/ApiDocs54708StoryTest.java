@@ -45,7 +45,7 @@ public class ApiDocs54708StoryTest {
     }
 
 
-    @Test
+    @Test@Pending
     @Screenshots(onlyOnFailures = false)
     @Title("Проверка шапки документации API")
     public void apiDocs54708StoryTest() throws Exception{
@@ -59,7 +59,7 @@ public class ApiDocs54708StoryTest {
         baseSteps.check_values_are_equals(expectedUrl,url);
     }
 
-    @Test
+    @Test@Pending
     @Screenshots(onlyOnFailures = false)
     @Title("Проверка кнопки Twitter")
     public void apiDocs54708TwitterTest() throws Exception{
@@ -74,7 +74,7 @@ public class ApiDocs54708StoryTest {
     }
 
 
-    @Test
+    @Test@Pending
     @Screenshots(onlyOnFailures = false)
     @Title("Проверка кнопки Vkontakte")
     public void apiDocs54708VKTest() throws Exception{

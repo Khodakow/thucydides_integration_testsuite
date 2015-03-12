@@ -35,8 +35,8 @@ public class Bugs48597StoryTest {
     @Steps
     public FilterSteps filter;
 
-    
-    @Test@Screenshots(onlyOnFailures = false)
+
+    @Test@Screenshots(onlyOnFailures = true)@Pending
     @Title("Проверка на сохранение региона в фильтрах после обновления страницы 48597 в оферах")
     public void check_48597_offers(){
         front.login();
@@ -61,7 +61,9 @@ public class Bugs48597StoryTest {
         steps.close_browser();
     }
 
-    @Test@Screenshots(onlyOnFailures = false)
+
+    @Test@Pending
+    @Screenshots(onlyOnFailures = true)
     @Title("Проверка на сохранение региона в фильтрах после обновления страницы 48597 в мобильных оферах")
     public void check_48597_mobile_offers(){
         front.login();
@@ -74,8 +76,8 @@ public class Bugs48597StoryTest {
         steps.executeScript("$('i:contains(\"+\"):eq(2)').click();");
         steps.wait_for_all_spinners_dissapears();
 
-        filter.click_checkbox_in_filter(1,3);
-        filter.click_checkbox_in_filter(1,4);
+/*        filter.click_checkbox_in_filter(1,3);
+        filter.click_checkbox_in_filter(1,4);*/
         filter.submit_filter();
         String legend = filter.get_filter_breadcrumbs();
         steps.refresh_page();
@@ -87,7 +89,7 @@ public class Bugs48597StoryTest {
     }
 
 
-    @Test@Screenshots(onlyOnFailures = false)
+    @Test@Screenshots(onlyOnFailures = true)@Pending
     @Title("Проверка на сохранение региона в фильтрах после обновления страницы 48597 в купонаъ")
     public void check_48597_coupons(){
         front.login();
@@ -113,7 +115,7 @@ public class Bugs48597StoryTest {
     }
 
 
-    @Test@Screenshots(onlyOnFailures = false)
+    @Test@Screenshots(onlyOnFailures = true)@Pending
     @Title("Проверка на сохранение региона в фильтрах после обновления страницы 48597 в товарах")
     public void check_48597_goods(){
         front.login();

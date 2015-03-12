@@ -9,6 +9,8 @@ import cityads.ca_thucydides_new_design.steps.BaseSteps;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 
+import java.util.Set;
+
 import static org.junit.Assert.assertFalse;
 
 /**
@@ -75,6 +77,16 @@ public class StatisticsSteps extends BaseSteps {
     public void export_spinner_not_visible(){
         waitABit(60000);
         page.exportSpinerNotVisible();
+    }
+
+    @Step("клик ПО МЕСЯЦАМ над таблицей")
+    public void click_by_month(){
+        page.clickByMonth();
+    }
+
+    @Step("записываем все месяцы из таблицы в HashSet. Его размер должен быть больше 1")
+    public Set<String> get_all_months(){
+        return page.getMonths();
     }
 }
     

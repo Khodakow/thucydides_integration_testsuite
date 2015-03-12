@@ -51,13 +51,18 @@ public class RegistrationPage extends MainPage {
         @FindBy(id="id_el_text_field_contact_phone")
         public WebElement regPhone;
         
-        @FindBy(xpath="//p[contains(concat(' ', @class, ' '), ' checkbox ')]")
+        @FindBy(xpath="(//p[contains(concat(' ', @class, ' '), ' checkbox ')])[1]")
         public WebElement agreeCheckbox;
+        @FindBy(xpath="(//p[contains(concat(' ', @class, ' '), ' checkbox ')])[2]")
+        public WebElement agreeCheckbox2;
         
         public WebElement getAgreeCheckbox(){
             return element(agreeCheckbox).findElement(By.xpath("//input[contains(concat(' ', @id, ' '), 'agreement')]"));
         }
-        
+
+        public WebElement getAgreeCheckbox2(){
+        return element(agreeCheckbox2).findElement(By.xpath("//input[contains(concat(' ', @id, ' '), 'policy')]"));
+         }
         @FindBy(className="socials")
         public WebElement socialButtons;
         

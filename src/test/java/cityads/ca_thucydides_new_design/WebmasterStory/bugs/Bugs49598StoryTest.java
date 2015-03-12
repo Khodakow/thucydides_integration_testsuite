@@ -45,8 +45,7 @@ public class Bugs49598StoryTest {
     @Title("Проверка на то что кличество товаров не меняется при сортировке")
     public void check49598test(){
 
-        front.login();
-        carcas.go_to_goods();
+        front.login("/webmaster/products_and_coupons/products/catalog_403319272.0.htm");
         int goodsCount = goods.get_total_goods();
         goods.sort_by_price_desc();
         int goodsCountNew = goods.get_total_goods();

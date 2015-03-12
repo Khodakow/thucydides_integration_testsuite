@@ -18,12 +18,14 @@ public class MainPage extends BasePage {
         super(driver);
     }
 
-
     @FindBy(partialLinkText="Русский")
     public WebElement ruLink;
 
     @FindBy(partialLinkText="Portug")
     public WebElement ptLink;
+
+    @FindBy(partialLinkText="Espa")
+    public WebElement espLink;
 
     @FindBy(partialLinkText="English")
     public WebElement enLink;
@@ -39,6 +41,14 @@ public class MainPage extends BasePage {
 
     @FindBy(id = "id_el_text_field_name")
     public WebElement inputFieldName;
+
+    @FindBy(xpath = "//div[contains(@class,'_user_filter_select')]")
+    public WebElement filterSelect;
+
+    @FindBy(xpath = "//div[contains(@class,'select-list')]")
+    public WebElementFacade filterList;
+
+
 
     @FindBy(xpath = "//div[contains(concat(' ', normalize-space(@class), ' '), 'popup modal show ') ]")
     public WebElement popupPage;
@@ -682,18 +692,32 @@ public class MainPage extends BasePage {
 
     public void click_select_lang(){
         getDriver().findElement(By.xpath("//div[contains(@class,'ib dropdown')]/a")).click();
+        waitForSpinnerDissapear();
+        this.evaluateJavascript("CityAds.vars.dontFixTable = true;");
     }
 
     public void click_first_lang(){
         getDriver().findElement(By.xpath("//div[contains(@class,'params')]/a[1]")).click();
+        waitForSpinnerDissapear();
+        this.evaluateJavascript("CityAds.vars.dontFixTable = true;");
     }
 
     public void click_third_lang(){
         getDriver().findElement(By.xpath("//div[contains(@class,'params')]/a[3]")).click();
+        waitForSpinnerDissapear();
+        this.evaluateJavascript("CityAds.vars.dontFixTable = true;");
+    }
+
+    public void click_fourth_lang(){
+        getDriver().findElement(By.xpath("//div[contains(@class,'params')]/a[4]")).click();
+        waitForSpinnerDissapear();
+        this.evaluateJavascript("CityAds.vars.dontFixTable = true;");
     }
 
     public void click_second_lang(){
         getDriver().findElement(By.xpath("//div[contains(@class,'params')]/a[2]")).click();
+        waitForSpinnerDissapear();
+        this.evaluateJavascript("CityAds.vars.dontFixTable = true;");
     }
 
 
@@ -840,6 +864,28 @@ public class MainPage extends BasePage {
 
     @FindBy(xpath="//div[@class='highcharts-container']")
     public WebElementFacade chart;
+
+    public void deleteAllFilters() {
+        filterSelect.click();
+        filterList.waitUntilVisible();
+        int size = ((Long) this.evaluateJavascript("return $('div[class*=\"select-list\"]>a').size()")).intValue();
+        int i;
+        for(i=2; i<size; i++){
+            int newSize = ((Long) this.evaluateJavascript("return $('div[class*=\"select-list\"]>a').size()")).intValue();
+            this.evaluateJavascript("$('div[class*=\"select-list\"]>a').get("+i+").click();");
+            waitForSpinnerDissapear();
+            this.evaluateJavascript("$('a[class*=\"_remove_filter\"]').click()");
+            waitForSpinnerDissapear();
+            this.evaluateJavascript("$('a[class*=\"button dark submit _submit\"]').click()");
+            this.evaluateJavascript("$('a[class*=\"button dark\"]').click()");
+            waitForSpinnerDissapear();
+            filterSelect.click();
+            filterList.waitUntilVisible();
+            System.out.println("Filtrov ostalos: "+newSize);
+
+        }
+
+    }
 }
 
 

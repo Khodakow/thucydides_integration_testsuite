@@ -36,6 +36,11 @@ public class BannerTestSteps extends SetupSteps{
         page.clickBanner();
     }
 
+    @Step
+    public void click_dco_banner(){
+        page.clickDCOBanner();
+    }
+
     @StepGroup
     public void check_banner(String code){
         go_to_test_form();
@@ -45,6 +50,17 @@ public class BannerTestSteps extends SetupSteps{
         String host = getUrlHost(getDriver().getCurrentUrl().replace("www.",""));
         check_host_not_cityads(host);
     }
+    @StepGroup
+    public void check_dco_banner_and_redirect(String code){
+        go_to_test_form();
+        submit_banner_to_test_form(code);
+        click_dco_banner();
+        switch_to_last_window();
+        String host = getUrlHost(getDriver().getCurrentUrl().replace("www.",""));
+        check_host_not_cityads(host);
+        check_string_not_contains_text(host,"warthunder");
+    }
+
 
     @StepGroup
     public void check_shift(String code){
